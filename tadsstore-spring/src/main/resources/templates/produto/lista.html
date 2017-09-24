@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html layout:decorate="~{geral/modelo}">
+    <head>
+        <title>TADS Store</title>
+    </head>
+    <body>
+        <div layout:fragment='conteudo'>
+            <div>
+                <div class="container-fluid">
+                    <div class="jumbotron">
+                        <div style="background-image: url('./img/bolo2.jpg'); background-size: cover; background-repeat: no-repeat; height: 400px; ">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4 well" th:each="p : ${itens}">
+                            <h2 th:text="${p.nome}">Produto</h2>
+                            <img src="./img/bolo1.png" th:src="@{/img/bolo1.png}" class="img-thumbnail">
+                            <h3 th:text="${#numbers.formatCurrency(p.preco)}">R$ 99,99</h3>
+                            <form action="#" th:action="@{/compra/adicionar/{id} (id=${p.id})}" method="post">
+                                <input type="hidden" name="id" th:value="${p.id}" />
+                                <button type="submit" class="btn btn-success btn-lg btn-block">
+                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Comprar</button>
+                            </form>
+                            <a href="#" role="button" 
+                               th:href="@{/produto/{id}(id=${p.id})}" 
+                               class="btn btn-info btn-lg btn-block">
+                                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Ver mais
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

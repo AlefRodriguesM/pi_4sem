@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html layout:decorate="~{geral/modelo}">
+    <head>
+        <title>TADS Store</title>
+    </head>
+    <body>
+        <div layout:fragment='conteudo'>
+            <div class="container-fluid">
+                <div class="jumbotron">
+                    <div style="background-image: url('./img/bolo2.jpg'); background-size: cover; background-repeat: no-repeat; height: 400px; ">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="./img/bolo1.png" th:src="@{/img/bolo1.png}" class="img-thumbnail">
+                    </div>
+                    <div class="col-md-8 well">
+                        <h2 th:text="${produto.nome}">Produto</h2>
+                        <p th:text="${produto.descricao}">Descrição do produto</p>
+                        <h3 th:text="${#numbers.formatCurrency(produto.preco)}">R$ 99,99</h3>
+                        <button type="button" class="btn btn-success btn-lg btn-block">
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Comprar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>
