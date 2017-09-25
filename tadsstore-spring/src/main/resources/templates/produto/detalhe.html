@@ -1,36 +1,33 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html layout:decorate="~{geral/modelo}">
     <head>
         <title>TADS Store</title>
+        <link href="../../static/css/detalhe_estilo.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div layout:fragment='conteudo'>
-            <div class="container-fluid">
-                <div class="jumbotron">
-                    <div style="background-image: url('./img/bolo2.jpg'); background-size: cover; background-repeat: no-repeat; height: 400px; ">
-                        &nbsp;
+        <div layout:fragment='conteudo' class="produto">
+            <div class="container">
+                <div class="col-xs-12 col-sm-4 produtoPic">
+                    <img id="imagem" src="" class="imagem img-responsive img-thumbnail"/>
+                </div>
+                <div class="container well col-xs-12 col-sm-8">
+                    <div class="col-xs-12 col-sm-12">
+                        <h4 th:text="${produto.nome}" class="nome">Produto</h4>
+                    </div>
+                    <div class="disponibilidade col-xs-12 col-sm-12">
+                        <p th:text="${#numbers.formatCurrency(produto.preco)}" class="preco col-sm-8 col-xs-12">R$ 99,99</p>
+                        <p><a class="col-sm-4 col-xs-12 btn btn-info">
+                                <img class="pic" src="http://stonexindia.net/wp-content/uploads/2017/05/cart_icon_200.png">
+                                Comprar</a></p>
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="./img/bolo1.png" th:src="@{/img/bolo1.png}" class="img-thumbnail">
-                    </div>
-                    <div class="col-md-8 well">
-                        <h2 th:text="${produto.nome}">Produto</h2>
-                        <p th:text="${produto.descricao}">Descrição do produto</p>
-                        <h3 th:text="${#numbers.formatCurrency(produto.preco)}">R$ 99,99</h3>
-                        <button type="button" class="btn btn-success btn-lg btn-block">
-                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Comprar</button>
-                    </div>
+            <div class="container  col-xs-12 col-sm-12">
+                <br>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Detalhes do produto</div>
+                    <div th:text="${produto.descricao}" class="panel-body detalhes">Detalhes</div>
                 </div>
-
             </div>
         </div>
     </body>

@@ -1,0 +1,17 @@
+.produto .imagem{
+    width: 100%;
+}
+
+.produto .btn .pic{
+    width: 25px;
+}
+
+.produto .btn{
+    font-size: 20px;
+}
+
+.produto .preco{
+    font-weight: bold;
+    font-size: 32px;
+    color: RGB(46, 204, 113);
+}
