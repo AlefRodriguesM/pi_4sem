@@ -54,34 +54,42 @@ public class ProdutoServiceFakeImpl implements ProdutoService {
           + "Sed aliquet turpis ac sem egestas dignissim. Praesent interdum dapibus cursus. "
           + "Cras posuere tempor lectus, ac porttitor tellus maximus vel.";
 
+  private static final String DESCRICAORESUMIDA_PADRAO = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+          + "Aenean vel ipsum vehicula, venenatis leo nec, ornare felis. Ut consectetur est vel pulvinar tempus. ";
+
   static {
     CategoriaService categorias = new CategoriaServiceFakeImpl();
     Produto produto = new Produto(1L, "Floresta negra",
             DESCRICAO_PADRAO,
+            DESCRICAORESUMIDA_PADRAO,
             new BigDecimal(100), new Date(),
             Arrays.asList(new ImagemProduto(1L, "Bla bla bla", "imagem01a.jpg"), new ImagemProduto(2L, "Xpto Xpto", "imagem01b.jpg"), new ImagemProduto(3L, "Chola mais", "imagem01c.jpg")),
             Arrays.asList(categorias.obter(1), categorias.obter(3)));
     MAPA_PRODUTOS.put(produto.getId(), produto);
     produto = new Produto(2L, "Torta de morango",
             DESCRICAO_PADRAO,
+            DESCRICAORESUMIDA_PADRAO,
             new BigDecimal(90), new Date(),
             Arrays.asList(new ImagemProduto(4L, "Bla bla bla", "imagem02a.jpg"), new ImagemProduto(5L, "Xpto Xpto", "imagem02b.jpg")),
             Arrays.asList(categorias.obter(1), categorias.obter(3)));
     MAPA_PRODUTOS.put(produto.getId(), produto);
     produto = new Produto(3L, "Sonho de valsa",
             DESCRICAO_PADRAO,
+            DESCRICAORESUMIDA_PADRAO,
             new BigDecimal(110), new Date(),
             Arrays.asList(new ImagemProduto(6L, "Bla bla bla", "imagem03a.jpg")),
             Arrays.asList(categorias.obter(1), categorias.obter(3), categorias.obter(6)));
     MAPA_PRODUTOS.put(produto.getId(), produto);
     produto = new Produto(4L, "Morango com leite condensado",
             DESCRICAO_PADRAO,
+            DESCRICAORESUMIDA_PADRAO,
             new BigDecimal(105), new Date(),
             Arrays.asList(new ImagemProduto(7L, "Bla bla bla", "imagem04a.jpg"), new ImagemProduto(8L, "Xpto Xpto", "imagem04b.jpg")),
             Arrays.asList(categorias.obter(1), categorias.obter(4)));
     MAPA_PRODUTOS.put(produto.getId(), produto);
     produto = new Produto(5L, "Abacaxi com coco",
             DESCRICAO_PADRAO,
+            DESCRICAORESUMIDA_PADRAO,
             new BigDecimal(85), new Date(),
             Arrays.asList(new ImagemProduto(9L, "Bla bla bla", "imagem04a.jpg"), new ImagemProduto(10L, "Xpto Xpto", "imagem04b.jpg")),
             Arrays.asList(categorias.obter(1), categorias.obter(5), categorias.obter(7), categorias.obter(8)));

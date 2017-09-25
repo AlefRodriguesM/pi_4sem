@@ -41,6 +41,8 @@ public class Produto implements Serializable {
 
   private String descricao;
 
+  private String descricaoResumida;
+
   private BigDecimal preco;
 
   private Date dtCadastro;
@@ -56,18 +58,20 @@ public class Produto implements Serializable {
 
   }
 
-  public Produto(Long id, String nome, String descricao, BigDecimal preco, Date dtCadastro) {
+  public Produto(Long id, String nome, String descricao, String descricaoResumida, BigDecimal preco, Date dtCadastro) {
     this.id = id;
     this.nome = nome;
     this.descricao = descricao;
+    this.descricaoResumida = descricaoResumida;
     this.preco = preco;
     this.dtCadastro = dtCadastro;
   }
 
-  public Produto(Long id, String nome, String descricao, BigDecimal preco, Date dtCadastro, List<ImagemProduto> imagens, List<Categoria> categorias) {
+  public Produto(Long id, String nome, String descricao, String descricaoResumida, BigDecimal preco, Date dtCadastro, List<ImagemProduto> imagens, List<Categoria> categorias) {
     this.id = id;
     this.nome = nome;
     this.descricao = descricao;
+    this.descricaoResumida = descricaoResumida;
     this.preco = preco;
     this.dtCadastro = dtCadastro;
     this.imagens = imagens;
@@ -98,6 +102,14 @@ public class Produto implements Serializable {
     this.descricao = descricao;
   }
 
+  public String getDescricaoResumida() {
+    return descricaoResumida;
+  }
+
+  public void setDescricaoResumida(String descricaoResumida) {
+    this.descricaoResumida = descricaoResumida;
+  }
+  
   public BigDecimal getPreco() {
     return preco;
   }
@@ -140,7 +152,7 @@ public class Produto implements Serializable {
 
   @Override
   public String toString() {
-    return "Produto{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", preco=" + preco + ", dtCadastro=" + dtCadastro + ", categorias=" + categorias + ", imagens=" + imagens + '}';
+    return "Produto{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", descricaoResumida=" + descricaoResumida + ", preco=" + preco + ", dtCadastro=" + dtCadastro + ", categorias=" + categorias + ", imagens=" + imagens + '}';
   }
 
   @Override
