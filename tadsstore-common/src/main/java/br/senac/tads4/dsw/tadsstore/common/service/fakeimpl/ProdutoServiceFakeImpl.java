@@ -86,7 +86,7 @@ public class ProdutoServiceFakeImpl implements ProdutoService {
                 Arrays.asList(categorias.obter(1), categorias.obter(3)));
         MAPA_PRODUTOS.put(produto.getId(), produto);
 
-        produto = new Produto(2L, "Nobreak SMS 2200va mono 220v Power Vision - 27746",
+        produto = new Produto(2L, "Nobreak SMS 2200va mono 220v",
                 "Características:\n"
                 + "- Marca: SMS\n"
                 + "- Modelo: 27746\n"
@@ -110,7 +110,7 @@ public class ProdutoServiceFakeImpl implements ProdutoService {
         MAPA_PRODUTOS.put(produto.getId(), produto);
         
         
-        produto = new Produto(3L, "Monitor LG 23.6´ LED Full HD D-Sub HDMI VESA Preto",
+        produto = new Produto(3L, "Monitor LG 23.6´ LED Full HD D-Sub",
                 "Características:\n"
                 + "- Marca: LG\n"
                 + "- Modelo: 24M38H-B.AWZ\n"
