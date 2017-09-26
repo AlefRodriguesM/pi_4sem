@@ -8,17 +8,27 @@
         <div layout:fragment='conteudo' class="produto">
             <div class="container">
                 <div class="col-xs-12 col-sm-4 produtoPic">
-                    <img id="imagem" src="" class="imagem img-responsive img-thumbnail"/>
+                    <img id="imagem" th:src="${produto.imagem}" class="imagem img-responsive img-thumbnail"/>
                 </div>
                 <div class="container well col-xs-12 col-sm-8">
                     <div class="col-xs-12 col-sm-12">
-                        <h4 th:text="${produto.nome}" class="nome">Produto</h4>
+                        <h2 th:text="${produto.nome}" class="nome">Produto</h2>
+                    </div>
+                    <div class="col-xs-12 col-sm-12">
+                        <h4 th:text="${produto.descricaoResumida}" class="nome">Produto</h4>
                     </div>
                     <div class="disponibilidade col-xs-12 col-sm-12">
                         <p th:text="${#numbers.formatCurrency(produto.preco)}" class="preco col-sm-8 col-xs-12">R$ 99,99</p>
-                        <p><a class="col-sm-4 col-xs-12 btn btn-info">
+                        <!--<p><a class="col-sm-4 col-xs-12 btn btn-info">
                                 <img class="pic" src="http://stonexindia.net/wp-content/uploads/2017/05/cart_icon_200.png">
                                 Comprar</a></p>
+                        -->
+                        <form action="#" th:action="@{/compra/adicionar/{id} (id=${produto.id})}" method="post">
+                            <input type="hidden" name="id" th:value="${produto.id}" />
+                            <button type="submit" class="btn btn-info col-sm-4 col-xs-12">
+                                <img class="pic" src="http://stonexindia.net/wp-content/uploads/2017/05/cart_icon_200.png">
+                                <span class="" aria-hidden=""></span> Comprar</button>
+                        </form>
                     </div>
                 </div>
             </div>
