@@ -15,20 +15,25 @@
                 </div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6 col-lg-4 well" th:each="p : ${itens}">
-                            <h2 th:text="${p.nome}">Produto</h2>
-                            <img src="./img/bolo1.png" th:src="@{/img/bolo1.png}" class="img-thumbnail">
-                            <h3 th:text="${#numbers.formatCurrency(p.preco)}">R$ 99,99</h3>
-                            <form action="#" th:action="@{/compra/adicionar/{id} (id=${p.id})}" method="post">
-                                <input type="hidden" name="id" th:value="${p.id}" />
-                                <button type="submit" class="btn btn-success btn-lg btn-block">
-                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Comprar</button>
-                            </form>
-                            <a href="#" role="button" 
-                               th:href="@{/produto/{id}(id=${p.id})}" 
-                               class="btn btn-info btn-lg btn-block">
-                                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Ver mais
-                            </a>
+                        <div class="col-md-12 col-lg-3 well produto" th:each="p : ${itens}">
+                            <img class="imagem" th:src="${p.imagem}">
+                            <h1 class="titulo" th:text="${p.nome}">Produto</h1>
+                            <label class="descricao" th:text="${p.descricaoResumida}">Descricao</label>
+                            
+                            <div class="col-12 rodapeproduto">
+                                <div class="col-md-8 col-lg-8">
+                                    <span class="preco" th:text="${#numbers.formatCurrency(p.preco)}">R$ 60,00</span>
+                                </div>
+                                
+                                <div class="col-md-4 col-lg-4">
+                                    <form action="#" th:action="@{/compra/adicionar/{id} (id=${p.id})}" method="post">
+                                        <input type="hidden" name="id" th:value="${p.id}"/>
+                                        <button type="submit" class="add">
+                                            <img class="pic" src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/cart-add-icon.png">
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
