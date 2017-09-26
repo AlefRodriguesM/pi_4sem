@@ -32,6 +32,10 @@ public class CompraController implements Serializable{
         
         return new ModelAndView("compra/carrinho");
     }
+    @RequestMapping("/carrinho")
+    public ModelAndView visualizarCarrinho(){   
+        return new ModelAndView("compra/carrinho");
+    }
     
     public List<Produto> getCarrinho(){
         return carrinho;

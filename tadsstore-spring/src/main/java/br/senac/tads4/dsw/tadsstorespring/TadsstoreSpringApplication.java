@@ -8,5 +8,5 @@ public class TadsstoreSpringApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TadsstoreSpringApplication.class, args);
-	}
+	} 
 }
