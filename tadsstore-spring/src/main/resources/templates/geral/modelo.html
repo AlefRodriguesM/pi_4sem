@@ -29,14 +29,12 @@ and open the template in the editor.
                         <span class="sr-only">Toggle navigation</span>
                         <i class="fa fa-bars fa-lg"></i>
                     </button>
-                    <a class="navbar-brand" href="#">TADS Store</a>
+                    <a class="navbar-brand" th:href="@{/index}">TADS Store</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">Sobre</a></li>
-                        <li><a href="#product">Produtos</a></li>
-                        <li><a href="#contact">Contato</a></li>
+                        <li><a th:href="@{/produto}">Produtos</a></li>
+                        <li><a th:href="@{/compra/carrinho}">Carrinho de compra</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
