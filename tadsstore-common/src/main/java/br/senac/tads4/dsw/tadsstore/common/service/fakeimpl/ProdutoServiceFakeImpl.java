@@ -85,32 +85,79 @@ public class ProdutoServiceFakeImpl implements ProdutoService {
                 Arrays.asList(new ImagemProduto(1L, "Bla bla bla", "https://images6.kabum.com.br/produtos/fotos/88076/88076_index_gg.jpg"), new ImagemProduto(2L, "Xpto Xpto", "https://images6.kabum.com.br/produtos/fotos/88076/88076_index_gg.jpg"), new ImagemProduto(3L, "Chola mais", "https://images6.kabum.com.br/produtos/fotos/88076/88076_index_gg.jpg")),
                 Arrays.asList(categorias.obter(1), categorias.obter(3)));
         MAPA_PRODUTOS.put(produto.getId(), produto);
-        produto = new Produto(2L, "Torta de morango",
-                DESCRICAO_PADRAO,
-                DESCRICAORESUMIDA_PADRAO,
-                new BigDecimal(90), new Date(), "./img/bolo1.png",
-                Arrays.asList(new ImagemProduto(4L, "Bla bla bla", "imagem02a.jpg"), new ImagemProduto(5L, "Xpto Xpto", "imagem02b.jpg")),
+
+        produto = new Produto(2L, "Nobreak SMS 2200va mono 220v Power Vision - 27746",
+                "Características:\n"
+                + "- Marca: SMS\n"
+                + "- Modelo: 27746\n"
+                + " \n"
+                + "Especificações: \n"
+                + "- Microprocessador: RISC/FLASH de alta velocidade \n"
+                + "- Comunicação Inteligente: padrões RS-232 e USB (acompanha cabo USB tipo A-B)\n"
+                + "- Tensão: Monovolt 220V \n"
+                + "- Tomadas: 10 tomadas 10A\n"
+                + "- Autoteste: Ao ser ligado, realiza teste dos circuitos internos e baterias\n"
+                + "- Leds: indicam o modo de operação e nível de carga das baterias (modo bateria) ou o nível de potência de saída (modo rede).\n"
+                + "- Conector: Tipo engate rápido para expansão de autonomia \n"
+                + "- Fusível: Rearmável\n"
+                + "- 2200VA\n"
+                + "- Entrada: 220VAC\n"
+                + "- Saída: 220VAC",
+                "Nobreak SMS 2200va mono 220v Power Vision - 27746 preto compacto",
+                new BigDecimal(589.90), new Date(), "https://images8.kabum.com.br/produtos/fotos/75738/75738_index_gg.jpg",
+                Arrays.asList(new ImagemProduto(4L, "Bla bla bla", "https://images8.kabum.com.br/produtos/fotos/75738/75738_index_gg.jpg"), new ImagemProduto(5L, "Xpto Xpto", "https://images8.kabum.com.br/produtos/fotos/75738/75738_index_gg.jpg")),
                 Arrays.asList(categorias.obter(1), categorias.obter(3)));
         MAPA_PRODUTOS.put(produto.getId(), produto);
-        produto = new Produto(3L, "Sonho de valsa",
-                DESCRICAO_PADRAO,
-                DESCRICAORESUMIDA_PADRAO,
-                new BigDecimal(110), new Date(), "./img/bolo1.png",
-                Arrays.asList(new ImagemProduto(6L, "Bla bla bla", "imagem03a.jpg")),
+        
+        
+        produto = new Produto(3L, "Monitor LG 23.6´ LED Full HD D-Sub HDMI VESA Preto",
+                "Características:\n"
+                + "- Marca: LG\n"
+                + "- Modelo: 24M38H-B.AWZ\n"
+                + " \n"
+                + "Especificações:\n"
+                + " \n"
+                + "Tela:\n"
+                + "- Tamanho: 23,6\"\n"
+                + "- Tipo de Tela: LED TN (Full HD)\n"
+                + "- Brilho: 200 cd/m²\n"
+                + "- Resolução Máxima: 1920 x 1080\n"
+                + "- Contraste Dinâmico: 1000:1\n"
+                + "- Suporte de Cores: 16,7 Milhões\n"
+                + "- Pixel Pitch: 0,2715 x 0,2715 mm\n"
+                + "- Tempo de Resposta: 5ms\n"
+                + "- Revestimento de Tela: Anti-Glare treatment (3H)\n"
+                + "- Ângulo de Visão: 170º / 160º\n"
+                + "- Vesa: 100 x 100mm\n"
+                + " \n"
+                + "Alimentação:\n"
+                + "- Tipo: Adaptador\n"
+                + "- Voltagem: 100-240Vac, 50 / 60Hz (entrada)\n"
+                + " \n"
+                + "Frequência Analógica e Digital:\n"
+                + "- H: 30~83 kHz\n"
+                + "- V: 56~75 Hz",
+                "Monitor LG 23.6´ LED Full HD D-Sub HDMI VESA Preto - 24M38H-B.AWZ .2 x 186.7 x 415.1 mm",
+                new BigDecimal(799.88), new Date(), "https://images8.kabum.com.br/produtos/fotos/91708/91708_index_gg.jpg",
+                Arrays.asList(new ImagemProduto(6L, "Bla bla bla", "https://images8.kabum.com.br/produtos/fotos/91708/91708_index_gg.jpg")),
                 Arrays.asList(categorias.obter(1), categorias.obter(3), categorias.obter(6)));
         MAPA_PRODUTOS.put(produto.getId(), produto);
-        produto = new Produto(4L, "Morango com leite condensado",
-                DESCRICAO_PADRAO,
-                DESCRICAORESUMIDA_PADRAO,
-                new BigDecimal(105), new Date(), "./img/bolo1.png",
-                Arrays.asList(new ImagemProduto(7L, "Bla bla bla", "imagem04a.jpg"), new ImagemProduto(8L, "Xpto Xpto", "imagem04b.jpg")),
+        
+        
+        produto = new Produto(4L, "Game FIFA 18 PS4 (PRE-VENDA)",
+                "- Renovação do drible: No FIFA 18, você vai poder avançar entre os defensores com a confiança e habilidade de poder mudar de direção rapidamente, como fazem os melhores jogadores. As novas mecânicas permitem aos jogadores inserir mais criatividade em situações de mano a mano. Realize toques de bola mais definidos, faça viradas mais fechadas e explore um ataque mais dinâmico.",
+                "Com a tecnologia Frostbite, o EA SPORTS FIFA 18 elimina o limite entre o mundo virtual e o real, dando vida aos jogadores, times e climas envolventes do maior esporte do mundo.",
+                new BigDecimal(212.41), new Date(), "https://images9.kabum.com.br/produtos/fotos/90909/90909_index_gg.jpg",
+                Arrays.asList(new ImagemProduto(7L, "Bla bla bla", "https://images9.kabum.com.br/produtos/fotos/90909/90909_index_gg.jpg"), new ImagemProduto(8L, "Xpto Xpto", "https://images9.kabum.com.br/produtos/fotos/90909/90909_index_gg.jpg")),
                 Arrays.asList(categorias.obter(1), categorias.obter(4)));
         MAPA_PRODUTOS.put(produto.getId(), produto);
-        produto = new Produto(5L, "Abacaxi com coco",
-                DESCRICAO_PADRAO,
-                DESCRICAORESUMIDA_PADRAO,
-                new BigDecimal(85), new Date(), "./img/bolo1.png",
-                Arrays.asList(new ImagemProduto(9L, "Bla bla bla", "imagem04a.jpg"), new ImagemProduto(10L, "Xpto Xpto", "imagem04b.jpg")),
+        
+        
+        produto = new Produto(5L, "Smartphone Samsung Galaxy J5 Prime SM-G570M, Quad Core 1.4Ghz, Android 6.0.1,Tela 5, 32GB, 13MP",
+                "Smartphone Samsung Galaxy J5 Prime SM-G570M, Quad Core 1.4Ghz, Android 6.0.1,Tela 5, 32GB, 13MP, Leitor Digital, Dual Chip, Desbl - Dourado",
+                "O Galaxy J5 Prime possui um design premium com corpo em metal, tela de 5”, vidro resistente Gorilla Glass 2.5D e traseira curva, oferecendo um manuseio mais confortável. O leitor biométrico do botão Home funciona como um eficiente modo de segurança para uma rápida verificação de identidade, capaz de reconhecer apenas a sua digital.",
+                new BigDecimal(764.58), new Date(), "https://images5.kabum.com.br/produtos/fotos/90475/90475_index_gg.jpg",
+                Arrays.asList(new ImagemProduto(9L, "Bla bla bla", "https://images5.kabum.com.br/produtos/fotos/90475/90475_index_gg.jpg"), new ImagemProduto(10L, "Xpto Xpto", "https://images5.kabum.com.br/produtos/fotos/90475/90475_index_gg.jpg")),
                 Arrays.asList(categorias.obter(1), categorias.obter(5), categorias.obter(7), categorias.obter(8)));
         MAPA_PRODUTOS.put(produto.getId(), produto);
     }
