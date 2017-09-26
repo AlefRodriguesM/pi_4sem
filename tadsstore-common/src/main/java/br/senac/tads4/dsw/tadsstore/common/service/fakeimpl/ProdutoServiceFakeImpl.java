@@ -36,101 +36,120 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-
 /**
  *
  * @author fernando.tsuda
  */
 public class ProdutoServiceFakeImpl implements ProdutoService {
 
-  private static final Map<Long, Produto> MAPA_PRODUTOS = new LinkedHashMap<Long, Produto>();
+    private static final Map<Long, Produto> MAPA_PRODUTOS = new LinkedHashMap<Long, Produto>();
 
-  private static final String DESCRICAO_PADRAO = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-          + "Aenean vel ipsum vehicula, venenatis leo nec, ornare felis. Ut consectetur est vel pulvinar tempus. "
-          + "Suspendisse commodo cursus turpis. Etiam ac enim egestas, sollicitudin libero ac, eleifend risus. "
-          + "Phasellus nec posuere magna, in vehicula elit. "
-          + "Etiam rhoncus, ipsum eget dapibus vulputate, massa nisi feugiat odio, a consectetur urna diam id risus. "
-          + "Morbi sed pharetra nisl, nec aliquam ex. Morbi congue urna ut semper aliquam. "
-          + "Sed aliquet turpis ac sem egestas dignissim. Praesent interdum dapibus cursus. "
-          + "Cras posuere tempor lectus, ac porttitor tellus maximus vel.";
+    private static final String DESCRICAO_PADRAO = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+            + "Aenean vel ipsum vehicula, venenatis leo nec, ornare felis. Ut consectetur est vel pulvinar tempus. "
+            + "Suspendisse commodo cursus turpis. Etiam ac enim egestas, sollicitudin libero ac, eleifend risus. "
+            + "Phasellus nec posuere magna, in vehicula elit. "
+            + "Etiam rhoncus, ipsum eget dapibus vulputate, massa nisi feugiat odio, a consectetur urna diam id risus. "
+            + "Morbi sed pharetra nisl, nec aliquam ex. Morbi congue urna ut semper aliquam. "
+            + "Sed aliquet turpis ac sem egestas dignissim. Praesent interdum dapibus cursus. "
+            + "Cras posuere tempor lectus, ac porttitor tellus maximus vel.";
 
-  private static final String DESCRICAORESUMIDA_PADRAO = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-          + "Aenean vel ipsum vehicula, venenatis leo nec, ornare felis. Ut consectetur est vel pulvinar tempus. ";
+    private static final String DESCRICAORESUMIDA_PADRAO = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+            + "Aenean vel ipsum vehicula, venenatis leo nec, ornare felis. Ut consectetur est vel pulvinar tempus. ";
 
-  static {
-    CategoriaService categorias = new CategoriaServiceFakeImpl();
-    Produto produto = new Produto(1L, "Floresta negra",
-            DESCRICAO_PADRAO,
-            DESCRICAORESUMIDA_PADRAO,
-            new BigDecimal(100), new Date(),
-            Arrays.asList(new ImagemProduto(1L, "Bla bla bla", "imagem01a.jpg"), new ImagemProduto(2L, "Xpto Xpto", "imagem01b.jpg"), new ImagemProduto(3L, "Chola mais", "imagem01c.jpg")),
-            Arrays.asList(categorias.obter(1), categorias.obter(3)));
-    MAPA_PRODUTOS.put(produto.getId(), produto);
-    produto = new Produto(2L, "Torta de morango",
-            DESCRICAO_PADRAO,
-            DESCRICAORESUMIDA_PADRAO,
-            new BigDecimal(90), new Date(),
-            Arrays.asList(new ImagemProduto(4L, "Bla bla bla", "imagem02a.jpg"), new ImagemProduto(5L, "Xpto Xpto", "imagem02b.jpg")),
-            Arrays.asList(categorias.obter(1), categorias.obter(3)));
-    MAPA_PRODUTOS.put(produto.getId(), produto);
-    produto = new Produto(3L, "Sonho de valsa",
-            DESCRICAO_PADRAO,
-            DESCRICAORESUMIDA_PADRAO,
-            new BigDecimal(110), new Date(),
-            Arrays.asList(new ImagemProduto(6L, "Bla bla bla", "imagem03a.jpg")),
-            Arrays.asList(categorias.obter(1), categorias.obter(3), categorias.obter(6)));
-    MAPA_PRODUTOS.put(produto.getId(), produto);
-    produto = new Produto(4L, "Morango com leite condensado",
-            DESCRICAO_PADRAO,
-            DESCRICAORESUMIDA_PADRAO,
-            new BigDecimal(105), new Date(),
-            Arrays.asList(new ImagemProduto(7L, "Bla bla bla", "imagem04a.jpg"), new ImagemProduto(8L, "Xpto Xpto", "imagem04b.jpg")),
-            Arrays.asList(categorias.obter(1), categorias.obter(4)));
-    MAPA_PRODUTOS.put(produto.getId(), produto);
-    produto = new Produto(5L, "Abacaxi com coco",
-            DESCRICAO_PADRAO,
-            DESCRICAORESUMIDA_PADRAO,
-            new BigDecimal(85), new Date(),
-            Arrays.asList(new ImagemProduto(9L, "Bla bla bla", "imagem04a.jpg"), new ImagemProduto(10L, "Xpto Xpto", "imagem04b.jpg")),
-            Arrays.asList(categorias.obter(1), categorias.obter(5), categorias.obter(7), categorias.obter(8)));
-    MAPA_PRODUTOS.put(produto.getId(), produto);
-  }
-
-  @Override
-  public List<Produto> listar(int offset, int quantidade) {
-    return new ArrayList<Produto>(MAPA_PRODUTOS.values());
-  }
-
-  @Override
-  public List<Produto> listarPorCategoria(Categoria categoria, int offset, int quantidade) {
-    List<Produto> lista = new ArrayList<Produto>();
-    for (Map.Entry<Long, Produto> entry : MAPA_PRODUTOS.entrySet()) {
-      Produto p = entry.getValue();
-      if (p.getCategorias().contains(categoria)) {
-        lista.add(p);
-      }
+    static {
+        CategoriaService categorias = new CategoriaServiceFakeImpl();
+        Produto produto = new Produto(1L, "Processador Intel Core i3-7350k",
+                "Características:\n"
+                + "- Marca: Intel\n"
+                + "- Modelo: BX80677I37350K \n"
+                + "\n"
+                + "Especificações:\n"
+                + "- Processador i3-7350K\n"
+                + "- Kaby Lake\n"
+                + "- Litografia: 14nm\n"
+                + "\n"
+                + "Atuação:\n"
+                + "- Número de núcleos: 2\n"
+                + "- Cache: 4MB SmartCache\n"
+                + "- TDP: 60W\n"
+                + "- Tópicos: 4\n"
+                + "- Velocidade do Bus : 8 GT/s DMI3\n"
+                + "- Frequência do Processador: 4.20 GHz \n"
+                + "\n"
+                + "Memória:\n"
+                + "- Tamanho máx. da Memória (depende do tipo de memória): 64GB\n"
+                + "- Não suporta memória ECC\n"
+                + "- Número máximo de de canais de memória: 2",
+                "Processador Intel Core i3-7350k Kaby Lake 7a Geração, Cache 4MB, 4.2GHz LGA 1151, Intel HD Graphics 630 BX80677I37350K",
+                new BigDecimal(823.41), new Date(), "https://images6.kabum.com.br/produtos/fotos/88076/88076_index_gg.jpg",
+                Arrays.asList(new ImagemProduto(1L, "Bla bla bla", "https://images6.kabum.com.br/produtos/fotos/88076/88076_index_gg.jpg"), new ImagemProduto(2L, "Xpto Xpto", "https://images6.kabum.com.br/produtos/fotos/88076/88076_index_gg.jpg"), new ImagemProduto(3L, "Chola mais", "https://images6.kabum.com.br/produtos/fotos/88076/88076_index_gg.jpg")),
+                Arrays.asList(categorias.obter(1), categorias.obter(3)));
+        MAPA_PRODUTOS.put(produto.getId(), produto);
+        produto = new Produto(2L, "Torta de morango",
+                DESCRICAO_PADRAO,
+                DESCRICAORESUMIDA_PADRAO,
+                new BigDecimal(90), new Date(), "./img/bolo1.png",
+                Arrays.asList(new ImagemProduto(4L, "Bla bla bla", "imagem02a.jpg"), new ImagemProduto(5L, "Xpto Xpto", "imagem02b.jpg")),
+                Arrays.asList(categorias.obter(1), categorias.obter(3)));
+        MAPA_PRODUTOS.put(produto.getId(), produto);
+        produto = new Produto(3L, "Sonho de valsa",
+                DESCRICAO_PADRAO,
+                DESCRICAORESUMIDA_PADRAO,
+                new BigDecimal(110), new Date(), "./img/bolo1.png",
+                Arrays.asList(new ImagemProduto(6L, "Bla bla bla", "imagem03a.jpg")),
+                Arrays.asList(categorias.obter(1), categorias.obter(3), categorias.obter(6)));
+        MAPA_PRODUTOS.put(produto.getId(), produto);
+        produto = new Produto(4L, "Morango com leite condensado",
+                DESCRICAO_PADRAO,
+                DESCRICAORESUMIDA_PADRAO,
+                new BigDecimal(105), new Date(), "./img/bolo1.png",
+                Arrays.asList(new ImagemProduto(7L, "Bla bla bla", "imagem04a.jpg"), new ImagemProduto(8L, "Xpto Xpto", "imagem04b.jpg")),
+                Arrays.asList(categorias.obter(1), categorias.obter(4)));
+        MAPA_PRODUTOS.put(produto.getId(), produto);
+        produto = new Produto(5L, "Abacaxi com coco",
+                DESCRICAO_PADRAO,
+                DESCRICAORESUMIDA_PADRAO,
+                new BigDecimal(85), new Date(), "./img/bolo1.png",
+                Arrays.asList(new ImagemProduto(9L, "Bla bla bla", "imagem04a.jpg"), new ImagemProduto(10L, "Xpto Xpto", "imagem04b.jpg")),
+                Arrays.asList(categorias.obter(1), categorias.obter(5), categorias.obter(7), categorias.obter(8)));
+        MAPA_PRODUTOS.put(produto.getId(), produto);
     }
-    return lista;
-  }
 
-  @Override
-  public Produto obter(long idProduto) {
-    return MAPA_PRODUTOS.get(idProduto);
-  }
+    @Override
+    public List<Produto> listar(int offset, int quantidade) {
+        return new ArrayList<Produto>(MAPA_PRODUTOS.values());
+    }
 
-  @Override
-  public void incluir(Produto p) {
-    // new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
+    @Override
+    public List<Produto> listarPorCategoria(Categoria categoria, int offset, int quantidade) {
+        List<Produto> lista = new ArrayList<Produto>();
+        for (Map.Entry<Long, Produto> entry : MAPA_PRODUTOS.entrySet()) {
+            Produto p = entry.getValue();
+            if (p.getCategorias().contains(categoria)) {
+                lista.add(p);
+            }
+        }
+        return lista;
+    }
 
-  @Override
-  public void alterar(Produto p) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
+    @Override
+    public Produto obter(long idProduto) {
+        return MAPA_PRODUTOS.get(idProduto);
+    }
 
-  @Override
-  public void remover(long idProduto) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
+    @Override
+    public void incluir(Produto p) {
+        // new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void alterar(Produto p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void remover(long idProduto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }
