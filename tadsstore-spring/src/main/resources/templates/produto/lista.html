@@ -15,16 +15,26 @@
                             </div>
                             <div class="col-md-9 col-lg-9 well produto">
                                 <div class="col-md-12 col-lg-3 well produto" th:each="p : ${itens}">
-                                    <img class="imagem img-responsive img-thumbnail" th:src="${p.imagem}">
-                                    <h1 class="titulo" th:text="${p.nome}">Produto</h1>
-                                    <label class="descricao" th:text="${p.descricaoResumida}">Descricao</label>
-
+                                    <a th:href="@{/produto/{id}(id=${p.id})}">
+                                        <img class="imagem img-responsive img-thumbnail" th:src="${p.imagem}" th:href="@{/produto/${p.id}}">
+                                    </a>
+                                    
+                                    <a th:href="@{/produto/{id}(id=${p.id})}">
+                                        <h1 class="titulo" th:text="${p.nome}" th:href="@{/produto/${p.id}}">Produto</h1>
+                                    </a>
+                                    
+                                    <a th:href="@{/produto/{id}(id=${p.id})}">
+                                        <span class="descricao" th:text="${p.descricaoResumida}" th:href="@{/produto/${p.id}}">Descricao</span>
+                                    </a>
+                                    
                                     <div class="col-12 rodapeproduto">
-                                        <div class="col-md-8 col-lg-8">
-                                            <span class="preco" th:text="${#numbers.formatCurrency(p.preco)}">R$ 60,00</span>
+                                        <div class="col-md-9 col-lg-9">
+                                            <a th:href="@{/produto/{id}(id=${p.id})}">
+                                                <span class="preco" th:text="${#numbers.formatCurrency(p.preco)}" th:href="@{/produto/${p.id}}">R$ 60,00</span>
+                                            </a>
                                         </div>
 
-                                        <div class="col-md-4 col-lg-4">
+                                        <div class="col-md-3 col-lg-3">
                                             <form action="#" th:action="@{/compra/adicionar/{id} (id=${p.id})}" method="post">
                                                 <input type="hidden" name="id" th:value="${p.id}"/>
                                                 <button type="submit" class="add">
