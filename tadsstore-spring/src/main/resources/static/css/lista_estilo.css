@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 .produto .imagem{
-    border: solid 1px RGB(200, 200, 200);
     width: 100%;
 
     position: relative;
