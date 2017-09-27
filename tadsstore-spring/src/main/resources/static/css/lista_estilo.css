@@ -2,12 +2,12 @@
 
 .header{
     height: 300px;
-    background-color: hsl(120, 0%,   50%);
+    background-color: hsl(120, 0%,   75%);
 }
 
 .filtros{
     height: 1000px;
-    background-color: hsl(120, 0%,   50%);
+    background-color: hsl(120, 0%,   75%);
 }
 
 .produto .imagem{
