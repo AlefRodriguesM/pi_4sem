@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .header{
-    height: 400px;
+    height: 300px;
     background-color: hsl(120, 0%,   50%);
 }
 
@@ -25,33 +25,19 @@
     height: 50px;
 }
 
+.descricao{
+    height: 100px;
+}
 
 .rodapeproduto .preco{
     font-weight: bold;
-    font-size: 16px;
+    font-size: 22px;
     color: RGB(46, 204, 113);
-    text-align: center;
     
-    padding: 0px;
-    height: 50px;
-    line-height: 35px;
-    /*padding-right: 15px;*/
-    /*
-    position: absolute;
-    
-    
-    top: 87.0%;
-    width: 57%;
-    */
+    line-height: 42px;
 }
 
 .rodapeproduto .add {
-    /*
-    position: absolute;
-    right: 5%;
-    top: 85%;
-    */
-
     background-image: "http://icons.iconarchive.com/icons/graphicloads/100-flat/256/cart-add-icon.png";
     background-repeat: no-repeat;
     background-color: transparent;
