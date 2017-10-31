@@ -1,4 +1,4 @@
-package br.senac.tads4.dsw.tadsstorespring.controller;
+package br.senac.tads4.dsw.tadsstore.controller;
 
 import br.senac.tads4.dsw.tadsstore.common.entity.Produto;
 import br.senac.tads4.dsw.tadsstore.common.service.ProdutoService;
