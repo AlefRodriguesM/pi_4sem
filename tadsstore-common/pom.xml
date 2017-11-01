@@ -35,5 +35,5 @@
       <version>10.13.1.1</version>
     </dependency>
   </dependencies>
-    <name>tadsstore-common</name>
+    <name>automata-common</name>
 </project>
