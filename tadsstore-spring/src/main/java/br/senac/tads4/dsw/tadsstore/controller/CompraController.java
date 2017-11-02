@@ -37,9 +37,9 @@ public class CompraController implements Serializable{
         
         carrinho.add(p);
         
-        redirectAttributes.addFlashAttribute("mensagem", "Produto" + p.getNome() + "adicionado com sucesso.");
+        redirectAttributes.addFlashAttribute("mensagem", "Produto: " + p.getNome() + ". adicionado com sucesso!!");
         
-        return new ModelAndView("compra/carrinho");
+        return new ModelAndView("redirect:/compra");
     }
     
     @RequestMapping("/carrinho")
