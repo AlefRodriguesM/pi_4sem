@@ -81,7 +81,7 @@ public class ProdutoServiceFakeImpl implements ProdutoService {
                 + "- Não suporta memória ECC\n"
                 + "- Número máximo de de canais de memória: 2",
                 "Processador Intel Core i3-7350k Kaby Lake 7a Geração, Cache 4MB, 4.2GHz LGA 1151",
-                new BigDecimal(823.41), new Date(), "https://images6.kabum.com.br/produtos/fotos/88076/88076_index_gg.jpg",
+                1, new BigDecimal(823.41), new Date(), "https://images6.kabum.com.br/produtos/fotos/88076/88076_index_gg.jpg",
                 Arrays.asList(new ImagemProduto(1L, "Bla bla bla", "https://images6.kabum.com.br/produtos/fotos/88076/88076_index_gg.jpg"), new ImagemProduto(2L, "Xpto Xpto", "https://images6.kabum.com.br/produtos/fotos/88076/88076_index_gg.jpg"), new ImagemProduto(3L, "Chola mais", "https://images6.kabum.com.br/produtos/fotos/88076/88076_index_gg.jpg")),
                 Arrays.asList(categorias.obter(1), categorias.obter(3)));
         MAPA_PRODUTOS.put(produto.getId(), produto);
@@ -104,7 +104,7 @@ public class ProdutoServiceFakeImpl implements ProdutoService {
                 + "- Entrada: 220VAC\n"
                 + "- Saída: 220VAC",
                 "Nobreak SMS 2200va mono 220v Power Vision - 27746 preto compacto",
-                new BigDecimal(589.90), new Date(), "https://images8.kabum.com.br/produtos/fotos/75738/75738_index_gg.jpg",
+                1, new BigDecimal(589.90), new Date(), "https://images8.kabum.com.br/produtos/fotos/75738/75738_index_gg.jpg",
                 Arrays.asList(new ImagemProduto(4L, "Bla bla bla", "https://images8.kabum.com.br/produtos/fotos/75738/75738_index_gg.jpg"), new ImagemProduto(5L, "Xpto Xpto", "https://images8.kabum.com.br/produtos/fotos/75738/75738_index_gg.jpg")),
                 Arrays.asList(categorias.obter(1), categorias.obter(3)));
         MAPA_PRODUTOS.put(produto.getId(), produto);
@@ -138,7 +138,7 @@ public class ProdutoServiceFakeImpl implements ProdutoService {
                 + "- H: 30~83 kHz\n"
                 + "- V: 56~75 Hz",
                 "Monitor LG 23.6´ LED Full HD D-Sub HDMI VESA Preto - 24M38H-B.AWZ .2 x 186.7 x 415.1 mm",
-                new BigDecimal(799.88), new Date(), "https://images8.kabum.com.br/produtos/fotos/91708/91708_index_gg.jpg",
+                1, new BigDecimal(799.88), new Date(), "https://images8.kabum.com.br/produtos/fotos/91708/91708_index_gg.jpg",
                 Arrays.asList(new ImagemProduto(6L, "Bla bla bla", "https://images8.kabum.com.br/produtos/fotos/91708/91708_index_gg.jpg")),
                 Arrays.asList(categorias.obter(1), categorias.obter(3), categorias.obter(6)));
         MAPA_PRODUTOS.put(produto.getId(), produto);
@@ -147,7 +147,7 @@ public class ProdutoServiceFakeImpl implements ProdutoService {
         produto = new Produto(4L, "Game FIFA 18 PS4 (PRE-VENDA)",
                 "- Renovação do drible: No FIFA 18, você vai poder avançar entre os defensores com a confiança e habilidade de poder mudar de direção rapidamente, como fazem os melhores jogadores. As novas mecânicas permitem aos jogadores inserir mais criatividade em situações de mano a mano. Realize toques de bola mais definidos, faça viradas mais fechadas e explore um ataque mais dinâmico.",
                 "Com a tecnologia Frostbite, o EA SPORTS FIFA 18 elimina o limite entre o mundo virtual e o real.",
-                new BigDecimal(212.41), new Date(), "https://images9.kabum.com.br/produtos/fotos/90909/90909_index_gg.jpg",
+                1, new BigDecimal(212.41), new Date(), "https://images9.kabum.com.br/produtos/fotos/90909/90909_index_gg.jpg",
                 Arrays.asList(new ImagemProduto(7L, "Bla bla bla", "https://images9.kabum.com.br/produtos/fotos/90909/90909_index_gg.jpg"), new ImagemProduto(8L, "Xpto Xpto", "https://images9.kabum.com.br/produtos/fotos/90909/90909_index_gg.jpg")),
                 Arrays.asList(categorias.obter(1), categorias.obter(4)));
         MAPA_PRODUTOS.put(produto.getId(), produto);
@@ -156,7 +156,7 @@ public class ProdutoServiceFakeImpl implements ProdutoService {
         produto = new Produto(5L, "Smartphone Samsung Galaxy J5 Prime SM-G570M, Quad Core 1.4Ghz",
                 "Smartphone Samsung Galaxy J5 Prime SM-G570M, Quad Core 1.4Ghz, Android 6.0.1,Tela 5, 32GB, 13MP, Leitor Digital, Dual Chip, Desbl - Dourado",
                 "O Galaxy J5 Prime possui um design premium com corpo em metal, tela de 5”",
-                new BigDecimal(764.58), new Date(), "https://images5.kabum.com.br/produtos/fotos/90475/90475_index_gg.jpg",
+                1, new BigDecimal(764.58), new Date(), "https://images5.kabum.com.br/produtos/fotos/90475/90475_index_gg.jpg",
                 Arrays.asList(new ImagemProduto(9L, "Bla bla bla", "https://images5.kabum.com.br/produtos/fotos/90475/90475_index_gg.jpg"), new ImagemProduto(10L, "Xpto Xpto", "https://images5.kabum.com.br/produtos/fotos/90475/90475_index_gg.jpg")),
                 Arrays.asList(categorias.obter(1), categorias.obter(5), categorias.obter(7), categorias.obter(8)));
         MAPA_PRODUTOS.put(produto.getId(), produto);

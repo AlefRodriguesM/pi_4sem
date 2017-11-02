@@ -42,6 +42,8 @@ public class Produto implements Serializable {
     private String descricao;
 
     private String descricaoResumida;
+    
+    private int quantidade;
 
     private String imagem;
 
@@ -60,21 +62,23 @@ public class Produto implements Serializable {
 
     }
 
-    public Produto(Long id, String nome, String descricao, String descricaoResumida, BigDecimal preco, Date dtCadastro, String imagem) {
+    public Produto(Long id, String nome, String descricao, String descricaoResumida, int quantidade, BigDecimal preco, Date dtCadastro, String imagem) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.descricaoResumida = descricaoResumida;
+        this.quantidade = quantidade;
         this.preco = preco;
         this.dtCadastro = dtCadastro;
         this.imagem = imagem;
     }
 
-    public Produto(Long id, String nome, String descricao, String descricaoResumida, BigDecimal preco, Date dtCadastro, String imagem, List<ImagemProduto> imagens, List<Categoria> categorias) {
+    public Produto(Long id, String nome, String descricao, String descricaoResumida, int quantidade, BigDecimal preco, Date dtCadastro, String imagem, List<ImagemProduto> imagens, List<Categoria> categorias) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.descricaoResumida = descricaoResumida;
+        this.quantidade = quantidade;
         this.preco = preco;
         this.dtCadastro = dtCadastro;
         this.imagens = imagens;
@@ -112,6 +116,14 @@ public class Produto implements Serializable {
 
     public void setDescricaoResumida(String descricaoResumida) {
         this.descricaoResumida = descricaoResumida;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     public BigDecimal getPreco() {
