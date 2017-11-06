@@ -23,7 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class CompraController implements Serializable{
     private ProdutoService service = new ProdutoServiceFakeImpl();
     
-    private List<Produto> carrinho = new ArrayList<Produto>();
+    private List<Produto> carrinho = new ArrayList<>();
     
     @RequestMapping
     private ModelAndView mostrarCarrinho(){
@@ -37,9 +37,9 @@ public class CompraController implements Serializable{
         
         carrinho.add(p);
         
-        redirectAttributes.addFlashAttribute("mensagem", "Produto" + p.getNome() + "adicionado com sucesso.");
+        redirectAttributes.addFlashAttribute("mensagem", "Produto : " + p.getNome() + "  . adicionado com sucesso!!");
         
-        return new ModelAndView("compra/carrinho");
+        return new ModelAndView("redirect:/compra");
     }
     
     @RequestMapping("/carrinho")
