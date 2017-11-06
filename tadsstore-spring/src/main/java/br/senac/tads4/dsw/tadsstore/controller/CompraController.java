@@ -57,8 +57,7 @@ public class CompraController implements Serializable{
         
     //    private PedidoService service = new Pedido();
     //    private List<Pedido> Pedido = new ArrayList<>();
-        
-        
+           
         return new ModelAndView("compra/pedido");
     }
     
