@@ -9,7 +9,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author fernando.tsuda
+ * @author andrey
  */
 public class GerarBD {
 
