@@ -50,4 +50,15 @@ public class CompraController implements Serializable{
     public List<Produto> getCarrinho(){
         return carrinho;
     }
+    
+    
+    @RequestMapping("/pedido")
+    public ModelAndView visualizarPedido(){
+        
+    //    private PedidoService service = new Pedido();
+    //    private List<Pedido> Pedido = new ArrayList<>();
+           
+        return new ModelAndView("compra/pedido");
+    }
+    
 }
