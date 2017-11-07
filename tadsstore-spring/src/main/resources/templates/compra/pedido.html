@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html layout:decorate="~{geral/modelo}">
+    <head>
+        <title>Meus pedidos</title>
+    </head>
+    <body>
+        <div layout:fragment="conteudo">
+            <div class="container">
+                <div class="alert alert-success" th:if="${mensagem != null}">
+                    <p th:text="${mensagem}">Mensagem bla bla bla</p>
+                </div>
+                <div class="col-xs-12 col-sm-0 produtoPic">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nro.Pedido</th>
+                                <th>Data</th>
+                                <th>Pagamento</th>
+                                <th>Vl.Total</th>
+                                <th>Vl.Frete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td th:text="12345">Nr.Pedido</td>
+                                <td th:text="abcabv">Dt.Venda</td>
+                                <td th:text="caton">F.Pagto</td>
+                                <td th:text="99999">R$ 99,99</td>
+                                <td th:text="8888">R$ 99,99</td>   
+                            </tr>
+                            <!--tr th:each="pedido : ${@pedidoController.}">
+                                <td th:src="${pedido.pk_id}" th:text="${item.id}">Nr.Pedido</td>
+                                <td th:text="${pedido.dt_venda}">Dt.Venda</td>
+                                <td th:text="${pedido.ds_formapag}">F.Pagto</td>
+                                <td th:text="${#numbers.formatCurrency(pedido.vl_total)}">R$ 99,99</td>
+                                <td th:text="${#numbers.formatCurrency(pedido.vl_frete)}">R$ 99,99</td>
+                            </tr-->
+                        </tbody>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </body>
+    
+</html>
