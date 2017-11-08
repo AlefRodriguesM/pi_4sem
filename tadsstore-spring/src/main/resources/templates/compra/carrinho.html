@@ -72,19 +72,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-6">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Resumo do pedido</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div clas="col-xs-12"><label>Total produtos: </label></div>
-                                <div clas="col-xs-12"><label>Frete: </label></div>
-                                <div clas="col-xs-12"><label>Total pedido: </label></div>
-                                <button class="btn btn-primary" type="submit">Finalizar pedido</button>
+                    <form th:action="@{/gerenciamento/venda/salvar}" th:object="${venda}" method="post">
+                        <div class="col-xs-6">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Resumo do pedido</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div clas="col-xs-12"><label>Total produtos: </label></div>
+                                    <div clas="col-xs-12"><label>Frete: </label></div>
+                                    <div clas="col-xs-12"><label>Total pedido: </label></div>
+                                    <button class="btn btn-primary" value="Enviar" th:value="#{botao.enviar}" type="submit">Finalizar pedido</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

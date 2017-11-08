@@ -1,12 +1,11 @@
 package br.senac.tads4.dsw.tadsstore.controller;
 
 import br.senac.tads4.dsw.tadsstore.common.entity.Venda;
-import br.senac.tads4.dsw.tadsstore.common.repository.VendaServiceJPAImpl;
+import br.senac.tads4.dsw.tadsstore.repository.VendaServiceJPAImpl;
+
 import br.senac.tads4.dsw.tadsstore.common.service.VendaService;
 import java.util.Date;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,15 +20,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/gerenciamento/venda")
 public class GerenciaVenda {
-
-    private VendaService vendaService = new VendaServiceJPAImpl();
+    
+    @Autowired
+    private VendaService vendaService;
 
     @RequestMapping
     public ModelAndView abrirFormulario() {
         return new ModelAndView("venda/input")
                 .addObject("venda", new Venda());
     }
-
+    
     @RequestMapping("/{id}")
     public ModelAndView abrirAlteracao(@PathVariable("id") Long idVenda) {
         Venda v = vendaService.obter(idVenda);
@@ -45,13 +45,9 @@ public class GerenciaVenda {
 
     @RequestMapping(value = "/salvar", method = RequestMethod.POST)
     public ModelAndView salvar(
-            @ModelAttribute("venda") @Valid Venda v,
+            @ModelAttribute("venda") Venda v,
             BindingResult bindingResult,
             RedirectAttributes redirectAttributes) {
-        
-        if (bindingResult.hasErrors()) {
-            return new ModelAndView("produto/input");
-        }
         
         v.setDtVenda(new Date());
         
@@ -63,6 +59,6 @@ public class GerenciaVenda {
     }
 
     List<Venda> listar(int i, int i0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet GERENCIAVENDA LISTAR."); //To change body of generated methods, choose Tools | Templates.
     }
 }
