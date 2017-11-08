@@ -51,11 +51,4 @@ public class CompraController implements Serializable{
     public List<Produto> getCarrinho(){
         return carrinho;
     }
-    
-   
-    
-    public List<Venda> getVenda(){
-        List<Venda> venda = null;
-        return venda;
-    }
 }

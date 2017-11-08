@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senac.tads4.dsw.tadsstore.controller;
 
 import br.senac.tads4.dsw.tadsstore.common.entity.Venda;
@@ -17,15 +12,20 @@ import org.springframework.web.servlet.ModelAndView;
  * @author thais
  */
 @Controller
-@RequestMapping("/compra")
-public class ConsultaController {
+@RequestMapping("/pedido")
+public class PedidoController {
     private GerenciaVenda service = new GerenciaVenda();
-    private List<Venda> lista = new ArrayList<>();
+    private List<Venda> listaped = new ArrayList<>();
     
-    @RequestMapping("/pedido")
+    @RequestMapping
     public ModelAndView listar(){
-        return new ModelAndView("/compra/pedido").addObject("itens", lista);
+        listaped = service.listar(0, 100);
+        
+        return new ModelAndView("pedido/pedido");
     }
     
+    public List<Venda> getVenda(){
+        return listaped;
+    }
 
 }
