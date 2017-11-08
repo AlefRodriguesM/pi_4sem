@@ -13,6 +13,7 @@ import br.senac.tads4.dsw.tadsstore.common.entity.Venda;
  *
  * @author andrey.asantos1
  */
+@Repository
 public interface VendaRepository extends CrudRepository<Venda, Long> {
     
 }

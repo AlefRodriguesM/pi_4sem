@@ -23,7 +23,7 @@ public class GerenciaVenda {
     
     @Autowired
     private VendaService vendaService;
-
+    
     @RequestMapping
     public ModelAndView abrirFormulario() {
         return new ModelAndView("venda/input")
