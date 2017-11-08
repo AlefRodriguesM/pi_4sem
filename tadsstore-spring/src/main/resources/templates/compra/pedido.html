@@ -21,20 +21,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td th:text="12345">Nr.Pedido</td>
-                                <td th:text="abcabv">Dt.Venda</td>
+
+                            <tr th:each="aa : ${@ConsultaController.lista}">
+                                <td th:text="aaa">Nr.Pedido</td>
+                                <td th:text="${aa.dtVenda}">Dt.Venda</td>
                                 <td th:text="caton">F.Pagto</td>
                                 <td th:text="99999">R$ 99,99</td>
                                 <td th:text="8888">R$ 99,99</td>   
                             </tr>
-                            <!--tr th:each="pedido : ${@pedidoController.}">
-                                <td th:src="${pedido.pk_id}" th:text="${item.id}">Nr.Pedido</td>
-                                <td th:text="${pedido.dt_venda}">Dt.Venda</td>
-                                <td th:text="${pedido.ds_formapag}">F.Pagto</td>
-                                <td th:text="${#numbers.formatCurrency(pedido.vl_total)}">R$ 99,99</td>
-                                <td th:text="${#numbers.formatCurrency(pedido.vl_frete)}">R$ 99,99</td>
-                            </tr-->
+
+    
                         </tbody>
                         </tbody>
                     </table>

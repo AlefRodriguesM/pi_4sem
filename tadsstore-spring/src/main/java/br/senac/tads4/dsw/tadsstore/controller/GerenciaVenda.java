@@ -5,6 +5,7 @@ import br.senac.tads4.dsw.tadsstore.common.repository.VendaServiceJPAImpl;
 import br.senac.tads4.dsw.tadsstore.common.service.VendaService;
 import java.util.Date;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,5 +60,9 @@ public class GerenciaVenda {
         redirectAttributes.addFlashAttribute("msgSucesso",
                 "Venda " + v.getNumero() + " finalizada com sucesso");
         return new ModelAndView("redirect:/produto");
+    }
+
+    List<Venda> listar(int i, int i0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

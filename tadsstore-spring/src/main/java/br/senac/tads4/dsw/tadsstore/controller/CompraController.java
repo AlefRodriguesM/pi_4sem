@@ -1,6 +1,7 @@
 package br.senac.tads4.dsw.tadsstore.controller;
 
 import br.senac.tads4.dsw.tadsstore.common.entity.Produto;
+import br.senac.tads4.dsw.tadsstore.common.entity.Venda;
 import br.senac.tads4.dsw.tadsstore.common.service.ProdutoService;
 import br.senac.tads4.dsw.tadsstore.common.service.fakeimpl.ProdutoServiceFakeImpl;
 import java.io.Serializable;
@@ -51,14 +52,10 @@ public class CompraController implements Serializable{
         return carrinho;
     }
     
+   
     
-    @RequestMapping("/pedido")
-    public ModelAndView visualizarPedido(){
-        
-    //    private PedidoService service = new Pedido();
-    //    private List<Pedido> Pedido = new ArrayList<>();
-           
-        return new ModelAndView("compra/pedido");
+    public List<Venda> getVenda(){
+        List<Venda> venda = null;
+        return venda;
     }
-    
 }
