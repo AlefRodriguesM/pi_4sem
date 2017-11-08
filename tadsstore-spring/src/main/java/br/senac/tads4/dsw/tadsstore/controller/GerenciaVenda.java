@@ -47,21 +47,17 @@ public class GerenciaVenda {
             @ModelAttribute("venda") @Valid Venda v,
             BindingResult bindingResult,
             RedirectAttributes redirectAttributes) {
+        
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("venda/input");
+            return new ModelAndView("produto/input");
         }
-        boolean inclusao = (v.getId() == null);
+        
         v.setDtVenda(new Date());
-
-        if (inclusao) {
-            vendaService.incluir(v);
-        } else {
-            vendaService.alterar(v);
-        }
-
+        
+        vendaService.incluir(v);
+        
         redirectAttributes.addFlashAttribute("msgSucesso",
-                "Venda " + v.getId() + " cadastrada com sucesso");
-        return new ModelAndView("redirect:/gerenciamento/venda");
+                "Venda " + v.getNumero() + " finalizada com sucesso");
+        return new ModelAndView("redirect:/produto");
     }
-
 }
