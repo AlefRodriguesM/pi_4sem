@@ -118,6 +118,18 @@ public class Venda {
         this.transportadora = transportadora;
     }
 
+    @Override
+    public String toString() {
+        return "Venda{" + "comprador=" + getComprador() + ", dtVenda=" + getDtVenda() + ", vlProdutos=" + getVlProdutos() + ", vlFrete=" + getVlFrete() + ", vlTotal=" + getVlTotal() + ", parcelas=" + getParcelas() + ", prazoini=" + getPrazoini() + ", prazofim=" + getPrazofim() + ", endereco=" + getEndereco() + ", numero=" + getNumero() + ", bairro=" + getBairro() + ", complemento=" + getComplemento() + ", cidade=" + getCidade() + ", uf=" + getUf() + ", cep=" + getCep() + ", formapag=" + getFormapag() + ", transportadora=" + getTransportadora() + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.getId());
+        return hash;
+    }
+
     public Long getId() {
         return id;
     }
@@ -190,6 +202,14 @@ public class Venda {
         this.prazofim = prazofim;
     }
 
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
     public String getEndereco() {
         return endereco;
     }
@@ -204,14 +224,6 @@ public class Venda {
 
     public void setNumero(String numero) {
         this.numero = numero;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
     }
 
     public String getComplemento() {
@@ -260,17 +272,5 @@ public class Venda {
 
     public void setTransportadora(String transportadora) {
         this.transportadora = transportadora;
-    }
-
-    @Override
-    public String toString() {
-        return "Venda{" + "comprador=" + comprador + ", dtVenda=" + dtVenda + ", vlProdutos=" + vlProdutos + ", vlFrete=" + vlFrete + ", vlTotal=" + vlTotal + ", parcelas=" + parcelas + ", prazoini=" + prazoini + ", prazofim=" + prazofim + ", endereco=" + endereco + ", numero=" + numero + ", bairro=" + bairro + ", complemento=" + complemento + ", cidade=" + cidade + ", uf=" + uf + ", cep=" + cep + ", formapag=" + formapag + ", transportadora=" + transportadora + '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.id);
-        return hash;
     }
 }
