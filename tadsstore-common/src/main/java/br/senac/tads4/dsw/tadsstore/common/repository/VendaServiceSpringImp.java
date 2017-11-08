@@ -1,6 +1,7 @@
 package br.senac.tads4.dsw.tadsstore.common.repository;
 
 import br.senac.tads4.dsw.tadsstore.common.entity.Venda;
+import br.senac.tads4.dsw.tadsstore.common.service.VendaService;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -10,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author andrey.asantos1
  */
-public class VendaServiceSpringImp {
+public class VendaServiceSpringImp implements VendaService {
 
     @Autowired
     private VendaRepository repo;
