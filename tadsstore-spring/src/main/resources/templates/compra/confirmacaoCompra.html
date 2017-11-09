@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12">
-                        <h1 th:text="Número do pedido: ${venda.id}">Numero pedido</h1>
+                        <h1 th:text="${venda.id}">Numero pedido</h1>
                         
                         <div class="panel panel-primary">
                             <div class="panel-heading">
@@ -19,11 +19,11 @@
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <td th:text="Dt. Venda: ${venda.dt_venda}">Dt. Venda</td>
+                                            <td th:text="${venda.dtVenda}">Dt. Venda</td>
                                         </tr>
                                         <tr>
-                                            <td th:text="Prazo ini.:${venda.nr_prazoini}">Prazo ini.</td>
-                                            <td th:text="Prazo fim: ${venda.nr_prazofim}">Prazo fim</td>
+                                            <td th:text="${venda.prazoini}">Prazo ini.</td>
+                                            <td th:text="${venda.prazofim}">Prazo fim</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -39,22 +39,22 @@
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <td th:text="Endereco: ${venda.ds_endereco}">Endereco</td>
-                                            <td th:text="Numero: ${venda.ds_numero}">Numero</td>
+                                            <td th:text="${venda.endereco}">Endereco</td>
+                                            <td th:text="${venda.numero}">Numero</td>
                                         </tr>
                                         <tr>
-                                            <td th:text="Bairro: ${venda.ds_bairro}">Bairro</td>
-                                            <td th:text="Complemento: ${venda.ds_complemento}">Complemento</td>
+                                            <td th:text="${venda.bairro}">Bairro</td>
+                                            <td th:text="${venda.complemento}">Complemento</td>
                                         </tr>
                                         <tr>
-                                            <td th:text="Cidade: ${venda.ds_cidade}">Cidade</td>
-                                            <td th:text="UF: ${venda.ds_uf}">UF</td>
+                                            <td th:text="${venda.cidade}">Cidade</td>
+                                            <td th:text="${venda.uf}">UF</td>
                                         </tr>
                                         <tr>
-                                            <td th:text="CEP ${venda.ds_cep}">CEP</td>
+                                            <td th:text="${venda.cep}">CEP</td>
                                         </tr>
                                         <tr>
-                                            <td th:text="Transportadora: ${venda.ds_transportadora}">Transportadora</td>
+                                            <td th:text="${venda.transportadora}">Transportadora</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -70,17 +70,17 @@
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <td th:text="Forma pagamento: ${venda.ds_formapag}">Forma de pagamento</td>
-                                            <td th:text="Nr. Parcelas: ${venda.nr_parcelas}">Numero de parcelas</td>
+                                            <td th:text="${venda.formapag}">Forma de pagamento</td>
+                                            <td th:text="${venda.parcelas}">Numero de parcelas</td>
                                         </tr>
                                         <tr>
-                                            <td th:text="Vl. Produtos: ${venda.vl_produtos}">Valor dos produtos</td>
+                                            <td th:text="${venda.vlProdutos}">Valor dos produtos</td>
                                         </tr>
                                         <tr>
-                                            <td th:text="Vl. Frete: ${venda.vl_frete}">Valor do frete</td>
+                                            <td th:text="${venda.vlFrete}">Valor do frete</td>
                                         </tr>
                                         <tr>
-                                            <td th:text="Vl. Total: ${venda.vl_total}">Valor total</td>
+                                            <td th:text="${venda.vlTotal}">Valor total</td>
                                         </tr>
                                     </tbody>
                                 </table>
