@@ -8,7 +8,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12">
-                        <h1 th:text="${venda.id}">Numero pedido</h1>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="titulo descritivo">Número do pedido: </td>
+                                    <td class="descritivo" th:text="${venda.id}">Numero pedido</td>
+                                </tr>
+                            </tbody>
+                       </table>
                         
                         <div class="panel panel-primary">
                             <div class="panel-heading">
@@ -19,11 +26,14 @@
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <td th:text="${venda.dtVenda}">Dt. Venda</td>
+                                            <td class="titulo descritivo">Dt. Venda: </td>
+                                            <td class="descritivo" th:text="${venda.dtVenda}">Dt. Venda</td>
                                         </tr>
                                         <tr>
-                                            <td th:text="${venda.prazoini}">Prazo ini.</td>
-                                            <td th:text="${venda.prazofim}">Prazo fim</td>
+                                            <td class="titulo descritivo">Prazo ini.: </td>
+                                            <td class="descritivo" th:text="${venda.prazoini}">Prazo ini.</td>
+                                            <td class="titulo descritivo">Prazo fim: </td>
+                                            <td class="descritivo" th:text="${venda.prazofim}">Prazo fim</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -39,22 +49,30 @@
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <td th:text="${venda.endereco}">Endereco</td>
-                                            <td th:text="${venda.numero}">Numero</td>
+                                            <td class="titulo descritivo">Endereco: </td>
+                                            <td class="descritivo" th:text="${venda.endereco}">Endereco</td>
+                                            <td class="titulo descritivo">Número: </td>
+                                            <td class="descritivo" th:text="${venda.numero}">Numero</td>
                                         </tr>
                                         <tr>
-                                            <td th:text="${venda.bairro}">Bairro</td>
-                                            <td th:text="${venda.complemento}">Complemento</td>
+                                            <td class="titulo descritivo">Bairro: </td>
+                                            <td class="descritivo" th:text="${venda.bairro}">Bairro</td>
+                                            <td class="titulo">Complemento: </td>
+                                            <td class="descritivo" th:text="${venda.complemento}">Complemento</td>
                                         </tr>
                                         <tr>
-                                            <td th:text="${venda.cidade}">Cidade</td>
-                                            <td th:text="${venda.uf}">UF</td>
+                                            <td class="titulo descritivo">Cidade: </td>
+                                            <td class="descritivo" th:text="${venda.cidade}">Cidade</td>
+                                            <td class="titulo descritivo">UF: </td>
+                                            <td class="descritivo" th:text="${venda.uf}">UF</td>
                                         </tr>
                                         <tr>
-                                            <td th:text="${venda.cep}">CEP</td>
+                                            <td class="titulo descritivo">CEP: </td>
+                                            <td class="descritivo" th:text="${venda.cep}">CEP</td>
                                         </tr>
                                         <tr>
-                                            <td th:text="${venda.transportadora}">Transportadora</td>
+                                            <td class="titulo descritivo">Transportadora: </td>
+                                            <td class="descritivo" th:text="${venda.transportadora}">Transportadora</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -70,17 +88,22 @@
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <td th:text="${venda.formapag}">Forma de pagamento</td>
-                                            <td th:text="${venda.parcelas}">Numero de parcelas</td>
+                                            <td class="titulo descritivo">Forma pagamento: </td>
+                                            <td class="descritivo" th:text="${venda.formapag}">Forma de pagamento</td>
+                                            <td class="titulo descritivo">Nr. Parcelas: </td>
+                                            <td class="descritivo" th:text="${venda.parcelas}">Numero de parcelas</td>
                                         </tr>
                                         <tr>
-                                            <td th:text="${venda.vlProdutos}">Valor dos produtos</td>
+                                            <td class="titulo descritivo">Vl. Produtos: </td>
+                                            <td class="descritivo" th:text="${venda.vlProdutos}">Valor dos produtos</td>
                                         </tr>
                                         <tr>
-                                            <td th:text="${venda.vlFrete}">Valor do frete</td>
+                                            <td class="titulo descritivo">Vl. Frete: </td>
+                                            <td class="descritivo" th:text="${venda.vlFrete}">Valor do frete</td>
                                         </tr>
                                         <tr>
-                                            <td th:text="${venda.vlTotal}">Valor total</td>
+                                            <td class="titulo descritivo">Vl. Total: </td>
+                                            <td class="descritivo" th:text="${venda.vlTotal}">Valor total</td>
                                         </tr>
                                     </tbody>
                                 </table>
