@@ -1,154 +1,20 @@
-@charset "UTF-8"; 
-
-.navbar-default {
-    background-color: #d4d4d4;
-    border-color: #9a9a9a;
-}
-.navbar-default .navbar-brand {
-    color: #585858;
-}
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-    color: #242424;
-}
-.navbar-default .navbar-text {
-    color: #585858;
-}
-.navbar-default .navbar-nav > li > a {
-    color: #585858;
-}
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-    color: #242424;
-}
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-    color: #242424;
-    background-color: #9a9a9a;
-}
-.navbar-default .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus {
-    color: #242424;
-    background-color: #9a9a9a;
-}
-.navbar-default .navbar-toggle {
-    border-color: #9a9a9a;
-}
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-    background-color: #9a9a9a;
-}
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: #585858;
-}
-.navbar-default .navbar-collapse,
-.navbar-default .navbar-form {
-    border-color: #585858;
-}
-.navbar-default .navbar-link {
-    color: #585858;
-}
-.navbar-default .navbar-link:hover {
-    color: #242424;
-}
-
-@media (max-width: 767px) {
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-        color: #585858;
-    }
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-        color: #242424;
-    }
-    .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
-    .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
-    .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-        color: #242424;
-        background-color: #9a9a9a;
-    }
-}
-
-
-/* AZUL
-.navbar-default {
-    background-color: #003fd7;
-    border-color: #1b58ec;
-}
-.navbar-default .navbar-brand {
-    color: #ecf0f1;
-}
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-    color: #a7cbec;
-}
-.navbar-default .navbar-text {
-    color: #ecf0f1;
-}
-.navbar-default .navbar-nav > li > a {
-    color: #ecf0f1;
-}
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-    color: #a7cbec;
-}
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-    color: #a7cbec;
-    background-color: #1b58ec;
-}
-.navbar-default .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus {
-    color: #a7cbec;
-    background-color: #1b58ec;
-}
-.navbar-default .navbar-toggle {
-    border-color: #1b58ec;
-}
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-    background-color: #1b58ec;
-}
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: #ecf0f1;
-}
-.navbar-default .navbar-collapse,
-.navbar-default .navbar-form {
-    border-color: #ecf0f1;
-}
-.navbar-default .navbar-link {
-    color: #ecf0f1;
-}
-.navbar-default .navbar-link:hover {
-    color: #a7cbec;
-}
-
-@media (max-width: 767px) {
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-        color: #ecf0f1;
-    }
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-        color: #a7cbec;
-    }
-    .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
-    .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
-    .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-        color: #a7cbec;
-        background-color: #1b58ec;
-    }
-}
-
-*/
-
 .titulo{
     font-size: 16px;
     font-weight: bold;
+    padding-right: 30px;
 }
 
 .descritivo{
     padding-right: 15px;
+    padding-right: 50px;
+}
+
+td{
+    text-align: left;
+}
+
+.cabecalho{
+    font-size: 20px;
+    font-weight: bold;
+    padding-right: 5px;
 }

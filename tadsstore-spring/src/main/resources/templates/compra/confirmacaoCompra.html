@@ -11,12 +11,12 @@
                         <table>
                             <tbody>
                                 <tr>
-                                    <td class="titulo descritivo">Número do pedido: </td>
-                                    <td class="descritivo" th:text="${venda.id}">Numero pedido</td>
+                                    <td class="cabecalho">Número do pedido:</td>
+                                    <td class="cabecalho" th:text="${venda.id}">Numero pedido</td>
                                 </tr>
                             </tbody>
                        </table>
-                        
+                        <br>
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Dados da compra</h3>
@@ -26,13 +26,13 @@
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <td class="titulo descritivo">Dt. Venda: </td>
+                                            <td class="titulo">Dt. Venda </td>
                                             <td class="descritivo" th:text="${venda.dtVenda}">Dt. Venda</td>
                                         </tr>
                                         <tr>
-                                            <td class="titulo descritivo">Prazo ini.: </td>
+                                            <td class="titulo">Prazo ini. </td>
                                             <td class="descritivo" th:text="${venda.prazoini}">Prazo ini.</td>
-                                            <td class="titulo descritivo">Prazo fim: </td>
+                                            <td class="titulo">Prazo fim </td>
                                             <td class="descritivo" th:text="${venda.prazofim}">Prazo fim</td>
                                         </tr>
                                     </tbody>
@@ -49,29 +49,29 @@
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <td class="titulo descritivo">Endereco: </td>
+                                            <td class="titulo">Endereco </td>
                                             <td class="descritivo" th:text="${venda.endereco}">Endereco</td>
-                                            <td class="titulo descritivo">Número: </td>
+                                            <td class="titulo">Número </td>
                                             <td class="descritivo" th:text="${venda.numero}">Numero</td>
                                         </tr>
                                         <tr>
-                                            <td class="titulo descritivo">Bairro: </td>
+                                            <td class="titulo">Bairro </td>
                                             <td class="descritivo" th:text="${venda.bairro}">Bairro</td>
-                                            <td class="titulo">Complemento: </td>
+                                            <td class="titulo">Complemento </td>
                                             <td class="descritivo" th:text="${venda.complemento}">Complemento</td>
                                         </tr>
                                         <tr>
-                                            <td class="titulo descritivo">Cidade: </td>
+                                            <td class="titulo">Cidade </td>
                                             <td class="descritivo" th:text="${venda.cidade}">Cidade</td>
-                                            <td class="titulo descritivo">UF: </td>
+                                            <td class="titulo">UF </td>
                                             <td class="descritivo" th:text="${venda.uf}">UF</td>
                                         </tr>
                                         <tr>
-                                            <td class="titulo descritivo">CEP: </td>
+                                            <td class="titulo">CEP </td>
                                             <td class="descritivo" th:text="${venda.cep}">CEP</td>
                                         </tr>
                                         <tr>
-                                            <td class="titulo descritivo">Transportadora: </td>
+                                            <td class="titulo">Transportadora </td>
                                             <td class="descritivo" th:text="${venda.transportadora}">Transportadora</td>
                                         </tr>
                                     </tbody>
@@ -88,21 +88,21 @@
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <td class="titulo descritivo">Forma pagamento: </td>
+                                            <td class="titulo">Forma pagamento </td>
                                             <td class="descritivo" th:text="${venda.formapag}">Forma de pagamento</td>
-                                            <td class="titulo descritivo">Nr. Parcelas: </td>
+                                            <td class="titulo">Nr. Parcelas </td>
                                             <td class="descritivo" th:text="${venda.parcelas}">Numero de parcelas</td>
                                         </tr>
                                         <tr>
-                                            <td class="titulo descritivo">Vl. Produtos: </td>
+                                            <td class="titulo">Vl. Produtos </td>
                                             <td class="descritivo" th:text="${venda.vlProdutos}">Valor dos produtos</td>
                                         </tr>
                                         <tr>
-                                            <td class="titulo descritivo">Vl. Frete: </td>
+                                            <td class="titulo">Vl. Frete </td>
                                             <td class="descritivo" th:text="${venda.vlFrete}">Valor do frete</td>
                                         </tr>
                                         <tr>
-                                            <td class="titulo descritivo">Vl. Total: </td>
+                                            <td class="titulo">Vl. Total </td>
                                             <td class="descritivo" th:text="${venda.vlTotal}">Valor total</td>
                                         </tr>
                                     </tbody>
