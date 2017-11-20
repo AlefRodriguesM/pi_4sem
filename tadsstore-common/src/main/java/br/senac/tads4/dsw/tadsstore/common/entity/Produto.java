@@ -1,38 +1,51 @@
 package br.senac.tads4.dsw.tadsstore.common.entity;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name = "TB_PRODUTO")
 
 /**
  *
  * @author andrey
  */
-public class Produto implements Serializable {
-
+public class Produto{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_PRODUTO")
     private Long id;
-
+    
+    @Column(name = "DS_NOME")
     private String nome;
 
+    @Column(name = "DS_DESCRICAO")
     private String descricao;
 
+    @Column(name = "DS_DESCRICAORESUMIDA")
     private String descricaoResumida;
     
+    @Column(name = "QT_ESTOQUE")
     private int quantidade;
 
+    @Column(name = "DS_IMAGEM")
     private String imagem;
 
+    @Column(name = "VL_PRECO")
     private BigDecimal preco;
 
+    @Column(name = "DT_CADASTRO")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dtCadastro;
-
-    private List<Categoria> categorias;
-
-    private List<ImagemProduto> imagens;
-
-    private String observacoes;
 
     //private List<ItemCompra> itensCompra;
     public Produto() {
@@ -47,19 +60,6 @@ public class Produto implements Serializable {
         this.quantidade = quantidade;
         this.preco = preco;
         this.dtCadastro = dtCadastro;
-        this.imagem = imagem;
-    }
-
-    public Produto(Long id, String nome, String descricao, String descricaoResumida, int quantidade, BigDecimal preco, Date dtCadastro, String imagem, List<ImagemProduto> imagens, List<Categoria> categorias) {
-        this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.descricaoResumida = descricaoResumida;
-        this.quantidade = quantidade;
-        this.preco = preco;
-        this.dtCadastro = dtCadastro;
-        this.imagens = imagens;
-        this.categorias = categorias;
         this.imagem = imagem;
     }
 
@@ -119,33 +119,17 @@ public class Produto implements Serializable {
         this.dtCadastro = dtCadastro;
     }
 
-    public List<Categoria> getCategorias() {
-        return categorias;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setCategorias(List<Categoria> categorias) {
-        this.categorias = categorias;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
-
-    public List<ImagemProduto> getImagens() {
-        return imagens;
-    }
-
-    public void setImagens(List<ImagemProduto> imagens) {
-        this.imagens = imagens;
-    }
-//
-//  public List<ItemCompra> getItensCompra() {
-//    return itensCompra;
-//  }
-//
-//  public void setItensCompra(List<ItemCompra> itensCompra) {
-//    this.itensCompra = itensCompra;
-//  }
 
     @Override
     public String toString() {
-        return "Produto{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", descricaoResumida=" + descricaoResumida + ", quantidade= " + quantidade + ", preco=" + preco + ", dtCadastro=" + dtCadastro + ", categorias=" + categorias + ", imagens=" + imagens + '}';
+        return "Produto{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", descricaoResumida=" + descricaoResumida + ", quantidade= " + quantidade + ", preco=" + preco + ", dtCadastro=" + dtCadastro + ", imagem=" + imagem + '}';
     }
 
     @Override
