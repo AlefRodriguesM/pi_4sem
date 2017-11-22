@@ -93,6 +93,29 @@ public class Venda {
 
     @Column(name = "DS_TRANSPORTADORA")
     private String transportadora;
+    
+    @Column(name = "TG_STATUS")
+    private int status;
+    
+    @Column(name = "DT_ALTERACAO")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dtAlteracao;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public Date getDtAlteracao() {
+        return dtAlteracao;
+    }
+
+    public void setDtAlteracao(Date dtAlteracao) {
+        this.dtAlteracao = dtAlteracao;
+    }
 
     public Venda() {
 
