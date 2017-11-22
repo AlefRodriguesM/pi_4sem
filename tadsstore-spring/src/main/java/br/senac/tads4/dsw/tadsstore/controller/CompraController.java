@@ -5,6 +5,8 @@ import br.senac.tads4.dsw.tadsstore.common.service.fakeimpl.VendaServiceFakeImpl
 import br.senac.tads4.dsw.tadsstore.repository.VendaServiceJPAImpl;
 import br.senac.tads4.dsw.tadsstore.common.entity.Produto;
 import br.senac.tads4.dsw.tadsstore.common.entity.Venda;
+import br.senac.tads4.dsw.tadsstore.common.entity.ItemVenda;
+import br.senac.tads4.dsw.tadsstore.common.service.ItemService;
 import br.senac.tads4.dsw.tadsstore.common.service.ProdutoService;
 import br.senac.tads4.dsw.tadsstore.common.service.VendaService;
 import br.senac.tads4.dsw.tadsstore.common.service.fakeimpl.ProdutoServiceFakeImpl;
@@ -67,10 +69,22 @@ public class CompraController implements Serializable {
 
     @Autowired
     private VendaService serviceVenda;
-
+    
+    @Autowired
+    private ItemService serviceItem;
+    
     @RequestMapping("/confirmar/{id}")
     public ModelAndView obterPorId(@PathVariable("id") Long idVenda) {
+        ModelAndView mav = new ModelAndView("compra/confirmacaoCompra");
         Venda v = serviceVenda.obter(idVenda);
-        return new ModelAndView("compra/confirmacaoCompra").addObject("venda", v);
+        
+        List<ItemVenda> itensVenda = new ArrayList<>();
+        
+        itensVenda = serviceItem.obter(idVenda);
+        
+        mav.addObject("venda", v);
+        mav.addObject("itensVenda", itensVenda);
+        
+        return mav;
     }
 }

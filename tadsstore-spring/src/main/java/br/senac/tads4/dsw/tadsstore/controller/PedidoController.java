@@ -1,8 +1,10 @@
 package br.senac.tads4.dsw.tadsstore.controller;
 
 import br.senac.tads4.dsw.tadsstore.common.entity.Venda;
+import br.senac.tads4.dsw.tadsstore.common.service.VendaService;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,12 +16,14 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/pedido")
 public class PedidoController {
-    private GerenciaVenda service = new GerenciaVenda();
-    private List<Venda> listaped = new ArrayList<>();
+    @Autowired
+    private VendaService vendaService;
+    
+    public List<Venda> listaped = new ArrayList<>();
     
     @RequestMapping
     public ModelAndView listar(){
-        listaped = service.listar(0, 100);
+        listaped = vendaService.listar(0, 100);
         
         return new ModelAndView("pedido/pedido");
     }

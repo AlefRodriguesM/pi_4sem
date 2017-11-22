@@ -15,7 +15,59 @@
                                     <td class="cabecalho" th:text="${venda.id}">Numero pedido</td>
                                 </tr>
                             </tbody>
-                       </table>
+                        </table>
+                        <br>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Status compra</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div>
+                                    <div class="alert alert-warning" th:if="${venda.status == 1}">
+                                        <p>Status atual: Aguardando pagamento</p>
+                                    </div>
+                                    <div class="alert alert-warning" th:if="${venda.status == 2}">
+                                        <p>Status atual: Pedido em processamento</p>
+                                    </div>
+                                    <div class="alert alert-info" th:if="${venda.status == 3}">
+                                        <p>Status atual: Faturado</p>
+                                    </div>
+                                    <div class="alert alert-info" th:if="${venda.status == 4}">
+                                        <p>Status atual: Em transporte</p>
+                                    </div>
+                                    <div class="alert alert-success" th:if="${venda.status == 5}">
+                                        <p>Status atual: Entregue</p>
+                                    </div>
+                                </div>
+                                <form action="#" th:action="@{/gerenciamento/venda/atualizar/{id} (id=${venda.id})}" method="POST">
+                                    <div class="col-xs-3">
+                                        <div class="radio">
+                                            <input type="radio" name="status" value="1">
+                                            Aguardando pagamento
+                                        </div>
+                                        <div class="radio">
+                                            <input type="radio" name="status" value="2">
+                                            Pedido em processamento
+                                        </div>
+                                        <div class="radio">
+                                            <input type="radio" name="status" value="3">
+                                            Faturado
+                                        </div>
+                                        <div class="radio">
+                                            <input type="radio" name="status" value="4">
+                                            Em transporte
+                                        </div>
+                                        <div class="radio">
+                                            <input type="radio" name="status" value="5">
+                                            Entregue
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <button type="submit">Alterar Status</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <br>
                         <div class="panel panel-primary">
                             <div class="panel-heading">
@@ -39,7 +91,7 @@
                                 </table>
                             </div>
                         </div>
-                        
+
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Dados de entrega</h3>
@@ -109,6 +161,24 @@
                                 </table>
                             </div>
                         </div>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                    <th>Valor uni.</th>
+                                    <th>Valor total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="item : ${itensVenda}">
+                                    <td th:text="${item.id}">ID do produto</td>
+                                    <td th:text="${item.qtVenda}">Quantidade</td>
+                                    <td th:text="${item.vlPreuni}">Valor uni</td>
+                                    <td th:text="${item.vlTotal}">Valor tot</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

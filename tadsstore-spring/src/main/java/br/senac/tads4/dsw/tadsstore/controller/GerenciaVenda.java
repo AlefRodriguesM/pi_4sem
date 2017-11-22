@@ -14,11 +14,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/gerenciamento/venda")
+@RequestMapping("/gerenciamento/venda") 
 public class GerenciaVenda {
     
     @Autowired
@@ -56,6 +57,25 @@ public class GerenciaVenda {
         redirectAttributes.addFlashAttribute("msgSucesso",
                 "Venda " + v.getNumero() + " finalizada com sucesso");
         return new ModelAndView("redirect:/produto");
+    }
+    
+    @RequestMapping(value = "/atualizar/{id}", method = RequestMethod.POST)
+    public ModelAndView atualizar(
+            @ModelAttribute("venda") Venda v,
+            BindingResult bindingResult,
+            RedirectAttributes redirectAttributes,
+            @RequestParam("status") String status) {
+        
+        v = vendaService.obter(v.getId());
+        
+        v.setDtAlteracao(new Date());
+        v.setStatus(Integer.parseInt(status));
+        
+        vendaService.alterar(v);
+        
+        redirectAttributes.addFlashAttribute("msgSucesso",
+                "Status da venda alterado com sucesso");
+        return new ModelAndView("redirect:/pedido");
     }
 
     List<Venda> listar(int i, int i0) {

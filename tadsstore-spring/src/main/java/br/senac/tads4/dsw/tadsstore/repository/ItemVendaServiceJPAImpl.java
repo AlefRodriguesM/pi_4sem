@@ -5,8 +5,8 @@
  */
 package br.senac.tads4.dsw.tadsstore.repository;
 
-import br.senac.tads4.dsw.tadsstore.common.entity.Venda;
-import br.senac.tads4.dsw.tadsstore.common.service.VendaService;
+import br.senac.tads4.dsw.tadsstore.common.entity.ItemVenda;
+import br.senac.tads4.dsw.tadsstore.common.service.ItemService;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,37 +19,36 @@ import org.springframework.stereotype.Repository;
  * @author andrey.asantos1
  */
 @Repository
-public class VendaServiceJPAImpl implements VendaService{
+public class ItemVendaServiceJPAImpl implements ItemService{
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    public List<Venda> listar(int offset, int quantidade) {
+    public List<ItemVenda> listar(int offset, int quantidade) {
         Query query = entityManager.createQuery(
-                "SELECT DISTINCT v FROM Venda v ");
+                "SELECT DISTINCT i FROM ItemVenda i ");
         return query.getResultList();
     }
     
     @Override
-    public Venda obter(long idVenda) {
+    public List<ItemVenda> obter(long idVenda) {
     Query query = entityManager.createQuery(
-            "SELECT DISTINCT v FROM Venda v "
-            + "WHERE v.id = :idVenda")
+            "SELECT DISTINCT i FROM ItemVenda i "
+            + "WHERE i.pedido = :idVenda")
             .setParameter("idVenda", idVenda);
-    return (Venda) query.getSingleResult();
+    return query.getResultList();
   }
 
     @Override
     @Transactional
-    public void incluir(Venda v) {
-        entityManager.persist(v);
+    public void incluir(ItemVenda v) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    @Transactional
-    public void alterar(Venda v) {
-        entityManager.merge(v);
+    public void alterar(ItemVenda v) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
