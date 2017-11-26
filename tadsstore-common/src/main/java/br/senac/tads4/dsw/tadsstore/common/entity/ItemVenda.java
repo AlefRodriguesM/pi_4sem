@@ -26,7 +26,7 @@ public class ItemVenda {
     private Long pedido;
     
     @Column(name = "QT_VENDA")
-    private Long qtVenda;
+    private int qtVenda;
     
     @Column(name = "VL_PREUNI")
     private double vlPreuni;
@@ -42,7 +42,7 @@ public class ItemVenda {
 
     }
 
-    public ItemVenda(Long id, Long comprador, Long pedido, Long qtVenda, double vlPreuni, double vlTotal, Date dtMovimento) {
+    public ItemVenda(Long id, Long comprador, Long pedido, int qtVenda, double vlPreuni, double vlTotal, Date dtMovimento) {
         this.id = id;
         this.comprador = comprador;
         this.pedido = pedido;
@@ -83,11 +83,11 @@ public class ItemVenda {
         this.pedido = pedido;
     }
 
-    public Long getQtVenda() {
+    public int getQtVenda() {
         return qtVenda;
     }
 
-    public void setQtVenda(Long qtVenda) {
+    public void setQtVenda(int qtVenda) {
         this.qtVenda = qtVenda;
     }
 

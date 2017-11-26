@@ -41,7 +41,7 @@ public class Produto{
     private String imagem;
 
     @Column(name = "VL_PRECO")
-    private BigDecimal preco;
+    private double preco;
 
     @Column(name = "DT_CADASTRO")
     @Temporal(TemporalType.TIMESTAMP)
@@ -52,7 +52,7 @@ public class Produto{
 
     }
 
-    public Produto(Long id, String nome, String descricao, String descricaoResumida,int quantidade, BigDecimal preco, Date dtCadastro, String imagem) {
+    public Produto(Long id, String nome, String descricao, String descricaoResumida,int quantidade, double preco, Date dtCadastro, String imagem) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -95,11 +95,11 @@ public class Produto{
         this.descricaoResumida = descricaoResumida;
     }
 
-    public BigDecimal getPreco() {
+    public double getPreco() {
         return preco;
     }
 
-    public void setPreco(BigDecimal preco) {
+    public void setPreco(double preco) {
         this.preco = preco;
     }
 
