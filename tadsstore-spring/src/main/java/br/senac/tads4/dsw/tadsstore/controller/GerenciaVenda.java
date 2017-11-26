@@ -1,12 +1,13 @@
 package br.senac.tads4.dsw.tadsstore.controller;
 
+import br.senac.tads4.dsw.tadsstore.common.entity.ItemVenda;
+import br.senac.tads4.dsw.tadsstore.common.entity.Produto;
 import br.senac.tads4.dsw.tadsstore.common.entity.Venda;
-import br.senac.tads4.dsw.tadsstore.repository.VendaServiceJPAImpl;
-
+import br.senac.tads4.dsw.tadsstore.common.service.ItemService;
 import br.senac.tads4.dsw.tadsstore.common.service.VendaService;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -24,6 +25,9 @@ public class GerenciaVenda {
     
     @Autowired
     private VendaService vendaService;
+    
+    @Autowired
+    private ItemService itemServ;
     
     @RequestMapping
     public ModelAndView abrirFormulario() {
@@ -47,12 +51,26 @@ public class GerenciaVenda {
     @RequestMapping(value = "/salvar", method = RequestMethod.POST)
     public ModelAndView salvar(
             @ModelAttribute("venda") Venda v,
+            @ModelAttribute("carrinho") ArrayList<Produto> car,
             BindingResult bindingResult,
-            RedirectAttributes redirectAttributes) {
+            RedirectAttributes redirectAttributes,
+            @RequestParam("optFrete") String optFrete) {
+        
+        //carrinho
         
         v.setDtVenda(new Date());
         
         vendaService.incluir(v);
+
+        ItemVenda it = new ItemVenda();
+        for(int i = 0; i <= car.size(); i++){
+            it.setPedido(v.getId());
+            it.setDtMovimento(new Date());
+            it.setVlPreuni(car.get(i).getPreco());
+            it.setQtVenda(car.get(i).getQuantidade());
+            it.setVlTotal((car.get(i).getPreco() * car.get(i).getQuantidade()));
+            itemServ.incluir(it);
+        }
         
         redirectAttributes.addFlashAttribute("msgSucesso",
                 "Venda " + v.getNumero() + " finalizada com sucesso");
@@ -70,7 +88,7 @@ public class GerenciaVenda {
         
         v.setDtAlteracao(new Date());
         v.setStatus(Integer.parseInt(status));
-        
+       
         vendaService.alterar(v);
         
         redirectAttributes.addFlashAttribute("msgSucesso",

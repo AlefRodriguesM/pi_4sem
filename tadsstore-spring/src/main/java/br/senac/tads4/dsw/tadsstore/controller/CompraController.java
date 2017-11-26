@@ -1,8 +1,5 @@
 package br.senac.tads4.dsw.tadsstore.controller;
 
-import br.senac.tads4.dsw.tadsstore.common.service.VendaService;
-import br.senac.tads4.dsw.tadsstore.common.service.fakeimpl.VendaServiceFakeImpl;
-import br.senac.tads4.dsw.tadsstore.repository.VendaServiceJPAImpl;
 import br.senac.tads4.dsw.tadsstore.common.entity.Produto;
 import br.senac.tads4.dsw.tadsstore.common.entity.Venda;
 import br.senac.tads4.dsw.tadsstore.common.entity.ItemVenda;
@@ -31,12 +28,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class CompraController implements Serializable {
 
     private ProdutoService service = new ProdutoServiceFakeImpl();
-
+    public List<Produto> carrinho = new ArrayList<>();
+    
     @Autowired
     private VendaService servVenda;
-
-    private List<Produto> carrinho = new ArrayList<>();
-
+  
     @RequestMapping
     private ModelAndView mostrarCarrinho() {
         Venda v = new Venda();

@@ -7,13 +7,15 @@
         <div layout:fragment="conteudo">
             <div class="container">
                 <div class="alert alert-success" th:if="${mensagem != null}">
-                    <p th:text="${mensagem}">Mensagem bla bla bla</p>
+                    <p th:text="${mensagem}">Mensagem sucesso</p>
                 </div>
+                <form th:action="@{/gerenciamento/venda/salvar}" th:object="${venda}" method="post">
                 <div class="col-xs-12 col-sm-0 produtoPic">
-                    <table class="table table-bordered table-striped">
+                    <table class="table table-bordered table-striped panel-primary">
                         <thead>
                             <tr>
                                 <th>Produto</th>
+                                <th>Modelo</th>
                                 <th>Quantidade</th>
                                 <th>Unitário</th>
                                 <th>Total</th>
@@ -23,7 +25,7 @@
                             <tr th:each="item : ${@compraController.carrinho}">
                                 <td th:src="${item.imagem}" th:text="${item.id}">ID do produto</td>
                                 <td th:text="${item.nome}">Nome do produto</td>
-                                <!-- <td th:text="${item.quantidade}">Quantidade</td> -->
+                                <td th:text="${item.quantidade}">Quantidade</td>
                                 <td th:text="${#numbers.formatCurrency(item.preco)}">R$ 99,99</td>
                                 <td th:text="${#numbers.formatCurrency(item.preco)}">R$ 99,99</td>
                             </tr>
@@ -63,7 +65,7 @@
                                 <div class="form-group col-xs-12">
                                     <label class="control-label">Formas de pagamento</label>
                                     <div class="selectContainer">
-                                        <select class="form-control" name="color">
+                                        <select id="formapag" class="form-control" name="color">
                                             <option value="boleto">Boleto</option>
                                             <option value="cartaocred">Cartão de crédito</option>
                                         </select>
@@ -72,23 +74,23 @@
                             </div>
                         </div>
                     </div>
-                    <form th:action="@{/gerenciamento/venda/salvar}" th:object="${venda}" method="post">
                         <div class="col-xs-6">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Resumo do pedido</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <div clas="col-xs-12"><label>Total produtos: </label></div>
-                                    <div clas="col-xs-12"><label>Frete: </label></div>
-                                    <div clas="col-xs-12"><label>Total pedido: </label></div>
+                                    <div clas="col-xs-12"><label>Total produtos: <span id="vlProduto"></label></div>
+                                    <div clas="col-xs-12"><label>Frete: </label><span id="vlFrete"></span></div>
+                                    <div clas="col-xs-12"><label>Total pedido: <span id="vlTotal"></label></div>
                                     <button class="btn btn-primary" value="Enviar" th:value="#{botao.enviar}" type="submit">Finalizar pedido</button>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
+            <script src="../../static/js/carrinhojs.js" type="text/javascript"></script>
         </div>
     </body>
 </html>
