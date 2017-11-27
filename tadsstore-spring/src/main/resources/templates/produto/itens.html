@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html layout:decorate="~{geral/modelo}">
+    <head>
+        <title>Automata Store</title>
+    </head>
+    <body>
+        <div layout:fragment='conteudo'>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12">
+                        <table class="table table-bordered table-striped panel-primary">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Nome</th>
+                                    <th>Descrição</th>
+                                    <th>Qt. Estoque</th>
+                                    <th>Preço</th>
+                                    <th><form class="btnIncluir" action="#" th:action="@{/gerenciamento/produto}" method="GET"> <button type="submit">Incluir</button></form></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="itens : ${listaProdutos}">
+                                    <td th:text="${itens.id}">Código</td>
+                                    <td th:text="${itens.nome}">Nome</td>
+                                    <td th:text="${itens.descricaoResumida}">Descricao</td>
+                                    <td th:text="${itens.quantidade}">Quantidade</td>
+                                    <td th:text="${itens.preco}">Preço</td>
+                                    <td><form action="#" th:action="@{/gerenciamento/produto/{id} (id=${itens.id})}" method="GET"> <button type="submit">Alterar</button></form></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,11 +1,53 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>TODO supply a title</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body>
-    <div>TODO write content</div>
-  </body>
+<html layout:decorate="~{geral/modelo}">
+    <head>
+        <title>Automata Store</title>
+    </head>
+    <body>
+        <div layout:fragment='conteudo'>
+            <div class="container">
+                <h1>Cadastro de produto</h1>
+                
+                <form th:action="@{/gerenciamento/produto/incluir}" 
+                      th:object="${produto}" method="post" novalidate>
+                    <input type="hidden" name="id" th:field="*{id}" />
+                    
+                    <div>
+                        <label th:text="#{produto.nome.label}">Nome</label> 
+                        <input type="text" name="nome" th:field="*{nome}" required 
+                               th:placeholder="#{produto.nome.placeholder}" />
+                        <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+                    </div>
+                    
+                    <div>
+                        <label th:text="#{produto.descricaoResumida.label}">Descricao Resumida</label> 
+                        <textarea name="descricaoResumida" th:field="*{descricao}" required
+                                  th:placeholder="#{produto.descricaoResumida.placeholder}"></textarea>
+                        <p th:if="${#fields.hasErrors('descricaoResumida')}" th:errors="*{descricaoResumida}"></p>
+                    </div>
+                    
+                    <div>
+                        <label th:text="#{produto.descricao.label}">Descricao</label> 
+                        <textarea name="descricao" th:field="*{descricao}" required
+                                  th:placeholder="#{produto.descricao.placeholder}"></textarea>
+                        <p th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></p>
+                    </div>
+                    
+                    <div>
+                        <label th:text="#{produto.preco.label}">Preco</label>
+                        <input type="text" name="preco" th:field="*{preco}" required
+                               th:placeholder="#{produto.preco.placeholder}" />
+                        <p th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}"></p>
+                    </div>
+                    
+                    <div><input type="submit" value="Enviar" /></div>
+                </form>
+            </div>
+            <div th:if="${produto.id != null}">
+                <form th:action="@{/gerenciamento/produto/excluir/{id}(id=${produto.id})}" method="post">
+                    <button type="submit">Apagar</button>
+                </form>
+            </div>
+        </div>
+    </body>
 </html>
