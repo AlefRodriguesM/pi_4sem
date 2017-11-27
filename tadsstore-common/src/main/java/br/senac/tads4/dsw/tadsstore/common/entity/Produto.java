@@ -1,6 +1,5 @@
 package br.senac.tads4.dsw.tadsstore.common.entity;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -15,10 +14,6 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "TB_PRODUTO")
 
-/**
- *
- * @author andrey
- */
 public class Produto{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,9 +42,7 @@ public class Produto{
     @Temporal(TemporalType.TIMESTAMP)
     private Date dtCadastro;
 
-    //private List<ItemCompra> itensCompra;
     public Produto() {
-
     }
 
     public Produto(Long id, String nome, String descricao, String descricaoResumida,int quantidade, double preco, Date dtCadastro, String imagem) {
