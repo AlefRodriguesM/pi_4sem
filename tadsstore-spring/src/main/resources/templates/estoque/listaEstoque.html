@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html layout:decorate="~{geral/modelo}">
+    <head>
+        <title>Automata Store</title>
+    </head>
+    <body>
+        <div layout:fragment="conteudo">
+            <div class="container">
+                <div class="alert alert-success" th:if="${msgSucesso != null}">
+                    <p th:text="${msgSucesso}"></p>
+                </div>
+                <div class="col-xs-12 col-sm-0 produtoPic">
+                    <table class="table table-bordered table-striped panel-primary">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nome</th>
+                                <th>Descrição</th>
+                                <th>Preço</th>
+                                <th>Qt. Estoque</th>
+                                <th>Inserir qt. no estoque</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="itens : ${listaProdutos}">
+                                <td th:text="${itens.id}">Código</td>
+                                <td th:text="${itens.nome}">Nome</td>
+                                <td th:text="${itens.descricaoResumida}">Descricao</td>
+                                <td th:text="${itens.preco}">Preço</td>
+                                <td th:text="${itens.quantidade}">Quantidade</td>
+                                <form action="#" th:action="@{/gerenciamento/produto/atualizarestoque/{id} (id=${itens.id})}" method="POST">
+                                    <td>
+                                        <input type="input" name="qtMovimento">
+                                    </td>
+                                    <td> 
+                                        <button type="submit">Inserir</button>
+                                    </td>
+                                </form>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>    
+</html>
