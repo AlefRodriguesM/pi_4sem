@@ -43,6 +43,13 @@ and open the template in the editor.
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
+        <p th:text="${#authentication.principal.nomeCompleto}"></p>
+        <p sec:authentication="principal.nomeCompleto"></p>
+
+        <p th:text="${#authentication.principal.senha}"></p>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Sair</button>	
+        </form>
         <div layout:fragment="conteudo">
             <h1>Template master do Automata Store</h1>
         </div>

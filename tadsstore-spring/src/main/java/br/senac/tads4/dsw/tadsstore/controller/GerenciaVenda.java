@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,7 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/gerenciamento/venda") 
+@RequestMapping("/gerenciamento/venda")
+@Scope("session")
 public class GerenciaVenda {
     
     @Autowired
@@ -28,6 +30,9 @@ public class GerenciaVenda {
     
     @Autowired
     private ItemService itemServ;
+    
+    @Autowired
+    private CompraController compraC;
     
     @RequestMapping
     public ModelAndView abrirFormulario() {
@@ -51,17 +56,16 @@ public class GerenciaVenda {
     @RequestMapping(value = "/salvar", method = RequestMethod.POST)
     public ModelAndView salvar(
             @ModelAttribute("venda") Venda v,
-            @ModelAttribute("carrinho") ArrayList<Produto> car,
             BindingResult bindingResult,
             RedirectAttributes redirectAttributes,
             @RequestParam("optFrete") String optFrete) {
-        
-        //carrinho
-        
+        /*
+        List<Produto> car = compraC.getCarrinho();
+        */
         v.setDtVenda(new Date());
         
         vendaService.incluir(v);
-
+        /*
         ItemVenda it = new ItemVenda();
         for(int i = 0; i <= car.size(); i++){
             it.setPedido(v.getId());
@@ -71,6 +75,7 @@ public class GerenciaVenda {
             it.setVlTotal((car.get(i).getPreco() * car.get(i).getQuantidade()));
             itemServ.incluir(it);
         }
+        */
         
         redirectAttributes.addFlashAttribute("msgSucesso",
                 "Venda " + v.getNumero() + " finalizada com sucesso");
