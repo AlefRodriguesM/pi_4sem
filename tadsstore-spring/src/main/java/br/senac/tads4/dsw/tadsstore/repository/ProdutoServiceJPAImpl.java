@@ -19,8 +19,7 @@ import org.springframework.stereotype.Repository;
  * @author andrey.asantos1
  */
 @Repository
-public class ProdutoServiceJPAImpl implements ProdutoService{
-
+public class ProdutoServiceJPAImpl implements ProdutoService{   
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -53,7 +52,9 @@ public class ProdutoServiceJPAImpl implements ProdutoService{
     }
 
     @Override
+    @Transactional
     public void remover(long idProduto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Produto p = entityManager.find(Produto.class, idProduto);
+        entityManager.remove(p);
     }
 }

@@ -7,8 +7,18 @@
         <div layout:fragment='conteudo'>
             <div class="container">
                 <div class="row">
+                    <div class="col-lg-12 margin-tb">					
+                        <div class="pull-left">
+                            <h2>Produtos</h2>
+                        </div>
+                        <div class="pull-right">
+                            <form class="btnIncluir" action="#" th:action="@{/gerenciamento/produto}" method="GET"> <button type="submit" class="btn btn-success inc-prod" data-toggle="modal" data-target="#create-item">Criar produto</button></form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-xs-12 col-sm-12">
-                        <table class="table table-bordered table-striped panel-primary">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Código</th>
@@ -16,7 +26,7 @@
                                     <th>Descrição</th>
                                     <th>Qt. Estoque</th>
                                     <th>Preço</th>
-                                    <th><form class="btnIncluir" action="#" th:action="@{/gerenciamento/produto}" method="GET"> <button type="submit">Incluir</button></form></th>
+                                    <th>Ação</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -26,7 +36,12 @@
                                     <td th:text="${itens.descricaoResumida}">Descricao</td>
                                     <td th:text="${itens.quantidade}">Quantidade</td>
                                     <td th:text="${itens.preco}">Preço</td>
-                                    <td><form action="#" th:action="@{/gerenciamento/produto/{id} (id=${itens.id})}" method="GET"> <button type="submit">Alterar</button></form></td>
+                                    <td>
+                                        <form action="#" th:action="@{/gerenciamento/produto/{id} (id=${itens.id})}" method="GET"> <button type="submit" data-toggle="modal" data-target="#edit-item" class="btn btn-primary edit-item">Alterar</button></form>
+                                        <form th:action="@{/gerenciamento/produto/excluir/{id}(id=${itens.id})}" method="post">
+                                            <button class="btn btn-danger" type="submit">Apagar</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
