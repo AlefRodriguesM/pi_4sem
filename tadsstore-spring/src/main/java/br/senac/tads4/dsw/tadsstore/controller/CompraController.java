@@ -28,7 +28,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class CompraController implements Serializable {
 
     private ProdutoService service = new ProdutoServiceFakeImpl();
-    public List<Produto> carrinho = new ArrayList<>();
+    private List<Produto> carrinho = new ArrayList<>();
     
     @Autowired
     private VendaService servVenda;
