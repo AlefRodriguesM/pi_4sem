@@ -11,32 +11,39 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-  
-  public static BCryptPasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
-  }
-  
-  @Bean
-  public PasswordEncoder bCryptPasswordEncoder() {
-    return passwordEncoder();
-  }
 
-  @Override
-  protected void configure(HttpSecurity http) throws Exception {
-    http.csrf().disable()
-            .authorizeRequests()
-              .antMatchers("/rest/**").permitAll()
-              .antMatchers("/teste-ajax-ws", "/css/**","/js/**", "/img/**", "/font/**").permitAll()
-              .antMatchers("/gerenciamento/**").hasRole("FODAO")
-              .antMatchers("/**").authenticated()
-            .and()
-              .formLogin()
-                .loginPage("/login").usernameParameter("username")
-                .passwordParameter("senha")
-                .defaultSuccessUrl("/produto").permitAll()
-            .and()
-              .logout()
-                .logoutUrl("/logout").logoutSuccessUrl("/login?logout")
-                .invalidateHttpSession(true).deleteCookies("JSESSIONID");
-  }
+    public static BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public PasswordEncoder bCryptPasswordEncoder() {
+        return passwordEncoder();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        /*
+            com estas configurações, as seguintes telas precisam de autenticação, mas não precisa ser FODAO para funcionar:
+            /compra/confirmar/{id}
+            /pedido
+        */
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/rest/**").permitAll()
+                .antMatchers("/teste-ajax-ws", "/css/**", "/js/**", "/img/**", "/font/**").permitAll()      // frameworks
+                .antMatchers("/gerenciamento/**").hasRole("FODAO")                                          // gerenciamento
+                .antMatchers("/produto", "/produto/**").permitAll()                                         // produto
+                .antMatchers("/compra", "/compra/adicionar/**", "/carrinho").permitAll()                    // carrinho
+                .antMatchers("/**").authenticated()                                                         // sempre que o usuário acessar algo sem permissão, solicita login
+                .and()
+                    .formLogin()
+                    .loginPage("/login").usernameParameter("username")
+                    .passwordParameter("senha")
+                    .defaultSuccessUrl("/produto").permitAll()
+                .and()
+                    .logout()
+                    .logoutUrl("/logout").logoutSuccessUrl("/login?logout")
+                    .invalidateHttpSession(true).deleteCookies("JSESSIONID");
+    }
 }
