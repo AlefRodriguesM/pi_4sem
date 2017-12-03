@@ -116,12 +116,12 @@ public class Cliente{
         this.numero = numero;
     }
 
-    public String getCEP() {
+    public String getCep() {
         return cep;
     }
 
-    public void setCEP(String CEP) {
-        this.cep = CEP;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
     public String getBairro() {
@@ -164,7 +164,7 @@ public class Cliente{
         this.dtCadastro = dtCadastro;
     }
 
-    public Cliente(Long id, String nome, String sobrenome, String email, String senha, String endereco, String numero, String CEP, String bairro, String cidade, String uf, String complemento, Date dtCadastro) {
+    public Cliente(Long id, String nome, String sobrenome, String email, String senha, String endereco, String numero, String cep, String bairro, String cidade, String uf, String complemento, Date dtCadastro) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -172,7 +172,7 @@ public class Cliente{
         this.senha = senha;
         this.endereco = endereco;
         this.numero = numero;
-        this.cep = CEP;
+        this.cep = cep;
         this.bairro = bairro;
         this.cidade = cidade;
         this.uf = uf;
