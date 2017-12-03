@@ -9,11 +9,11 @@
                 <div class="container">
                     <div class="row header">
                     </div>
-                    <div class="row">
+                    <div class="row produtoslista">
                         <div class="col-12">
                             <div class="col-md-3 col-lg-3 filtros">
                             </div>
-                            <div class="col-md-9 col-lg-9 well produto">
+                            <div class="col-md-9 col-lg-9 well produtolista">
                                 <div class="col-md-12 col-lg-3 well produto" th:each="p : ${itens}">
                                     <a th:href="@{/produto/{id}(id=${p.id})}">
                                         <img class="imagem img-responsive img-thumbnail" th:src="${p.imagem}" th:href="@{/produto/${p.id}}">
@@ -31,19 +31,10 @@
                                     
                                     <div class="row">
                                         <div class="col-12 rodapeproduto">
-                                            <div class="col-md-8 col-lg-8">
+                                            <div class="col-md-12 col-lg-12">
                                                 <a th:href="@{/produto/{id}(id=${p.id})}">
                                                     <span class="preco" th:text="${#numbers.formatCurrency(p.preco)}" th:href="@{/produto/${p.id}}">R$ 60,00</span>
                                                 </a>
-                                            </div>
-
-                                            <div class="col-md-4 col-lg-4">
-                                                <form action="#" th:action="@{/compra/adicionar/{id} (id=${p.id})}" method="post">
-                                                    <input type="hidden" name="id" th:value="${p.id}"/>
-                                                    <button type="submit" class="add">
-                                                        <img class="pic" src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/cart-add-icon.png">
-                                                    </button>
-                                                </form>
                                             </div>
                                         </div>
                                     </div>

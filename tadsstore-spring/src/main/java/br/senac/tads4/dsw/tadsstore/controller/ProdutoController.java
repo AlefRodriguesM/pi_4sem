@@ -30,6 +30,17 @@ public class ProdutoController {
     public ModelAndView listar(){
         listaProdutos = Produtoservice.listar(0, 100);
         
+        // tratamento para não estourar exibição dos campos da tela.
+        for (Produto pro : listaProdutos) {
+            if (pro.getNome().length() > 45) {
+                pro.setNome(pro.getNome().substring(0, 45) + "...");
+            }
+            
+            if (pro.getDescricaoResumida().length() > 133) {
+                pro.setDescricao(pro.getDescricaoResumida().substring(0, 133) + "...");
+            }
+        }
+        
         return new ModelAndView("produto/lista").addObject("itens", listaProdutos);
     }
     
