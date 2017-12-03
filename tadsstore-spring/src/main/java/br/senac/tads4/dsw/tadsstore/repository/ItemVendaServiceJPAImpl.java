@@ -6,7 +6,7 @@
 package br.senac.tads4.dsw.tadsstore.repository;
 
 import br.senac.tads4.dsw.tadsstore.common.entity.ItemVenda;
-import br.senac.tads4.dsw.tadsstore.common.service.ItemService;
+import br.senac.tads4.dsw.tadsstore.common.service.ItemVendaService;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
  * @author andrey.asantos1
  */
 @Repository
-public class ItemVendaServiceJPAImpl implements ItemService{
+public class ItemVendaServiceJPAImpl implements ItemVendaService{
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -43,12 +43,13 @@ public class ItemVendaServiceJPAImpl implements ItemService{
     @Override
     @Transactional
     public void incluir(ItemVenda v) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManager.persist(v);
     }
 
     @Override
+    @Transactional
     public void alterar(ItemVenda v) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManager.merge(v);
     }
 
     @Override

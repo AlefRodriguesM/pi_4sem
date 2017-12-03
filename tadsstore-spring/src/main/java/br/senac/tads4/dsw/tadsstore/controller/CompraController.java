@@ -3,17 +3,21 @@ package br.senac.tads4.dsw.tadsstore.controller;
 import br.senac.tads4.dsw.tadsstore.common.entity.Produto;
 import br.senac.tads4.dsw.tadsstore.common.entity.Venda;
 import br.senac.tads4.dsw.tadsstore.common.entity.ItemVenda;
-import br.senac.tads4.dsw.tadsstore.common.service.ItemService;
+import br.senac.tads4.dsw.tadsstore.common.service.ItemVendaService;
 import br.senac.tads4.dsw.tadsstore.common.service.ProdutoService;
 import br.senac.tads4.dsw.tadsstore.common.service.VendaService;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -29,10 +33,13 @@ public class CompraController implements Serializable {
     @Autowired
     private ProdutoService service;
     
-    private List<Produto> carrinho = new ArrayList<>();
+    @Autowired
+    private VendaService serviceVenda;
     
     @Autowired
-    private VendaService servVenda;
+    private ItemVendaService serviceItem;
+    
+    private List<Produto> carrinho = new ArrayList<>();
   
     @RequestMapping
     private ModelAndView mostrarCarrinho() {
@@ -63,16 +70,6 @@ public class CompraController implements Serializable {
         return new ModelAndView("redirect:/compra").addObject("venda", v);
     }
 
-    public List<Produto> getCarrinho() {
-        return carrinho;
-    }
-
-    @Autowired
-    private VendaService serviceVenda;
-    
-    @Autowired
-    private ItemService serviceItem;
-    
     @RequestMapping("/confirmar/{id}")
     public ModelAndView obterPorId(@PathVariable("id") Long idVenda) {
         ModelAndView mav = new ModelAndView("compra/confirmacaoCompra");
@@ -86,5 +83,44 @@ public class CompraController implements Serializable {
         mav.addObject("itensVenda", itensVenda);
         
         return mav;
+    }
+    
+    @RequestMapping(value = "/salvar", method = RequestMethod.POST)
+    public ModelAndView salvar(
+            @ModelAttribute("venda") Venda v,
+            BindingResult bindingResult,
+            RedirectAttributes redirectAttributes
+            //@RequestParam("optFrete") String optFrete
+            ) {
+        
+        if(carrinho.isEmpty()){
+            redirectAttributes.addFlashAttribute("Mensagem", "Não é possível salvar venda sem itens !!");
+        return new ModelAndView("redirect:/produto/lista");
+        }
+        
+        v.setDtVenda(new Date());
+        
+        serviceVenda.incluir(v);
+        
+        ItemVenda it = new ItemVenda();
+        for(int i = 0; i < carrinho.size(); i++){
+            it.setProduto(carrinho.get(i).getId());
+            it.setPedido(v.getId());
+            it.setQtVenda(carrinho.get(i).getQuantidade());
+            it.setVlPreuni(carrinho.get(i).getPreco());
+            it.setVlTotal((carrinho.get(i).getPreco() * carrinho.get(i).getQuantidade()));
+            it.setDtMovimento(new Date());
+            serviceItem.incluir(it);
+        }
+        
+        carrinho.clear(); 
+        
+        redirectAttributes.addFlashAttribute("msgSucesso",
+                "Venda " + v.getNumero() + " finalizada com sucesso");
+        return new ModelAndView("redirect:/produto");
+    }
+    
+    public List<Produto> getCarrinho() {
+        return carrinho;
     }
 }
