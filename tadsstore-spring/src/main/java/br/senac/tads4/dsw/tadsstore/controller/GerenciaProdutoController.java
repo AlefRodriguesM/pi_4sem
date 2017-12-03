@@ -30,6 +30,8 @@ public class GerenciaProdutoController {
     private MovimentoService movimentoService;
     
     private List<Produto> listaProdutos = new ArrayList();
+    
+    private List<Movimento> listaMovimentos = new ArrayList();
 
     @RequestMapping
     public ModelAndView abrirFormulario() {
@@ -69,6 +71,19 @@ public class GerenciaProdutoController {
         listaProdutos = produtoService.listar(0, 100);
 
         return new ModelAndView("estoque/listaEstoque").addObject("listaProdutos", listaProdutos);
+    }
+    
+    @RequestMapping("/movimentacoes/{idProd}")
+    public ModelAndView listarMovimentacoesProd(
+            @PathVariable("idProd") Long idProduto) {
+        
+        listaMovimentos = movimentoService.listarProdutos(0, 100, idProduto);
+        
+        ModelAndView model = new ModelAndView("estoque/listaMovimentacao");
+        model.addObject("listaMovimentacao", listaMovimentos);
+        model.addObject("idProd", idProduto);
+        
+        return model;
     }
 
     @RequestMapping(path = "/atualizarestoque/{idProd}")

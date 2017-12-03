@@ -35,7 +35,7 @@ public class MovimentoServiceJPAImpl1 implements MovimentoService{
     public List<Movimento> listarProdutos(int offset, int quantidade, long idProduto) {
         Query query = entityManager.createQuery(
                 "SELECT DISTINCT m FROM Movimento m "
-                + "WHERE m.idProduto = :idProduto").setParameter("idProduto", idProduto);
+                + "WHERE m.idProduto = :idProduto ORDER BY m.dhMovimento DESC").setParameter("idProduto", idProduto);
         return query.getResultList();
     }
     

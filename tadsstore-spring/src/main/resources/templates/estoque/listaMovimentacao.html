@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html layout:decorate="~{geral/modelo}">
+    <head>
+        <title>Automata Store</title>
+    </head>
+    <body>
+        <div layout:fragment="conteudo">
+            <div class="container">
+                <div class="col-xs-12 col-sm-12">
+                    <div class="form-inline alert alert-info col-sm-12 col-xs-12">
+                        <span>Exibindo movimentações do produto</span>
+                        <b th:text="${idProd}"></b>
+                    </div>
+                    <div class="row col-sm-12 col-xs-12">
+                        <br>
+                    </div>
+                    <table class="table table-bordered table-striped panel-primary">
+                        <thead>
+                            <tr>
+                                <th>Data da movimentação</th>
+                                <th>Movimentação</th>
+                                <th>Qt. movimentada</th>
+                                <th>Origem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="itens : ${listaMovimentacao}">
+                                <td th:text="${itens.dhMovimento}"></td>
+                                <td>
+                                    <div th:if="${itens.tgMovimento == 'E'}">
+                                        <p>Entrada</p>
+                                    </div>
+                                    <div th:if="${itens.tgMovimento == 'S'}">
+                                        <p>Saída</p>
+                                    </div>
+                                </td>
+                                <td th:text="${itens.qtMovimento}">Quantidade</td>
+                                <td>
+                                    <div th:if="${itens.idPedido == 0}">
+                                        <p>Movimentação manual</p>
+                                    </div>
+                                    <div th:if="${itens.idPedido > 0}">
+                                        <p>Venda</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
