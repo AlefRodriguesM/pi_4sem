@@ -20,7 +20,7 @@ public class ItemVenda {
     private Long id;
 
     @Column(name = "FK_PRODUTO")
-    private Long comprador;
+    private Long produto;
     
     @Column(name = "FK_PEDIDO")
     private Long pedido;
@@ -42,9 +42,9 @@ public class ItemVenda {
 
     }
 
-    public ItemVenda(Long id, Long comprador, Long pedido, int qtVenda, double vlPreuni, double vlTotal, Date dtMovimento) {
+    public ItemVenda(Long id, Long produto, Long pedido, int qtVenda, double vlPreuni, double vlTotal, Date dtMovimento) {
         this.id = id;
-        this.comprador = comprador;
+        this.produto = produto;
         this.pedido = pedido;
         this.qtVenda = qtVenda;
         this.vlPreuni = vlPreuni;
@@ -67,12 +67,12 @@ public class ItemVenda {
         this.id = id;
     }
 
-    public Long getComprador() {
-        return comprador;
+    public Long getProduto() {
+        return produto;
     }
 
-    public void setComprador(Long comprador) {
-        this.comprador = comprador;
+    public void setProduto(Long produto) {
+        this.produto = produto;
     }
 
     public Long getPedido() {
