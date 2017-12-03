@@ -39,15 +39,24 @@ and open the template in the editor.
                         <li><a th:href="@{/produto/itens}">Produtos</a></li>
                         <li><a th:href="@{/compra/carrinho}">Carrinho de compra</a></li>
                         <li><a th:href="@{/pedido}">Meus pedidos</a></li>
+                        <li><a th:href="@{/gerenciamento/produto/estoque}">Estoque</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
-        <div th:if="${principal != null}">
+        <div sec:authorize="isAuthenticated()">
             <p th:text="${#authentication.principal.nomeCompleto}"></p>
-            <p sec:authentication="principal.nomeCompleto"></p>
-
-            <p th:text="${#authentication.principal.senha}"></p>
+            <!--
+                essa div imprime os dados do user logado.
+                falta só deixar bonito e dentro da navbar
+            
+            
+                isso aqui basicamente imprime o nome de novo
+                <p sec:authentication="principal.nomeCompleto"></p>
+            
+                isso aqui imprime a senha, e não queremos saber dela
+                <p th:text="${#authentication.principal.senha}"></p>
+            -->
             <form th:action="@{/logout}" method="post">
                 <button type="submit">Sair</button>
             </form>

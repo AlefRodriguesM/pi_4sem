@@ -41,7 +41,7 @@ public class Produto{
     @Column(name = "DT_CADASTRO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dtCadastro;
-
+    
     public Produto() {
     }
 
@@ -118,6 +118,18 @@ public class Produto{
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+    
+    public boolean estoqueDisponivel(int qtMovimentar){
+        boolean temEstoque = false;
+        
+        if (this.quantidade < qtMovimentar || this.quantidade <= 0) {
+            temEstoque = false;
+        }else{
+            temEstoque = true;
+        }
+        
+        return temEstoque;
     }
 
     @Override

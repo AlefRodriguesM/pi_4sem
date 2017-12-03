@@ -74,29 +74,46 @@ public class GerenciaProdutoController {
     @RequestMapping(path = "/atualizarestoque/{idProd}")
     public ModelAndView atualizarEstoque(
             @PathVariable("idProd") Long idProduto,
-            @RequestParam("qtMovimento") int qtMovimento
+            @RequestParam("qtMovimento") String qtMovimento,
+            @RequestParam("movimentacao") int movimentacao,
+            
+            RedirectAttributes redirectAttributes
             ) {
+        
+        int qtMovimentar;
+        
+        try{
+            qtMovimentar = Math.abs(Integer.parseInt(qtMovimento));
+        }catch(Exception erro){
+            redirectAttributes.addFlashAttribute("mensagemErro", "Quantidade de movimentação inválida!");
+            
+            return new ModelAndView("redirect:/gerenciamento/produto/estoque");
+        }
+        
+        if (qtMovimentar == 0) {
+            return new ModelAndView("redirect:/gerenciamento/produto/estoque");
+        }
         
         String tgMovimento = "";
         int idPed = 0;
         
-        if (qtMovimento < 0) {
-            tgMovimento = "S";
-        }else{
+        if (movimentacao == 1) {
             tgMovimento = "E";
+        }else{
+            tgMovimento = "S";
         }
-        
-        qtMovimento = Math.abs(qtMovimento);
         
         Movimento m = new Movimento();
         
         m.setDhMovimento(new Date());
         m.setIdProduto(idProduto);
-        m.setQtMovimento(qtMovimento);
+        m.setQtMovimento(qtMovimentar);
         m.setTgMovimento(tgMovimento);
         m.setIdPedido(Long.parseLong("0"));
         
         movimentoService.incluir(m);
+        
+        redirectAttributes.addFlashAttribute("mensagem", "Quantidade do produto " + idProduto + " alterada com sucesso!");
         
         return new ModelAndView("redirect:/gerenciamento/produto/estoque");
     }
