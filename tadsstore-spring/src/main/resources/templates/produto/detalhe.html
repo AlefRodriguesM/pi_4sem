@@ -18,17 +18,26 @@
                             <h4 th:text="${produto.descricaoResumida}" class="nome">Produto</h4>
                         </div>
                         <div class="disponibilidade col-xs-12 col-sm-12">
-                            <p th:text="${#numbers.formatCurrency(produto.preco)}" class="preco col-sm-8 col-xs-12">R$ 99,99</p>
-                            <!--<p><a class="col-sm-4 col-xs-12 btn btn-info">
+                            <div class="col-sm-8 col-xs-12">
+                                <p th:text="${#numbers.formatCurrency(produto.preco)}" class="preco col-sm-12 col-xs-12">R$ 99,99</p>
+                                <!--<p><a class="col-sm-4 col-xs-12 btn btn-info">
+                                        <img class="pic" src="http://stonexindia.net/wp-content/uploads/2017/05/cart_icon_200.png">
+                                        Comprar</a></p>
+                                -->
+                            </div>
+                            <div class="col-sm-4 col-xs-12" th:if="${produto.quantidade > 0}">
+                                <form action="#" th:action="@{/compra/adicionar/{id} (id=${produto.id})}" method="post">
+                                    <input type="hidden" name="id" th:value="${produto.id}" />
+                                    <button type="submit" class="btn btn-info col-sm-12 col-xs-12">
+                                        <img class="pic" src="http://stonexindia.net/wp-content/uploads/2017/05/cart_icon_200.png">
+                                        <span class="" aria-hidden=""></span> Comprar</button>
+                                </form>
+                            </div>
+                            <div class="col-sm-4 col-xs-12" th:if="${produto.quantidade <= 0}">
+                                <button type="submit" class="btn btn-danger disabled col-sm-12 col-xs-12">
                                     <img class="pic" src="http://stonexindia.net/wp-content/uploads/2017/05/cart_icon_200.png">
-                                    Comprar</a></p>
-                            -->
-                            <form action="#" th:action="@{/compra/adicionar/{id} (id=${produto.id})}" method="post">
-                                <input type="hidden" name="id" th:value="${produto.id}" />
-                                <button type="submit" class="btn btn-info col-sm-4 col-xs-12">
-                                    <img class="pic" src="http://stonexindia.net/wp-content/uploads/2017/05/cart_icon_200.png">
-                                    <span class="" aria-hidden=""></span> Comprar</button>
-                            </form>
+                                    <span class="" aria-hidden=""></span> Indisponível</button>
+                            </div>
                         </div>
                     </div>
                 </div>

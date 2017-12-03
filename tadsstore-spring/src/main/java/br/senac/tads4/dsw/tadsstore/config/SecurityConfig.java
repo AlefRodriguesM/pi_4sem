@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/teste-ajax-ws", "/css/**", "/js/**", "/img/**", "/font/**").permitAll()      // frameworks
                 .antMatchers("/gerenciamento/**").hasRole("FODAO")                                          // gerenciamento
                 .antMatchers("/produto", "/produto/**").permitAll()                                         // produto
-                .antMatchers("/compra", "/compra/adicionar/**", "/carrinho").permitAll()                    // carrinho
+                .antMatchers("/compra", "/compra/adicionar/**", "/compra/carrinho").permitAll()             // carrinho
                 .antMatchers("/**").authenticated()                                                         // sempre que o usuário acessar algo sem permissão, solicita login
                 .and()
                     .formLogin()

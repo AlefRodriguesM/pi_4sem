@@ -6,7 +6,6 @@ import br.senac.tads4.dsw.tadsstore.common.entity.ItemVenda;
 import br.senac.tads4.dsw.tadsstore.common.service.ItemService;
 import br.senac.tads4.dsw.tadsstore.common.service.ProdutoService;
 import br.senac.tads4.dsw.tadsstore.common.service.VendaService;
-import br.senac.tads4.dsw.tadsstore.common.service.fakeimpl.ProdutoServiceFakeImpl;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Scope("session")
 public class CompraController implements Serializable {
 
-    private ProdutoService service = new ProdutoServiceFakeImpl();
+    @Autowired
+    private ProdutoService service;
+    
     private List<Produto> carrinho = new ArrayList<>();
     
     @Autowired
@@ -44,11 +45,14 @@ public class CompraController implements Serializable {
     public ModelAndView adicionarProduto(@PathVariable("id") Long idProduto,
             RedirectAttributes redirectAttributes) {
         Produto p = service.obter(idProduto);
-
-        carrinho.add(p);
-
-        redirectAttributes.addFlashAttribute("mensagem", "Produto : " + p.getNome() + "  . adicionado com sucesso!!");
-
+        
+        if (p.getQuantidade() <= 0) {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Produto " + p.getNome() + " sem estoque disponível!");
+        }else{
+            carrinho.add(p);
+            redirectAttributes.addFlashAttribute("mensagem", "Produto : " + p.getNome() + " adicionado com sucesso!");
+        }
+        
         return new ModelAndView("redirect:/compra");
     }
 

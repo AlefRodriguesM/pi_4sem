@@ -6,19 +6,22 @@
     <body>
         <div layout:fragment="conteudo">
             <div class="container">
-                <div class="alert alert-success" th:if="${msgSucesso != null}">
-                    <p th:text="${msgSucesso}"></p>
+                <div class="alert alert-success" th:if="${mensagem != null}">
+                    <p th:text="${mensagem}">Mensagem sucesso</p>
                 </div>
-                <div class="col-xs-12 col-sm-0 produtoPic">
+                <div class="alert alert-danger" role="alert" th:if="${mensagemErro != null}">
+                    <p th:text="${mensagemErro}">Mensagem erro</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 produtoPic">
                     <table class="table table-bordered table-striped panel-primary">
                         <thead>
                             <tr>
                                 <th>Código</th>
                                 <th>Nome</th>
-                                <th>Descrição</th>
                                 <th>Preço</th>
-                                <th>Qt. Estoque</th>
-                                <th>Inserir qt. no estoque</th>
+                                <th>Estoque</th>
+                                <th>Movimentação</th>
+                                <th>Alterar qt. no estoque</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -26,17 +29,26 @@
                             <tr th:each="itens : ${listaProdutos}">
                                 <td th:text="${itens.id}">Código</td>
                                 <td th:text="${itens.nome}">Nome</td>
-                                <td th:text="${itens.descricaoResumida}">Descricao</td>
                                 <td th:text="${itens.preco}">Preço</td>
                                 <td th:text="${itens.quantidade}">Quantidade</td>
-                                <form action="#" th:action="@{/gerenciamento/produto/atualizarestoque/{id} (id=${itens.id})}" method="POST">
-                                    <td>
-                                        <input type="input" name="qtMovimento">
-                                    </td>
-                                    <td> 
-                                        <button type="submit">Inserir</button>
-                                    </td>
-                                </form>
+                        <form action="#" th:action="@{/gerenciamento/produto/atualizarestoque/{id} (id=${itens.id})}" method="POST">
+                            <td>
+                                <div class="col-sm-12 col-xs-12">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="movimentacao" value="1" checked>Entrada
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="movimentacao" value="2">Saída
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <input type="input" name="qtMovimento">
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-primary edit-item">Movimentar</button>
+                            </td>
+                        </form>
                         </tr>
                         </tbody>
                     </table>
