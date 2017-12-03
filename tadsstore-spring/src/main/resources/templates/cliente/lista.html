@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html layout:decorate="~{geral/modelo}">
+    <head>
+        <title>Automata Store</title>
+    </head>
+    <body>
+        <div layout:fragment='conteudo'>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 margin-tb">					
+                        <div class="pull-left">
+                            <h2>Clientes</h2>
+                        </div>
+                        <div class="pull-right">
+                            <form class="btnIncluir" action="#" th:action="@{/gerenciamento/cliente}" method="GET"> <button type="submit" class="btn btn-success inc-prod" data-toggle="modal" data-target="#create-item">Criar cliente</button></form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Nome</th>
+                                    <th>Sobrenome</th>
+                                    <th>E-Mail</th>
+                                    <th>Cidade</th>
+                                    <th>UF</th>
+                                    <th>CEP</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="itens : ${listaClientes}">
+                                    <td th:text="${itens.id}">Código</td>
+                                    <td th:text="${itens.nome}">Nome</td>
+                                    <td th:text="${itens.sobrenome}">Sobrenome</td>
+                                    <td th:text="${itens.email}">Email</td>
+                                    <td th:text="${itens.cidade}">Cidade</td>
+                                    <td th:text="${itens.uf}">UF</td>
+                                    <td th:text="${itens.cep}">CEP</td>
+                                    <td>
+                                        <form action="#" th:action="@{/gerenciamento/cliente/{id} (id=${itens.id})}" method="GET"> <button type="submit" data-toggle="modal" data-target="#edit-item" class="btn btn-primary edit-item">Alterar</button></form>
+                                        <form th:action="@{/gerenciamento/cliente/excluir/{id}(id=${itens.id})}" method="post">
+                                            <button class="btn btn-danger" type="submit">Apagar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
