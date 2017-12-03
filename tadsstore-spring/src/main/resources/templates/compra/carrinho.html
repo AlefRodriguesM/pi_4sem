@@ -9,7 +9,7 @@
                 <div class="alert alert-success" th:if="${mensagem != null}">
                     <p th:text="${mensagem}">Mensagem sucesso</p>
                 </div>
-                <form th:action="@{/gerenciamento/venda/salvar}" th:object="${venda}" method="post">
+                <form th:action="@{/compra/salvar}" th:object="${venda}" method="post">
                 <div class="col-xs-12 col-sm-0 produtoPic">
                     <table class="table table-bordered table-striped panel-primary">
                         <thead>
