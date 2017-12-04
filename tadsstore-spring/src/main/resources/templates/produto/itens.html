@@ -37,10 +37,16 @@
                                     <td th:text="${itens.quantidade}">Quantidade</td>
                                     <td th:text="${itens.preco}">Preço</td>
                                     <td>
-                                        <form action="#" th:action="@{/gerenciamento/produto/{id} (id=${itens.id})}" method="GET"> <button type="submit" data-toggle="modal" data-target="#edit-item" class="btn btn-primary edit-item">Alterar</button></form>
-                                        <form th:action="@{/gerenciamento/produto/excluir/{id}(id=${itens.id})}" method="post">
-                                            <button class="btn btn-danger" type="submit">Apagar</button>
-                                        </form>
+                                        <div>
+                                            <form action="#" th:action="@{/gerenciamento/produto/{id} (id=${itens.id})}" method="GET"> 
+                                                <button class="btn btn-primary edit-item  col-xs-12 col-sm-12"type="submit" data-toggle="modal" data-target="#edit-item">Alterar</button>
+                                            </form>
+                                        </div>
+                                        <div>
+                                            <form th:action="@{/gerenciamento/produto/excluir/{id}(id=${itens.id})}" method="post">
+                                                <button class="btn btn-danger col-xs-12 col-sm-12" type="submit">Apagar</button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
