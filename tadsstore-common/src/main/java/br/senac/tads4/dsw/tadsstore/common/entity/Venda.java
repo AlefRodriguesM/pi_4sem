@@ -34,7 +34,7 @@ public class Venda {
 
     @Column(name = "VL_TOTAL")
     private double vlTotal;
-    /*
+    
     @Column(name = "NR_PARCELAS")
     private int parcelas;
     
@@ -43,7 +43,7 @@ public class Venda {
 
     @Column(name = "NR_PRAZOFIM")
     private int prazofim;
-    */
+    
     @Column(name = "DS_BAIRRO")
     private String bairro;
 
@@ -98,18 +98,16 @@ public class Venda {
 
     }
 
-    //public Venda(Long id, Long comprador, Date dtVenda, double vlProdutos, double vlFrete, double vlTotal, int parcelas, int prazoini, int prazofim, String endereco, String numero, String bairro, String complemento, String cidade, String uf, String cep, String formapag, String transportadora) {
-    public Venda(Long id, Long comprador, Date dtVenda, double vlProdutos, double vlFrete, double vlTotal, String endereco, String numero, String bairro, String complemento, String cidade, String uf, String cep, String formapag, String transportadora) {
+    public Venda(Long id, Long comprador, Date dtVenda, double vlProdutos, double vlFrete, double vlTotal, int parcelas, int prazoini, int prazofim, String endereco, String numero, String bairro, String complemento, String cidade, String uf, String cep, String formapag, String transportadora) {
+    //public Venda(Long id, Long comprador, Date dtVenda, double vlProdutos, double vlFrete, double vlTotal, String endereco, String numero, String bairro, String complemento, String cidade, String uf, String cep, String formapag, String transportadora) {
         this.comprador = comprador;
         this.dtVenda = dtVenda;
         this.vlProdutos = vlProdutos;
         this.vlFrete = vlFrete;
         this.vlTotal = vlTotal;
-        /*
         this.parcelas = parcelas;
         this.prazoini = prazoini;
         this.prazofim = prazofim;
-        */
         this.endereco = endereco;
         this.numero = numero;
         this.bairro = bairro;
@@ -123,8 +121,8 @@ public class Venda {
 
     @Override
     public String toString() {
-        //return "Venda{" + "comprador=" + getComprador() + ", dtVenda=" + getDtVenda() + ", vlProdutos=" + getVlProdutos() + ", vlFrete=" + getVlFrete() + ", vlTotal=" + getVlTotal() + ", parcelas=" + getParcelas() + ", prazoini=" + getPrazoini() + ", prazofim=" + getPrazofim() + ", endereco=" + getEndereco() + ", numero=" + getNumero() + ", bairro=" + getBairro() + ", complemento=" + getComplemento() + ", cidade=" + getCidade() + ", uf=" + getUf() + ", cep=" + getCep() + ", formapag=" + getFormapag() + ", transportadora=" + getTransportadora() + '}';
-        return "Venda{" + "comprador=" + getComprador() + ", dtVenda=" + getDtVenda() + ", vlProdutos=" + getVlProdutos() + ", vlFrete=" + getVlFrete() + ", vlTotal=" + getVlTotal() + ", endereco=" + getEndereco() + ", numero=" + getNumero() + ", bairro=" + getBairro() + ", complemento=" + getComplemento() + ", cidade=" + getCidade() + ", uf=" + getUf() + ", cep=" + getCep() + ", formapag=" + getFormapag() + ", transportadora=" + getTransportadora() + '}';
+        return "Venda{" + "comprador=" + getComprador() + ", dtVenda=" + getDtVenda() + ", vlProdutos=" + getVlProdutos() + ", vlFrete=" + getVlFrete() + ", vlTotal=" + getVlTotal() + ", parcelas=" + getParcelas() + ", prazoini=" + getPrazoini() + ", prazofim=" + getPrazofim() + ", endereco=" + getEndereco() + ", numero=" + getNumero() + ", bairro=" + getBairro() + ", complemento=" + getComplemento() + ", cidade=" + getCidade() + ", uf=" + getUf() + ", cep=" + getCep() + ", formapag=" + getFormapag() + ", transportadora=" + getTransportadora() + '}';
+       //return "Venda{" + "comprador=" + getComprador() + ", dtVenda=" + getDtVenda() + ", vlProdutos=" + getVlProdutos() + ", vlFrete=" + getVlFrete() + ", vlTotal=" + getVlTotal() + ", endereco=" + getEndereco() + ", numero=" + getNumero() + ", bairro=" + getBairro() + ", complemento=" + getComplemento() + ", cidade=" + getCidade() + ", uf=" + getUf() + ", cep=" + getCep() + ", formapag=" + getFormapag() + ", transportadora=" + getTransportadora() + '}';
     }
 
     @Override
@@ -181,7 +179,7 @@ public class Venda {
     public void setVlTotal(double vlTotal) {
         this.vlTotal = vlTotal;
     }
-    /*
+    
     public int getParcelas() {
         return parcelas;
     }
@@ -205,7 +203,7 @@ public class Venda {
     public void setPrazofim(int prazofim) {
         this.prazofim = prazofim;
     }
-    */
+    
     public String getBairro() {
         return bairro;
     }
