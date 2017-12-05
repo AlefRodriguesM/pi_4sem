@@ -1,5 +1,8 @@
 package br.senac.tads4.dsw.tadsstore.common.entity;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -207,5 +210,17 @@ public class Cliente{
         }
         return true;
     }
-
+    
+    public String stringToHash(String senha) {
+        String sen = "";
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        BigInteger hash = new BigInteger(1, md.digest(senha.getBytes()));
+        sen = hash.toString(16);
+        return sen;
+    }
 }
