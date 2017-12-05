@@ -42,4 +42,8 @@ public class VendaServiceSpringImp implements VendaService {
     public void remover(long idVenda) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public Venda obterUltima() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

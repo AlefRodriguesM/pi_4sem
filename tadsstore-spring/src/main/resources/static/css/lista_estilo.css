@@ -48,6 +48,7 @@ produtolista{
     /*line-height: 42px;*/
 }
 
+/*
 .rodapeproduto .add {
     background-image: "http://icons.iconarchive.com/icons/graphicloads/100-flat/256/cart-add-icon.png";
     background-repeat: no-repeat;
@@ -58,6 +59,7 @@ produtolista{
     cursor: pointer;
     vertical-align: middle;
 }
+*/
 
 .rodapeproduto .add .pic{
     width: 35px;

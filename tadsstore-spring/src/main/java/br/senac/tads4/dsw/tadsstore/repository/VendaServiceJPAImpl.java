@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
  * @author andrey.asantos1
  */
 @Repository
-public class VendaServiceJPAImpl implements VendaService{
+public class VendaServiceJPAImpl implements VendaService {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -30,15 +30,22 @@ public class VendaServiceJPAImpl implements VendaService{
                 "SELECT DISTINCT v FROM Venda v ");
         return query.getResultList();
     }
-    
+
     @Override
     public Venda obter(long idVenda) {
-    Query query = entityManager.createQuery(
-            "SELECT DISTINCT v FROM Venda v "
-            + "WHERE v.id = :idVenda")
-            .setParameter("idVenda", idVenda);
-    return (Venda) query.getSingleResult();
-  }
+        Query query = entityManager.createQuery(
+                "SELECT DISTINCT v FROM Venda v "
+                + "WHERE v.id = :idVenda")
+                .setParameter("idVenda", idVenda);
+        return (Venda) query.getSingleResult();
+    }
+    
+    @Override
+    public Venda obterUltima() {
+        Query query = entityManager.createQuery(
+                "SELECT MAX(v.id) FROM Venda v ");
+        return (Venda) query.getSingleResult();
+    } 
 
     @Override
     @Transactional

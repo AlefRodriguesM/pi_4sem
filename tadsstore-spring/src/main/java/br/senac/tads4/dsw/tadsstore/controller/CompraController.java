@@ -39,7 +39,7 @@ public class CompraController implements Serializable {
     @Autowired
     private ItemVendaService serviceItem;
     
-    private List<Produto> carrinho = new ArrayList<>();
+    private List<ItemVenda> carrinho = new ArrayList<>();
   
     @RequestMapping
     private ModelAndView mostrarCarrinho() {
@@ -53,10 +53,17 @@ public class CompraController implements Serializable {
             RedirectAttributes redirectAttributes) {
         Produto p = service.obter(idProduto);
         
+        ItemVenda ite = new ItemVenda();
+        
         if (p.getQuantidade() <= 0) {
             redirectAttributes.addFlashAttribute("mensagemErro", "Produto " + p.getNome() + " sem estoque disponível!");
         }else{
-            carrinho.add(p);
+            ite.setProduto(p.getId());
+            ite.setQtVenda(1);
+            ite.setVlPreuni(p.getPreco());
+            ite.setVlTotal(ite.getVlPreuni() * ite.getQtVenda());
+            
+            carrinho.add(ite);
             redirectAttributes.addFlashAttribute("mensagem", "Produto : " + p.getNome() + " adicionado com sucesso!");
         }
         
@@ -66,8 +73,11 @@ public class CompraController implements Serializable {
     @RequestMapping("/carrinho")
     public ModelAndView visualizarCarrinho() {
         Venda v = new Venda();
+        
+        ModelAndView mod = new ModelAndView("redirect:/compra");
+        mod.addObject("venda", v);
 
-        return new ModelAndView("redirect:/compra").addObject("venda", v);
+        return mod;
     }
 
     @RequestMapping("/confirmar/{id}")
@@ -98,29 +108,26 @@ public class CompraController implements Serializable {
         return new ModelAndView("redirect:/produto/lista");
         }
         
+        
         v.setDtVenda(new Date());
+        v.setComprador(Long.parseLong("0"));
         
         serviceVenda.incluir(v);
+        v = serviceVenda.obterUltima();
         
-        ItemVenda it = new ItemVenda();
-        for(int i = 0; i < carrinho.size(); i++){
-            it.setProduto(carrinho.get(i).getId());
-            it.setPedido(v.getId());
-            it.setQtVenda(carrinho.get(i).getQuantidade());
-            it.setVlPreuni(carrinho.get(i).getPreco());
-            it.setVlTotal((carrinho.get(i).getPreco() * carrinho.get(i).getQuantidade()));
-            it.setDtMovimento(new Date());
-            serviceItem.incluir(it);
+        for (ItemVenda ite : carrinho) {
+            ite.setPedido(v.getId());
+            ite.setDtMovimento(v.getDtVenda());
         }
         
-        carrinho.clear(); 
+        carrinho.clear();
         
         redirectAttributes.addFlashAttribute("msgSucesso",
                 "Venda " + v.getNumero() + " finalizada com sucesso");
         return new ModelAndView("redirect:/produto");
     }
     
-    public List<Produto> getCarrinho() {
+    public List<ItemVenda> getCarrinho() {
         return carrinho;
     }
 }
