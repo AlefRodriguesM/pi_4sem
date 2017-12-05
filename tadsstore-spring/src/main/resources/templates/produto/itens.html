@@ -18,13 +18,14 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12 col-sm-12">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Código</th>
                                     <th>Nome</th>
                                     <th>Descrição</th>
                                     <th>Qt. Estoque</th>
+                                    <th></th>
                                     <th>Preço</th>
                                     <th>Ação</th>
                                 </tr>
@@ -35,6 +36,13 @@
                                     <td th:text="${itens.nome}">Nome</td>
                                     <td th:text="${itens.descricaoResumida}">Descricao</td>
                                     <td th:text="${itens.quantidade}">Quantidade</td>
+                                    <td>
+                                        <div>
+                                            <form action="#" th:action="@{/gerenciamento/produto/movimentacoes/{id} (id=${itens.id})}" method="GET"> 
+                                                <button class="btn btn-primary edit-item  col-xs-12 col-sm-12"type="submit" data-toggle="modal" data-target="#edit-item">Exibir mov.</button>
+                                            </form>
+                                        </div>
+                                    </td>
                                     <td th:text="${itens.preco}">Preço</td>
                                     <td>
                                         <div>

@@ -8,65 +8,85 @@
             <div class="container">
                 <h1>Cadastro de cliente</h1>
 
+                <div class="alert alert-danger" role="alert" th:if="${mensagemErro != null}">
+                    <p th:text="${mensagemErro}">Mensagem erro</p>
+                </div>
+
                 <form th:action="@{/gerenciamento/cliente/incluir}" 
                       th:object="${cliente}" method="post">
                     <input type="hidden" name="id" th:field="*{id}" />
 
-                    <div class="form-group">
-                        <label>Nome</label> 
-                        <input class="form-control" type="text" name="nome" th:field="*{nome}" placeholder="Preencha o nome..." required/>
+                    <div class="panel panel-primary">
+                        <div class="panel panel-heading">
+                            <h3 class="panel-title">Informações pessoais</h3>
+                        </div>
+                        
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label>Nome</label> 
+                                <input class="form-control" type="text" name="nome" th:field="*{nome}" placeholder="Preencha o nome..." required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Sobrenome</label> 
+                                <input class="form-control" type="text" name="sobrenome" th:field="*{sobrenome}" placeholder="Preencha o sobrenome..." required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email</label> 
+                                <input class="form-control" type="text" name="email" th:field="*{email}" placeholder="Preencha o email..." required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Senha</label> 
+                                <input class="form-control" type="password" name="senha" th:field="*{senha}" placeholder="Preencha a senha..."/>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label>Sobrenome</label> 
-                        <input class="form-control" type="text" name="sobrenome" th:field="*{sobrenome}" placeholder="Preencha o sobrenome..." required/>
+                    <div class="panel panel-primary">
+                        <div class="panel panel-heading">
+                            <h3 class="panel-title">Informações de entrega</h3>
+                        </div>
+                        
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label>Endereço</label> 
+                                <input class="form-control" type="text" name="endereco" th:field="*{endereco}" placeholder="Preencha o endereco..." required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Número</label> 
+                                <input class="form-control" type="text" name="numero" th:field="*{numero}" placeholder="Preencha o numero..." required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>CEP</label> 
+                                <input class="form-control" type="text" name="cep" th:field="*{cep}" placeholder="Preencha o cep..." required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Bairro</label> 
+                                <input class="form-control" type="text" name="bairro" th:field="*{bairro}" placeholder="Preencha o bairro..." required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Cidade</label> 
+                                <input class="form-control" type="text" name="cidade" th:field="*{cidade}" placeholder="Preencha a cidade..." required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>UF</label> 
+                                <input class="form-control" type="text" name="uf" th:field="*{uf}" placeholder="Preencha a uf..." required/>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Complemento</label> 
+                                <input class="form-control" type="text" name="complemento" th:field="*{complemento}" placeholder="Preencha o complemento..." required/>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label>Email</label> 
-                        <input class="form-control" type="text" name="email" th:field="*{email}" placeholder="Preencha o email..." required/>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Senha</label> 
-                        <input class="form-control" type="text" name="senha" th:field="*{senha}" placeholder="Preencha a senha..." required/>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Endereço</label> 
-                        <input class="form-control" type="text" name="endereco" th:field="*{endereco}" placeholder="Preencha o endereco..." required/>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Número</label> 
-                        <input class="form-control" type="text" name="numero" th:field="*{numero}" placeholder="Preencha o numero..." required/>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>CEP</label> 
-                        <input class="form-control" type="text" name="cep" th:field="*{cep}" placeholder="Preencha o cep..." required/>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Bairro</label> 
-                        <input class="form-control" type="text" name="bairro" th:field="*{bairro}" placeholder="Preencha o bairro..." required/>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Cidade</label> 
-                        <input class="form-control" type="text" name="cidade" th:field="*{cidade}" placeholder="Preencha a cidade..." required/>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>UF</label> 
-                        <input class="form-control" type="text" name="uf" th:field="*{uf}" placeholder="Preencha a uf..." required/>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Complemento</label> 
-                        <input class="form-control" type="text" name="complemento" th:field="*{complemento}" placeholder="Preencha o complemento..." required/>
-                    </div>
-                    
+
                     <div>
                         <input class="btn btn-primary" type="submit" value="Salvar" />
                     </div>

@@ -23,8 +23,7 @@ public class GerenciaClienteController {
     
     @RequestMapping
     public ModelAndView abrirFormulario() {
-        return new ModelAndView("cliente/input")
-                .addObject("cliente", new Cliente());
+        return new ModelAndView("cliente/input").addObject("cliente", new Cliente());
     }
 
     @RequestMapping("/{idCli}")
@@ -36,11 +35,23 @@ public class GerenciaClienteController {
 
     @RequestMapping(value = "/incluir", method = RequestMethod.POST)
     public ModelAndView incluir(@ModelAttribute("cliente") @Valid Cliente c, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        c.setDtCadastro(new Date());
-
-        if (c.getId() == null) {
+        if (c.getId() == null) {            
+            c.setDtCadastro(new Date());
+            
+            c.setSenha(c.stringToHash(c.getSenha()));
+            
             clienteService.incluir(c);
         } else {
+            Cliente cAntigo = clienteService.obter(c.getId());
+            
+            if(!c.getSenha().equals("")){
+                c.setSenha(c.stringToHash(c.getSenha()));
+            }else{
+                c.setSenha(cAntigo.getSenha());
+            }
+            
+            c.setDtCadastro(cAntigo.getDtCadastro());
+            
             clienteService.alterar(c);
         }
 
