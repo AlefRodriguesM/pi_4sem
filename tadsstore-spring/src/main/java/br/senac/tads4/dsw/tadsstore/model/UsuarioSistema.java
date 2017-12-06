@@ -1,11 +1,12 @@
 package br.senac.tads4.dsw.tadsstore.model;
 
 import java.util.Collection;
-import java.util.List;
-import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class UsuarioSistema implements UserDetails {
+
+    private Long Id;
 
     private String username;
 
@@ -13,16 +14,33 @@ public class UsuarioSistema implements UserDetails {
 
     private String nomeCompleto;
 
-    private List<Papel> papeis;
+    private Papel papel;
 
     public UsuarioSistema() {
     }
 
-    public UsuarioSistema(String username, String senha, String nomeCompleto, List<Papel> papeis) {
+    public UsuarioSistema(Long Id, String username, String senha, String nomeCompleto, Papel papel) {
+        this.Id = Id;
         this.username = username;
         this.senha = senha;
         this.nomeCompleto = nomeCompleto;
-        this.papeis = papeis;
+        this.papel = papel;
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long Id) {
+        this.Id = Id;
+    }
+
+    public Papel getPapel() {
+        return papel;
+    }
+
+    public void setPapel(Papel papel) {
+        this.papel = papel;
     }
 
     @Override
@@ -55,17 +73,17 @@ public class UsuarioSistema implements UserDetails {
         this.nomeCompleto = nomeCompleto;
     }
 
-    public List<Papel> getPapeis() {
-        return papeis;
+    public Papel getPapeis() {
+        return papel;
     }
 
-    public void setPapeis(List<Papel> papeis) {
-        this.papeis = papeis;
+    public void setPapeis(Papel papel) {
+        this.papel = papel;
     }
 
     @Override
     public Collection<Papel> getAuthorities() {
-        return papeis;
+        return (Collection) papel;
     }
 
     @Override

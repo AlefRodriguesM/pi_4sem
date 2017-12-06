@@ -37,7 +37,7 @@ public class GerenciaClienteController {
     public ModelAndView incluir(@ModelAttribute("cliente") @Valid Cliente c, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (c.getId() == null) {            
             c.setDtCadastro(new Date());
-            
+            c.setPapel("CLIENTE");
             c.setSenha(c.stringToHash(c.getSenha()));
             
             clienteService.incluir(c);
