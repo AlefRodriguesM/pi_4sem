@@ -1,9 +1,8 @@
 package br.senac.tads4.dsw.tadsstore.model;
 
-import static br.senac.tads4.dsw.tadsstore.common.entity.Cliente_.papel;
+import br.senac.tads4.dsw.tadsstore.common.entity.Cliente;
 import java.util.Collection;
 import java.util.List;
-//import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class UsuarioSistema implements UserDetails {
@@ -68,7 +67,7 @@ public class UsuarioSistema implements UserDetails {
 
     @Override
     public Collection<Papel> getAuthorities() {
-        return (Collection) papel;
+        return (Collection) papeis;
     }
 
     @Override
