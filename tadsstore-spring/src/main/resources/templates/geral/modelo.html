@@ -41,7 +41,7 @@ and open the template in the editor.
                             <li><a th:href="@{/compra/carrinho}">Carrinho de compra</a></li>
                             <li><a th:href="@{/pedido}">Meus pedidos</a></li>
                             <li><a th:href="@{/gerenciamento/produto/estoque}">Estoque</a></li>
-                            <li><a th:href="@{/gerenciamento/produto/estoque}"><p th:text="${#authentication.principal.nomeCompleto}"></p></a></li>
+                            <!--<li><a th:href="@{/gerenciamento/produto/estoque}"><p th:text="${#authentication.principal.nomeCompleto}"></p></a></li>-->
                             <li><a th:href="@{logout}" th:action="@{/logout}" method="post" type="submit">Sair da minha conta</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
