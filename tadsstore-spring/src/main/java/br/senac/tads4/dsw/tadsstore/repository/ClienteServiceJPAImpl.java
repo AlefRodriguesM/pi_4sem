@@ -2,6 +2,7 @@ package br.senac.tads4.dsw.tadsstore.repository;
 
 import br.senac.tads4.dsw.tadsstore.common.entity.Cliente;
 import br.senac.tads4.dsw.tadsstore.common.service.ClienteService;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,6 +33,12 @@ public class ClienteServiceJPAImpl implements ClienteService{
             + "WHERE c.id = :idCliente")
             .setParameter("idCliente", idCliente);
     return (Cliente) query.getSingleResult();
+  }
+   
+    public ArrayList<Cliente> obterTodos() {
+    Query query = entityManager.createQuery(
+            "SELECT DISTINCT c FROM Cliente c ");
+    return (ArrayList<Cliente>) query.getResultList();
   }
 
     @Override

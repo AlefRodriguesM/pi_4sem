@@ -16,45 +16,48 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "TB_CLIENTES")
+public class Cliente {
 
-public class Cliente{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_CLIENTE")
     private Long id;
-    
+
     @Column(name = "DS_NOME")
     private String nome;
-    
+
     @Column(name = "DS_SOBRENOME")
     private String sobrenome;
 
     @Column(name = "DS_EMAIL")
     private String email;
-    
+
     @Column(name = "DS_SENHA")
     private String senha;
 
     @Column(name = "DS_ENDERECO")
     private String endereco;
-    
+
     @Column(name = "DS_NUMERO")
     private String numero;
-    
+
     @Column(name = "DS_CEP")
     private String cep;
-    
+
     @Column(name = "DS_BAIRRO")
     private String bairro;
-    
+
     @Column(name = "DS_CIDADE")
     private String cidade;
-    
+
     @Column(name = "DS_UF")
     private String uf;
-    
+
     @Column(name = "DS_COMPLEMENTO")
     private String complemento;
+
+    @Column(name = "DS_PAPEL")
+    private String papel;
 
     @Column(name = "DT_CADASTRO")
     @Temporal(TemporalType.TIMESTAMP)
@@ -167,7 +170,15 @@ public class Cliente{
         this.dtCadastro = dtCadastro;
     }
 
-    public Cliente(Long id, String nome, String sobrenome, String email, String senha, String endereco, String numero, String cep, String bairro, String cidade, String uf, String complemento, Date dtCadastro) {
+    public String getPapel() {
+        return papel;
+    }
+
+    public void setPapel(String papel) {
+        this.papel = papel;
+    }
+
+    public Cliente(Long id, String nome, String sobrenome, String email, String senha, String endereco, String numero, String cep, String bairro, String cidade, String uf, String complemento, Date dtCadastro, String papel) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -181,12 +192,12 @@ public class Cliente{
         this.uf = uf;
         this.complemento = complemento;
         this.dtCadastro = dtCadastro;
+        this.papel = papel;
     }
-
 
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", email=" + email + ", senha= " + senha + ", endereco=" + endereco + ", numero" + numero + ", cep" + cep + ", bairro" + bairro + ", cidade" + cidade + ", uf" + uf + ", complemento" + complemento + ", dtCadastro=" + dtCadastro + '}';
+        return "Cliente{" + "id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", email=" + email + ", senha= " + senha + ", endereco=" + endereco + ", numero" + numero + ", cep" + cep + ", bairro" + bairro + ", cidade" + cidade + ", uf" + uf + ", complemento" + complemento + ", dtCadastro=" + dtCadastro + ", papel=" + papel + '}';
     }
 
     @Override
@@ -210,7 +221,7 @@ public class Cliente{
         }
         return true;
     }
-    
+
     public String stringToHash(String senha) {
         String sen = "";
         MessageDigest md = null;
