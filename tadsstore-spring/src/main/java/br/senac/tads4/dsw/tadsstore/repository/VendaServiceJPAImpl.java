@@ -32,7 +32,7 @@ public class VendaServiceJPAImpl implements VendaService {
     }
 
     @Override
-    public Venda obter(long idVenda) {
+    public Venda obter(Long idVenda) {
         Query query = entityManager.createQuery(
                 "SELECT DISTINCT v FROM Venda v "
                 + "WHERE v.id = :idVenda")
@@ -43,7 +43,9 @@ public class VendaServiceJPAImpl implements VendaService {
     @Override
     public Venda obterUltima() {
         Query query = entityManager.createQuery(
-                "SELECT MAX(v.id) FROM Venda v ");
+                "SELECT DISTINCT v FROM Venda v "
+                        + " WHERE v.id = (SELECT MAX(vv.id) FROM Venda vv)"
+                        +  "ORDER BY v.id DESC");
         return (Venda) query.getSingleResult();
     } 
 
