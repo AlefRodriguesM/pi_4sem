@@ -147,15 +147,15 @@
                                         </tr>
                                         <tr>
                                             <td class="titulo">Vl. Produtos </td>
-                                            <td class="descritivo" th:text="${venda.vlProdutos}">Valor dos produtos</td>
+                                            <td class="descritivo" th:text="${#numbers.formatCurrency(venda.vlProdutos)}">Valor dos produtos</td>
                                         </tr>
                                         <tr>
                                             <td class="titulo">Vl. Frete </td>
-                                            <td class="descritivo" th:text="${venda.vlFrete}">Valor do frete</td>
+                                            <td class="descritivo" th:text="${#numbers.formatCurrency(venda.vlFrete)}">Valor do frete</td>
                                         </tr>
                                         <tr>
                                             <td class="titulo">Vl. Total </td>
-                                            <td class="descritivo" th:text="${venda.vlTotal}">Valor total</td>
+                                            <td class="descritivo" th:text="${#numbers.formatCurrency(venda.vlTotal)}">Valor total</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -174,8 +174,8 @@
                                 <tr th:each="item : ${itensVenda}">
                                     <td th:text="${item.id}">ID do produto</td>
                                     <td th:text="${item.qtVenda}">Quantidade</td>
-                                    <td th:text="${item.vlPreuni}">Valor uni</td>
-                                    <td th:text="${item.vlTotal}">Valor tot</td>
+                                    <td th:text="${#numbers.formatCurrency(item.vlPreuni)}">Valor uni</td>
+                                    <td th:text="${#numbers.formatCurrency(item.vlTotal)}">Valor tot</td>
                                 </tr>
                             </tbody>
                         </table>

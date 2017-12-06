@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -31,7 +33,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class CompraController implements Serializable {
 
     @Autowired
-    private ProdutoService service;
+    private ProdutoService serviceProduto;
 
     @Autowired
     private VendaService serviceVenda;
@@ -52,8 +54,15 @@ public class CompraController implements Serializable {
     public ModelAndView adicionarProduto(@PathVariable("id") Long idProduto,
             RedirectAttributes redirectAttributes) {
 
-        Produto p = service.obter(idProduto);
+        Produto p = serviceProduto.obter(idProduto);
         ItemVenda ite = new ItemVenda();
+        
+        for (ItemVenda i : carrinho) {
+            if (Objects.equals(i.getProduto(), idProduto)) {
+                redirectAttributes.addFlashAttribute("mensagemErro", "O produto " + p.getNome() + " já estava no seu carrinho!");
+                return new ModelAndView("redirect:/compra/carrinho");
+            }
+        }
         
         if (p.getQuantidade() <= 0) {
             redirectAttributes.addFlashAttribute("mensagemErro", "Produto " + p.getNome() + " sem estoque disponível!");
@@ -68,28 +77,95 @@ public class CompraController implements Serializable {
             redirectAttributes.addFlashAttribute("mensagem", "Produto : " + p.getNome() + " adicionado com sucesso!");
         }
 
-        return new ModelAndView("redirect:/compra");
+        return new ModelAndView("redirect:/compra/carrinho");
+    }
+
+    @RequestMapping("/alterar/{id}")
+    public ModelAndView alterarProduto(
+            @PathVariable("id") Long idProduto,
+            @RequestParam("quantidade") String quantidade,
+            RedirectAttributes redirectAttributes) {
+
+        Produto p = serviceProduto.obter(idProduto);
+        ItemVenda ite = new ItemVenda();
+        int qtAlterar = 0;
+
+        try {
+            qtAlterar = Math.abs(Integer.parseInt(quantidade));
+        } catch (Exception erro) {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Quantidade de compra inválida!");
+
+            return new ModelAndView("redirect:/compra/carrinho");
+        }
+
+        if (p.getQuantidade() <= 0) {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Produto " + p.getNome() + " sem estoque disponível. Ele foi removido do carrinho.");
+
+            for (ItemVenda i : carrinho) {
+                if (i.getProduto() == p.getId()) {
+                    carrinho.remove(i);
+                    
+                    break;
+                }
+            }
+            
+            return new ModelAndView("redirect:/compra/carrinho");
+            
+        } else if (p.getQuantidade() < qtAlterar) {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Quantidade informada indisponível. Quantidade máxima: " + p.getQuantidade());
+
+            qtAlterar = p.getQuantidade();
+        } else {
+            redirectAttributes.addFlashAttribute("mensagem", "Quantidade do produto : " + p.getNome() + " alterada com sucesso!");
+        }
+
+        for (ItemVenda i : carrinho) {
+            if (i.getProduto() == p.getId()) {
+                i.setQtVenda(qtAlterar);
+                i.setVlTotal(i.getQtVenda() * i.getVlPreuni());
+            }
+        }
+
+        return new ModelAndView("redirect:/compra/carrinho");
+    }
+    
+    @RequestMapping("/remover/{id}")
+    public ModelAndView removerProduto(
+            @PathVariable("id") Long idProduto,
+            RedirectAttributes redirectAttributes) {
+
+        for (ItemVenda i : carrinho) {
+            if (Objects.equals(i.getProduto(), idProduto)) {
+                carrinho.remove(i);
+                
+                break;
+            }
+        }
+        
+        redirectAttributes.addFlashAttribute("mensagem", "Produto " + idProduto + " removido.");
+
+        return new ModelAndView("redirect:/compra/carrinho");
     }
 
     @RequestMapping("/carrinho")
     public ModelAndView visualizarCarrinho() {
         Venda venda = new Venda();
-        
+
         int tipoFrete = 1;
-        
+
         for (ItemVenda ite : carrinho) {
             venda.setVlProdutos(venda.getVlProdutos() + ite.getVlTotal());
         }
-        
+
         if (tipoFrete <= 1) {
             venda.setVlFrete(20.99);
-        }else{
+        } else {
             venda.setVlFrete(15.99);
         }
-        
+
         venda.setVlTotal(venda.getVlProdutos() + venda.getVlFrete());
 
-        ModelAndView mod = new ModelAndView("/compra");
+        ModelAndView mod = new ModelAndView("compra/carrinho");
         mod.addObject("venda", venda);
 
         return mod;
@@ -113,21 +189,43 @@ public class CompraController implements Serializable {
     @RequestMapping(value = "/salvar", method = RequestMethod.POST)
     public ModelAndView salvar(
             @ModelAttribute("venda") Venda v,
+            @RequestParam("formapag") String formaPag,
             BindingResult bindingResult,
-            RedirectAttributes redirectAttributes
-    //@RequestParam("optFrete") String optFrete
-    ) {
+            RedirectAttributes redirectAttributes) {
 
         ModelAndView mav = new ModelAndView("compra/compraDetalhesUser");
         List<ItemVenda> itensVenda;
 
         if (carrinho.isEmpty()) {
-            redirectAttributes.addFlashAttribute("mensagem", "Não é possível salvar venda sem itens !!");
-            return new ModelAndView("redirect:/produto/lista");
+            redirectAttributes.addFlashAttribute("mensagemErro", "Não é possível finalizar uma venda sem itens!");
+            return new ModelAndView("redirect:/compra/carrinho");
+        }
+        
+        for (ItemVenda ite : carrinho) {
+            Produto p = new Produto();
+            
+            p = serviceProduto.obter(ite.getProduto());
+            
+            if (p.getQuantidade() <= 0 || p.getQuantidade() < ite.getQtVenda()) {
+                if (p.getQuantidade() <= 0) {
+                    redirectAttributes.addFlashAttribute("mensagemErro", "O produto " + p.getId() + " - " + p.getNome() + " está com o estoque indisponível e foi removido do carrinho.");
+                    
+                    carrinho.remove(ite);
+                    
+                    break;
+                }else{
+                    redirectAttributes.addFlashAttribute("mensagemErro", "O produto " + p.getId() + " - " + p.getNome()+ " não possui " + ite.getQtVenda() + " unidades em estoque. Sua quantidade foi alterada.");
+                    
+                    ite.setQtVenda(p.getQuantidade());
+                }
+                
+                return new ModelAndView("redirect:/compra/carrinho");
+            }
         }
 
         v.setDtVenda(new Date());
         v.setComprador(Long.MIN_VALUE);
+        v.setFormapag(formaPag);
 
         serviceVenda.incluir(v);
         v = serviceVenda.obterUltima();
