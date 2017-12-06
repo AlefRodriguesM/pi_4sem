@@ -16,7 +16,7 @@ import java.util.List;
 public interface VendaService extends Serializable {
     public List<Venda> listar(int offset, int quantidade);
 
-    public Venda obter(long idVenda);
+    public Venda obter(Long idVenda);
     
     public Venda obterUltima();
 
