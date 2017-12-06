@@ -32,36 +32,22 @@ and open the template in the editor.
                         <span class="sr-only">Toggle navigation</span>
                         <i class="fa fa-bars fa-lg"></i>
                     </button>
-                    <a class="navbar-brand" th:href="@{/produto}">Automata Store</a>
+                    <a class="navbar-brand" th:href="@{/produto}"><img src="https://i.imgur.com/1LSLwwv.png" height="28px" ></a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a th:href="@{/produto/itens}">Produtos</a></li>
-                        <li><a th:href="@{/cliente/lista}">Clientes</a></li>
-                        <li><a th:href="@{/compra/carrinho}">Carrinho de compra</a></li>
-                        <li><a th:href="@{/pedido}">Meus pedidos</a></li>
-                        <li><a th:href="@{/gerenciamento/produto/estoque}">Estoque</a></li>
+                            <li><a th:href="@{/produto/itens}">Produtos</a></li>
+                            <li><a th:href="@{/cliente/lista}">Clientes</a></li>
+                            <li><a th:href="@{/compra/carrinho}">Carrinho de compra</a></li>
+                            <li><a th:href="@{/pedido}">Meus pedidos</a></li>
+                            <li><a th:href="@{/gerenciamento/produto/estoque}">Estoque</a></li>
+                            <li><a th:href="@{/gerenciamento/produto/estoque}"><p th:text="${#authentication.principal.nomeCompleto}"></p></a></li>
+                            <li><a th:href="@{logout}" th:action="@{/logout}" method="post" type="submit">Sair da minha conta</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
-        <div sec:authorize="isAuthenticated()">
-            <p th:text="${#authentication.principal.nomeCompleto}"></p>
-            <!--
-                essa div imprime os dados do user logado.
-                falta só deixar bonito e dentro da navbar
-            
-            
-                isso aqui basicamente imprime o nome de novo
-                <p sec:authentication="principal.nomeCompleto"></p>
-            
-                isso aqui imprime a senha, e não queremos saber dela
-                <p th:text="${#authentication.principal.senha}"></p>
-            -->
-            <form th:action="@{/logout}" method="post">
-                <button type="submit">Sair</button>
-            </form>
-        </div>
+
         <div layout:fragment="conteudo">
             <h1>Template master do Automata Store</h1>
         </div>

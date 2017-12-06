@@ -1,27 +1,65 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <title>TODO supply a title</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body>
-    <h1>Entrar no sistema</h1>
-    <div>
-      <form th:action="@{/login}" method="post">
-	<div>
-	  <label>Username</label>
-	  <input type="text" name="username" />
-	</div>
-	<div>
-	  <label>Senha</label>
-	  <input type="password" name="senha" />
-	</div>
-	<div>
-	  <button type="submit">Entrar</button>
-	</div>
-      </form>
-    </div>
-  </body>
+    <head>
+        <title>Automata Store - Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+        <link rel="stylesheet" href="../../static/css/estilos.css" th:href="@{/css/estilos.css}" />
+        <link href="../../static/css/detalhe_estilo.css" rel="stylesheet" type="text/css" th:href="@{/css/detalhe_estilo.css}" />
+        <link href="../../static/css/lista_estilo.css" rel="stylesheet" type="text/css" th:href="@{/css/lista_estilo.css}" />
+        <link href="../../static/css/confirmacaoCompra_estilo.css" rel="stylesheet" type="text/css" th:href="@{/css/confirmacaoCompra_estilo.css}" />
+        <link href="../../static/css/itens.css" rel="stylesheet" type="text/css" th:href="@{/css/itens.css}" />
+        <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="../../static/js/funcoes.js" th:src="@{/js/funcoes.js}"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-bars fa-lg"></i>
+                    </button>
+                    <a class="navbar-brand" th:href="@{/produto}"><img src="https://i.imgur.com/1LSLwwv.png" height="28px" ></a>
+                    
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a th:href="@{/compra/carrinho}">Meu carrinho</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+
+
+        <div layout:fragment='conteudo'>
+            <div class="panel-title">
+                <div class="panel panel-default">
+                     <div class="container">
+                        <h1>Entrar no sistema</h1>
+                        <form th:action="@{/login}" method="post">
+                            <div>
+                                <label class="panel-title">Usuário:</label><br>
+                                <input type="text" name="username" />
+                            </div>
+                            <div>
+                                <label class="panel-title">Senha:</label><br>
+                                <input type="password" name="senha" />
+                            </div>
+                            <div>
+                                <button type="submit">Entrar</button>
+                            </div>
+                        </form>
+                        Ainda não tem um usuário? <br>
+                        <a href="input.html">Cadastre-se!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
