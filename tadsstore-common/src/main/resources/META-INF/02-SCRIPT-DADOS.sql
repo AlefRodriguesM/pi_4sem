@@ -1,4 +1,6 @@
-INSERT INTO TB_PRODUTO (DS_NOME, DS_DESCRICAORESUMIDA, DS_DESCRICAO, QT_ESTOQUE, VL_PRECO, DT_CADASTRO, DS_IMAGEM) VALUES (
+INSERT INTO TB_PRODUTO (DS_NOME, DS_DESCRICAORESUMIDA, DS_DESCRICAO, QT_ESTOQUE, VL_PRECO, DT_CADASTRO, DS_IMAGEM,
+    DT_VALIDADEDESC,
+    VL_PORDESC) VALUES (
 'Placa de vídeo GTX 1080ti',
 'Placa de Vídeo VGA NVIDIA EVGA GEFORCE GTX 1080 Ti 11GB FTW3',
 'Características:
@@ -60,12 +62,15 @@ Peso
 0,
 2199.90,
 CURRENT_TIMESTAMP,
-'https://images6.kabum.com.br/produtos/fotos/88076/88076_index_gg.jpg'
+'https://images6.kabum.com.br/produtos/fotos/88076/88076_index_gg.jpg',
+CURRENT_TIMESTAMP,
+2
 )
 
 ;
 
-INSERT INTO TB_PRODUTO (DS_NOME, DS_DESCRICAORESUMIDA, DS_DESCRICAO, QT_ESTOQUE, VL_PRECO, DT_CADASTRO, DS_IMAGEM) VALUES (
+INSERT INTO TB_PRODUTO (DS_NOME, DS_DESCRICAORESUMIDA, DS_DESCRICAO, QT_ESTOQUE, VL_PRECO, DT_CADASTRO, DS_IMAGEM, DT_VALIDADEDESC,
+    VL_PORDESC) VALUES (
 'Intel Core i7-7700K',
 'Processador Intel Core i7-7700K Kaby Lake 7a Geração, Cache 8MB 4.2GHz (4.5GHz Max Turbo)',
 'Características:
@@ -132,7 +137,9 @@ Peso
 0,
 1574.00,
 CURRENT_TIMESTAMP,
-'https://images8.kabum.com.br/produtos/fotos/75738/75738_index_gg.jpg'
+'https://images8.kabum.com.br/produtos/fotos/75738/75738_index_gg.jpg',
+CURRENT_TIMESTAMP,
+0
 )
 
 ;
