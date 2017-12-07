@@ -9,6 +9,8 @@ public interface ClienteService extends Serializable {
     public List<Cliente> listar(int offset, int quantidade);
 
     public Cliente obter(long idCliente);
+    
+    public Cliente obterByUsername(String username);
 
     public ArrayList<Cliente> obterTodos();
 

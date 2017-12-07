@@ -17,7 +17,6 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "TB_CLIENTES")
 public class Cliente {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_CLIENTE")
