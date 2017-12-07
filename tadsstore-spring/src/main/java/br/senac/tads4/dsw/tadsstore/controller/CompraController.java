@@ -56,14 +56,14 @@ public class CompraController implements Serializable {
 
         Produto p = serviceProduto.obter(idProduto);
         ItemVenda ite = new ItemVenda();
-        
+
         for (ItemVenda i : carrinho) {
             if (Objects.equals(i.getProduto(), idProduto)) {
                 redirectAttributes.addFlashAttribute("mensagemErro", "O produto " + p.getNome() + " já estava no seu carrinho!");
                 return new ModelAndView("redirect:/compra/carrinho");
             }
         }
-        
+
         if (p.getQuantidade() <= 0) {
             redirectAttributes.addFlashAttribute("mensagemErro", "Produto " + p.getNome() + " sem estoque disponível!");
         } else {
@@ -88,12 +88,20 @@ public class CompraController implements Serializable {
 
         Produto p = serviceProduto.obter(idProduto);
         ItemVenda ite = new ItemVenda();
-        int qtAlterar = 0;
 
+        int qtAlterar = 0;
+        
         try {
             qtAlterar = Math.abs(Integer.parseInt(quantidade));
-        } catch (Exception erro) {
+        } catch (Exception e) {
             redirectAttributes.addFlashAttribute("mensagemErro", "Quantidade de compra inválida!");
+
+            return new ModelAndView("redirect:/compra/carrinho");
+        }
+
+        // quantidade no carrinho não pode ser menor que 1
+        if (qtAlterar < 1) {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Quantidade de compra não pode ser menor que 1!");
 
             return new ModelAndView("redirect:/compra/carrinho");
         }
@@ -104,13 +112,13 @@ public class CompraController implements Serializable {
             for (ItemVenda i : carrinho) {
                 if (i.getProduto() == p.getId()) {
                     carrinho.remove(i);
-                    
+
                     break;
                 }
             }
-            
+
             return new ModelAndView("redirect:/compra/carrinho");
-            
+
         } else if (p.getQuantidade() < qtAlterar) {
             redirectAttributes.addFlashAttribute("mensagemErro", "Quantidade informada indisponível. Quantidade máxima: " + p.getQuantidade());
 
@@ -128,7 +136,7 @@ public class CompraController implements Serializable {
 
         return new ModelAndView("redirect:/compra/carrinho");
     }
-    
+
     @RequestMapping("/remover/{id}")
     public ModelAndView removerProduto(
             @PathVariable("id") Long idProduto,
@@ -137,11 +145,11 @@ public class CompraController implements Serializable {
         for (ItemVenda i : carrinho) {
             if (Objects.equals(i.getProduto(), idProduto)) {
                 carrinho.remove(i);
-                
+
                 break;
             }
         }
-        
+
         redirectAttributes.addFlashAttribute("mensagem", "Produto " + idProduto + " removido.");
 
         return new ModelAndView("redirect:/compra/carrinho");
@@ -200,25 +208,25 @@ public class CompraController implements Serializable {
             redirectAttributes.addFlashAttribute("mensagemErro", "Não é possível finalizar uma venda sem itens!");
             return new ModelAndView("redirect:/compra/carrinho");
         }
-        
+
         for (ItemVenda ite : carrinho) {
             Produto p = new Produto();
-            
+
             p = serviceProduto.obter(ite.getProduto());
-            
+
             if (p.getQuantidade() <= 0 || p.getQuantidade() < ite.getQtVenda()) {
                 if (p.getQuantidade() <= 0) {
                     redirectAttributes.addFlashAttribute("mensagemErro", "O produto " + p.getId() + " - " + p.getNome() + " está com o estoque indisponível e foi removido do carrinho.");
-                    
+
                     carrinho.remove(ite);
-                    
+
                     break;
-                }else{
-                    redirectAttributes.addFlashAttribute("mensagemErro", "O produto " + p.getId() + " - " + p.getNome()+ " não possui " + ite.getQtVenda() + " unidades em estoque. Sua quantidade foi alterada.");
-                    
+                } else {
+                    redirectAttributes.addFlashAttribute("mensagemErro", "O produto " + p.getId() + " - " + p.getNome() + " não possui " + ite.getQtVenda() + " unidades em estoque. Sua quantidade foi alterada.");
+
                     ite.setQtVenda(p.getQuantidade());
                 }
-                
+
                 return new ModelAndView("redirect:/compra/carrinho");
             }
         }

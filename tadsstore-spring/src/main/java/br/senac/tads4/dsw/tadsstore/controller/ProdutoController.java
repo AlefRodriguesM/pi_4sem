@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -56,5 +57,12 @@ public class ProdutoController {
         listaProdutos = Produtoservice.listar(0, 100);
         
         return new ModelAndView("produto/itens").addObject("listaProdutos", listaProdutos);
+    }
+    
+    @RequestMapping("/filtro")
+    public ModelAndView abrirFormularioCondicao(@RequestParam("busca") String condicao) {
+        listaProdutos = Produtoservice.obterCondicao(condicao);
+
+        return new ModelAndView("produto/lista").addObject("itens", listaProdutos);
     }
 }

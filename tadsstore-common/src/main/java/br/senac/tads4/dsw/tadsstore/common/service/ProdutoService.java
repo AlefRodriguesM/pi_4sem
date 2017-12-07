@@ -10,7 +10,9 @@ import java.util.List;
  */
 public interface ProdutoService extends Serializable {
   public List<Produto> listar(int offset, int quantidade);
-
+  
+  public List<Produto> obterCondicao(String condicao);
+  
   public Produto obter(long idProduto);
 
   public void incluir(Produto p);
