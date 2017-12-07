@@ -1,11 +1,12 @@
 package br.senac.tads4.dsw.tadsstore.model;
 
-import br.senac.tads4.dsw.tadsstore.common.entity.Cliente;
 import java.util.Collection;
 import java.util.List;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class UsuarioSistema implements UserDetails {
+
+    private Long id;
 
     private String username;
 
@@ -13,11 +14,26 @@ public class UsuarioSistema implements UserDetails {
 
     private String nomeCompleto;
 
-   private List<Papel> papeis;
- 
+    private List<Papel> papeis;
+
     public UsuarioSistema() {
     }
 
+    public UsuarioSistema(Long id, String username, String senha, String nomeCompleto, List<Papel> papeis) {
+        this.id = id;
+        this.username = username;
+        this.senha = senha;
+        this.nomeCompleto = nomeCompleto;
+        this.papeis = papeis;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     @Override
     public String getUsername() {
@@ -49,13 +65,6 @@ public class UsuarioSistema implements UserDetails {
         this.nomeCompleto = nomeCompleto;
     }
 
-    public UsuarioSistema(String username, String senha, String nomeCompleto, List<Papel> papeis) {
-        this.username = username;
-        this.senha = senha;
-        this.nomeCompleto = nomeCompleto;
-        this.papeis = papeis;
-    }
-
     public List<Papel> getPapeis() {
         return papeis;
     }
@@ -63,7 +72,6 @@ public class UsuarioSistema implements UserDetails {
     public void setPapeis(List<Papel> papeis) {
         this.papeis = papeis;
     }
-
 
     @Override
     public Collection<Papel> getAuthorities() {
