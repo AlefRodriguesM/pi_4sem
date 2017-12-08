@@ -7,10 +7,14 @@
         <div layout:fragment='conteudo'>
             <div>
                 <div class="container">
-                    <div class="row header">
+                    <div class="row">
+                        <div class="col-12">
+                            <iframe class="col-md-0 col-lg-12" src="//cdn.bannersnack.com/banners/bcji6jj9v/embed/index.html?env=live&userId=33085216&t=1512701435" width="1170" height="400" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen>
+                            </iframe>
+                        </div>
                     </div>
                     <div class="row produtoslista">
-                        <div class="col-12">
+                        <div class="col-12">  
                             <div class="col-md-3 col-lg-3 filtros">
                             </div>
                             <div class="col-md-9 col-lg-9 well produtolista">
@@ -22,17 +26,17 @@
                                     <a th:href="@{/produto/{id}(id=${p.id})}">
                                         <img class="imagem img-responsive img-thumbnail" th:src="${p.imagem}" th:href="@{/produto/${p.id}}">
                                     </a>
-                                    
+
                                     <a th:href="@{/produto/{id}(id=${p.id})}">
                                         <h1 class="titulo" th:text="${p.nome}" th:href="@{/produto/${p.id}}">Produto</h1>
                                     </a>
-                                    
+
                                     <div class="descricao">
                                         <a th:href="@{/produto/{id}(id=${p.id})}">
                                             <span th:text="${p.descricaoResumida}" th:href="@{/produto/${p.id}}">Descricao</span>
                                         </a>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="col-12 rodapeproduto">
                                             <div class="col-md-12 col-lg-12">
