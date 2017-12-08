@@ -33,6 +33,11 @@ public class VendaServiceSpringImp implements VendaService {
     }
 
     @Override
+    public List<Venda> obterCondicao(String dtDe, String dtAte) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
     public Venda obterUltima() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

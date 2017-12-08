@@ -41,6 +41,15 @@ public class VendaServiceJPAImpl implements VendaService {
     }
     
     @Override
+    public List<Venda> obterCondicao(String dtDe, String dtAte) {
+        Query query = entityManager.createQuery(
+                "SELECT DISTINCT v FROM Venda v "
+                + "WHERE v.dtVenda = :dtDe")
+                .setParameter("dtDe", "'" + dtDe + "'");
+        return query.getResultList();
+    }
+    
+    @Override
     public Venda obterUltima() {
         Query query = entityManager.createQuery(
                 "SELECT DISTINCT v FROM Venda v "

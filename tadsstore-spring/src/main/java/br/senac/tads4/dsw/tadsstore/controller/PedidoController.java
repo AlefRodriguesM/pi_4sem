@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -31,5 +32,11 @@ public class PedidoController {
     public List<Venda> getVenda(){
         return listaped;
     }
+    
+    @RequestMapping("/filtro")
+    public ModelAndView abrirFormularioCondicao(@RequestParam("dtDe") String dtDe, @RequestParam("dtAte") String dtAte) {
+        listaped = vendaService.obterCondicao(dtDe, dtAte);
 
+        return new ModelAndView("produto/lista").addObject("listaped", listaped);
+    }
 }

@@ -9,6 +9,26 @@
                 <div class="alert alert-success" th:if="${msgSucesso != null}">
                     <p th:text="${msgSucesso}"></p>
                 </div>
+                <form action="#" th:action="@{/pedido/filtro}" method="GET">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-5 col-sm-5">
+                                <div class="col-xs-5 col-sm-5">
+                                    <input class="form-control" type="date" name="dtDe" value="2017-12-08" required/>
+                                </div>
+                                <div class="col-xs-1 col-sm-1">
+                                    <label>Até</label>
+                                </div>
+                                <div class="col-xs-5 col-sm-5">
+                                    <input class="form-control" type="date" name="dtAte" value="2017-12-08" required/>
+                                </div>
+                                <div class="col-xs-1 col-sm-1">
+                                    <button type="submit">Buscar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
                 <div class="col-xs-12 col-sm-0 produtoPic">
                     <table class="table table-bordered table-striped">
                         <thead>
