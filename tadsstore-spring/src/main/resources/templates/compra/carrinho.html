@@ -29,7 +29,7 @@
                                     <td th:text="${item.produto}">ID do produto</td>
                                     <td>
                                         <form action="#" th:action="@{/compra/alterar/{id} (id=${item.produto})}" method="POST">
-                                            <input type="text" name="quantidade" th:value="${item.qtVenda}">
+                                            <input class="form-control" type="text" name="quantidade" th:value="${item.qtVenda}">
                                             <button type="submit" class="btn btn-primary edit-item">Alterar</button>
                                         </form>
                                     </td>

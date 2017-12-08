@@ -1,51 +1,20 @@
 @charset "UTF-8";
 
-.header {
-    height: -webkit-fill-available;
-    background-image: url(https://i.imgur.com/dHXa3aD.gif);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-}
-
 .filtros{
     height: 1090px;
     background-color: hsl(120, 0%,   75%);
 }
 
-produtolista{
-    height: 100%;
-}
-
-.produto{
-    height: 480px;
-}
-
-.produto .imagem{
-    width: 100%;
-
-    position: relative;
-}
-
 .produto .titulo{
-    height: 80px;
     font-size: 20px;
     text-align: center;
 
     padding-right: 0px;
 }
 
-.rodapeproduto{
-    height: 50px;
-}
-
-.descricao{
-    height: 120px;
-}
-
 .rodapeproduto .preco{
     font-weight: bold;
-    font-size: 22px;
+    font-size: 26px;
     color: RGB(46, 204, 113);
 
     /*line-height: 42px;*/
