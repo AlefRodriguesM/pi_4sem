@@ -2,6 +2,7 @@ package br.senac.tads4.dsw.tadsstore.repository;
 
 import br.senac.tads4.dsw.tadsstore.common.entity.Cliente;
 import br.senac.tads4.dsw.tadsstore.common.service.ClienteService;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,7 +15,8 @@ import org.springframework.stereotype.Repository;
  * @author andrey.asantos1
  */
 @Repository
-public class ClienteServiceJPAImpl implements ClienteService{   
+public class ClienteServiceJPAImpl implements ClienteService {
+
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -24,15 +26,30 @@ public class ClienteServiceJPAImpl implements ClienteService{
                 "SELECT DISTINCT c FROM Cliente c ");
         return query.getResultList();
     }
-    
+
     @Override
     public Cliente obter(long idCliente) {
-    Query query = entityManager.createQuery(
-            "SELECT DISTINCT c FROM Cliente c "
-            + "WHERE c.id = :idCliente")
-            .setParameter("idCliente", idCliente);
-    return (Cliente) query.getSingleResult();
-  }
+        Query query = entityManager.createQuery(
+                "SELECT DISTINCT c FROM Cliente c "
+                + "WHERE c.id = :idCliente")
+                .setParameter("idCliente", idCliente);
+        return (Cliente) query.getSingleResult();
+    }
+
+    public Cliente obterByUsername(String username) {
+        Query query = entityManager.createQuery(
+                "SELECT DISTINCT c FROM Cliente c "
+                + "WHERE c.email = :username")
+                .setParameter("username", username);
+        
+        return (Cliente) query.getSingleResult();
+    }
+
+    public ArrayList<Cliente> obterTodos() {
+        Query query = entityManager.createQuery(
+                "SELECT DISTINCT c FROM Cliente c ");
+        return (ArrayList<Cliente>) query.getResultList();
+    }
 
     @Override
     @Transactional

@@ -19,7 +19,8 @@ import org.springframework.stereotype.Repository;
  * @author andrey.asantos1
  */
 @Repository
-public class ProdutoServiceJPAImpl implements ProdutoService{   
+public class ProdutoServiceJPAImpl implements ProdutoService {
+
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -29,15 +30,24 @@ public class ProdutoServiceJPAImpl implements ProdutoService{
                 "SELECT DISTINCT p FROM Produto p ");
         return query.getResultList();
     }
-    
+
     @Override
     public Produto obter(long idProduto) {
-    Query query = entityManager.createQuery(
-            "SELECT DISTINCT p FROM Produto p "
-            + "WHERE p.id = :idProduto")
-            .setParameter("idProduto", idProduto);
-    return (Produto) query.getSingleResult();
-  }
+        Query query = entityManager.createQuery(
+                "SELECT DISTINCT p FROM Produto p "
+                + "WHERE p.id = :idProduto")
+                .setParameter("idProduto", idProduto);
+        return (Produto) query.getSingleResult();
+    }
+
+    @Override
+    public List<Produto> obterCondicao(String condicao) {
+        Query query = entityManager.createQuery(
+                "SELECT DISTINCT p FROM Produto p "
+                + "WHERE lower(p.nome) LIKE lower(:condicao)")
+                .setParameter("condicao", "%" + condicao + "%");
+        return query.getResultList();
+    }
 
     @Override
     @Transactional

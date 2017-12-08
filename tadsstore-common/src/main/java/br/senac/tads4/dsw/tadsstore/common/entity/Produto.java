@@ -42,10 +42,17 @@ public class Produto{
     @Temporal(TemporalType.TIMESTAMP)
     private Date dtCadastro;
     
+    @Column(name = "DT_VALIDADEDESC")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dtValidadeDesc;
+    
+    @Column(name = "VL_PORDESC")
+    private double porDesc;
+    
     public Produto() {
     }
 
-    public Produto(Long id, String nome, String descricao, String descricaoResumida,int quantidade, double preco, Date dtCadastro, String imagem) {
+    public Produto(Long id, String nome, String descricao, String descricaoResumida,int quantidade, double preco, Date dtCadastro, String imagem, Date dtValidadeDesc, double porDesc) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -54,6 +61,8 @@ public class Produto{
         this.preco = preco;
         this.dtCadastro = dtCadastro;
         this.imagem = imagem;
+        this.porDesc = porDesc;
+        this.dtValidadeDesc = dtValidadeDesc;
     }
 
     public Long getId() {
@@ -132,9 +141,39 @@ public class Produto{
         return temEstoque;
     }
 
+    public Date getDtValidadeDesc() {
+        return dtValidadeDesc;
+    }
+
+    public void setDtValidadeDesc(Date dtValidadeDesc) {
+        this.dtValidadeDesc = dtValidadeDesc;
+    }
+
+    public double getPorDesc() {
+        return porDesc;
+    }
+
+    public void setPorDesc(double porDesc) {
+        this.porDesc = porDesc;
+    }
+    
+    public double getVlDesconto(){
+        Date dtAtual = new Date(System.currentTimeMillis());
+        
+        double vlFinal;
+        
+        if(this.dtValidadeDesc.after(dtAtual) || this.dtValidadeDesc.equals(dtAtual)){
+            vlFinal = (this.porDesc / 100) * this.preco;
+        }else{
+            vlFinal = preco;
+        }
+        
+        return vlFinal;
+    }
+    
     @Override
     public String toString() {
-        return "Produto{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", descricaoResumida=" + descricaoResumida + ", quantidade= " + quantidade + ", preco=" + preco + ", dtCadastro=" + dtCadastro + ", imagem=" + imagem + '}';
+        return "Produto{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", descricaoResumida=" + descricaoResumida + ", quantidade= " + quantidade + ", preco=" + preco + ", porcentagem de desconto=" + porDesc + ", dtValidade desconto" + dtValidadeDesc + ", dtCadastro=" + dtCadastro + ", imagem=" + imagem + '}';
     }
 
     @Override

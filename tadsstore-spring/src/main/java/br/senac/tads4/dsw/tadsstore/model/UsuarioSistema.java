@@ -2,10 +2,11 @@ package br.senac.tads4.dsw.tadsstore.model;
 
 import java.util.Collection;
 import java.util.List;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class UsuarioSistema implements UserDetails {
+
+    private Long id;
 
     private String username;
 
@@ -18,11 +19,20 @@ public class UsuarioSistema implements UserDetails {
     public UsuarioSistema() {
     }
 
-    public UsuarioSistema(String username, String senha, String nomeCompleto, List<Papel> papeis) {
+    public UsuarioSistema(Long id, String username, String senha, String nomeCompleto, List<Papel> papeis) {
+        this.id = id;
         this.username = username;
         this.senha = senha;
         this.nomeCompleto = nomeCompleto;
         this.papeis = papeis;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override
@@ -65,7 +75,7 @@ public class UsuarioSistema implements UserDetails {
 
     @Override
     public Collection<Papel> getAuthorities() {
-        return papeis;
+        return (Collection) papeis;
     }
 
     @Override

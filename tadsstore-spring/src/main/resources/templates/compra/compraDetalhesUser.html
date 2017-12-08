@@ -23,7 +23,7 @@
                             </div>
                             <div class="panel-body">
                                 <div>
-                                    <div class="alert alert-warning" th:if="${venda.status == 1}">
+                                    <div class="alert alert-warning" th:if="${venda.status <= 1}">
                                         <p>Status atual: Aguardando pagamento</p>
                                     </div>
                                     <div class="alert alert-warning" th:if="${venda.status == 2}">
@@ -39,33 +39,6 @@
                                         <p>Status atual: Entregue</p>
                                     </div>
                                 </div>
-                                <form action="#" th:action="@{/gerenciamento/venda/atualizar/{id} (id=${venda.id})}" method="POST">
-                                    <div class="col-xs-3">
-                                        <div class="radio">
-                                            <input type="radio" name="status" value="1">
-                                            Aguardando pagamento
-                                        </div>
-                                        <div class="radio">
-                                            <input type="radio" name="status" value="2">
-                                            Pedido em processamento
-                                        </div>
-                                        <div class="radio">
-                                            <input type="radio" name="status" value="3">
-                                            Faturado
-                                        </div>
-                                        <div class="radio">
-                                            <input type="radio" name="status" value="4">
-                                            Em transporte
-                                        </div>
-                                        <div class="radio">
-                                            <input type="radio" name="status" value="5">
-                                            Entregue
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <button type="submit">Alterar Status</button>
-                                    </div>
-                                </form>
                             </div>
                         </div>
                         <br>
