@@ -12,7 +12,7 @@
                             <h2>Clientes</h2>
                         </div>
                         <div class="pull-right">
-                            <form class="btnIncluir" action="#" th:action="@{/gerenciamento/cliente}" method="GET"> <button type="submit" class="btn btn-success inc-prod" data-toggle="modal" data-target="#create-item">Criar cliente</button></form>
+                            <form class="btnIncluir" action="#" th:action="@{/cliente}" method="GET"> <button type="submit" class="btn btn-success inc-prod" data-toggle="modal" data-target="#create-item">Criar cliente</button></form>
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                                     <td th:text="${itens.uf}">UF</td>
                                     <td th:text="${itens.cep}">CEP</td>
                                     <td>
-                                        <form action="#" th:action="@{/gerenciamento/cliente/{id} (id=${itens.id})}" method="GET"> <button type="submit" data-toggle="modal" data-target="#edit-item" class="btn btn-primary edit-item">Alterar</button></form>
+                                        <form action="#" th:action="@{/cliente/{id} (id=${itens.id})}" method="GET"> <button type="submit" data-toggle="modal" data-target="#edit-item" class="btn btn-primary edit-item">Alterar</button></form>
                                         <form th:action="@{/gerenciamento/cliente/excluir/{id}(id=${itens.id})}" method="post">
                                             <button class="btn btn-danger" type="submit">Apagar</button>
                                         </form>

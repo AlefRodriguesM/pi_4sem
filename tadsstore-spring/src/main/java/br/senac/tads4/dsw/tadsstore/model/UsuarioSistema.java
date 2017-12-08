@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senac.tads4.dsw.tadsstore.model;
 
 import java.util.Collection;
@@ -16,85 +11,96 @@ import org.springframework.security.core.userdetails.UserDetails;
  */
 public class UsuarioSistema implements UserDetails {
 
-  private String username;
+    private Long id;
 
-  private String senha;
+    private String username;
 
-  private String nomeCompleto;
+    private String senha;
 
-  private List<Papel> papeis;
+    private String nomeCompleto;
 
-  public UsuarioSistema() {
-  }
+    private List<Papel> papeis;
 
-  public UsuarioSistema(String username, String senha, String nomeCompleto, List<Papel> papeis) {
-    this.username = username;
-    this.senha = senha;
-    this.nomeCompleto = nomeCompleto;
-    this.papeis = papeis;
-  }
+    public UsuarioSistema() {
+    }
 
-  @Override
-  public String getUsername() {
-    return username;
-  }
+    public UsuarioSistema(Long id, String username, String senha, String nomeCompleto, List<Papel> papeis) {
+        this.id = id;
+        this.username = username;
+        this.senha = senha;
+        this.nomeCompleto = nomeCompleto;
+        this.papeis = papeis;
+    }
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
+    @Override
+    public String getUsername() {
+        return username;
+    }
 
-  public String getSenha() {
-    return senha;
-  }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-  @Override
-  public String getPassword() {
-    return senha;
-  }
+    public Long getId() {
+        return id;
+    }
 
-  public void setSenha(String senha) {
-    this.senha = senha;
-  }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  public String getNomeCompleto() {
-    return nomeCompleto;
-  }
+    public String getSenha() {
+        return senha;
+    }
 
-  public void setNomeCompleto(String nomeCompleto) {
-    this.nomeCompleto = nomeCompleto;
-  }
+    @Override
+    public String getPassword() {
+        return senha;
+    }
 
-  public List<Papel> getPapeis() {
-    return papeis;
-  }
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
-  public void setPapeis(List<Papel> papeis) {
-    this.papeis = papeis;
-  }
+    public String getNomeCompleto() {
+        return nomeCompleto;
+    }
 
-  @Override
-  public Collection<Papel> getAuthorities() {
-    return papeis;
-  }
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
+    }
 
-  @Override
-  public boolean isAccountNonExpired() {
-    return true;
-  }
+    public List<Papel> getPapeis() {
+        return papeis;
+    }
 
-  @Override
-  public boolean isAccountNonLocked() {
-    return true;
-  }
+    public void setPapeis(List<Papel> papeis) {
+        this.papeis = papeis;
+    }
 
-  @Override
-  public boolean isCredentialsNonExpired() {
-    return true;
-  }
+    @Override
+    public Collection<Papel> getAuthorities() {
+        return papeis;
+    }
 
-  @Override
-  public boolean isEnabled() {
-    return true;
-  }
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 
 }

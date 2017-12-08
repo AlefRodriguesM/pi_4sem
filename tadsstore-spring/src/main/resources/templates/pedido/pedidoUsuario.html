@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html layout:decorate="~{geral/modelo}">
+    <head>
+        <title>Meus pedidos</title>
+    </head>
+    <body>
+        <div layout:fragment="conteudo">
+            <div class="container">
+                <div class="alert alert-success" th:if="${msgSucesso != null}">
+                    <p th:text="${msgSucesso}"></p>
+                </div>
+                <div class="col-xs-12 col-sm-0 produtoPic">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nro.Pedido</th>
+                                <th>Dt. Pedido</th>
+                                <th>Dt. Alteração</th>
+                                <th>Status</th>
+                                <th>Vl.Total</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="item : ${@pedidoController.listaped}">
+                                <td th:text="${item.id}">Nr.Pedido</td>
+                                <td th:text="${item.dtVenda}">Dt.Venda</td>
+                                <td th:text="${item.dtAlteracao}">2211</td>   
+                                <td>
+                                    <div>
+                                        <div th:if="${item.status == 1}">
+                                            <p>Aguardando pagamento</p>
+                                        </div>
+                                        <div th:if="${item.status == 2}">
+                                            <p>Pedido em processamento</p>
+                                        </div>
+                                        <div th:if="${item.status == 3}">
+                                            <p>Faturado</p>
+                                        </div>
+                                        <div th:if="${item.status == 4}">
+                                            <p>Em transporte</p>
+                                        </div>
+                                        <div th:if="${item.status == 5}">
+                                            <p>Entregue</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td th:text="${item.vlProdutos}">R$99</td>
+                                <td><form action="#" th:action="@{/pedido/Zoom/{id} (id=${item.id})}" method="GET"> <button type="submit">Zoom do pedido</button> </form></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>    
+</html>

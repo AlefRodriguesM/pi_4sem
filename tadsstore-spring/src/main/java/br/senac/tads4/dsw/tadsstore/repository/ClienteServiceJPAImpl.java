@@ -45,6 +45,16 @@ public class ClienteServiceJPAImpl implements ClienteService {
         return (Cliente) query.getSingleResult();
     }
 
+    @Override
+    public Cliente obterByEmail(String email) {
+        Query query = entityManager.createQuery(
+                "SELECT DISTINCT c FROM Cliente c "
+                + "WHERE c.email = :username")
+                .setParameter("username", email);
+        
+        return (Cliente) query.getSingleResult();
+    }
+    
     public ArrayList<Cliente> obterTodos() {
         Query query = entityManager.createQuery(
                 "SELECT DISTINCT c FROM Cliente c ");

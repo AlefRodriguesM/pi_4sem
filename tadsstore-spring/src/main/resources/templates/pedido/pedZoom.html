@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html layout:decorate="~{geral/modelo}">
+    <head>
+        <title>Automata Store - Confirmacao de compra</title>
+    </head>
+    <body>
+        <div layout:fragment='conteudo'>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="cabecalho">Número do pedido:</td>
+                                    <td class="cabecalho" th:text="${venda.id}">Numero pedido</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Status compra</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div>
+                                    <div class="alert alert-warning" th:if="${venda.status <= 1}">
+                                        <p>Status atual: Aguardando pagamento</p>
+                                    </div>
+                                    <div class="alert alert-warning" th:if="${venda.status == 2}">
+                                        <p>Status atual: Pedido em processamento</p>
+                                    </div>
+                                    <div class="alert alert-info" th:if="${venda.status == 3}">
+                                        <p>Status atual: Faturado</p>
+                                    </div>
+                                    <div class="alert alert-info" th:if="${venda.status == 4}">
+                                        <p>Status atual: Em transporte</p>
+                                    </div>
+                                    <div class="alert alert-success" th:if="${venda.status == 5}">
+                                        <p>Status atual: Entregue</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Dados da compra</h3>
+                            </div>
+
+                            <div class="panel-body">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="titulo">Dt. Venda </td>
+                                            <td class="descritivo" th:text="${venda.dtVenda}">Dt. Venda</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="titulo">Prazo ini. </td>
+                                            <td class="descritivo" th:text="${venda.prazoini}">Prazo ini.</td>
+                                            <td class="titulo">Prazo fim </td>
+                                            <td class="descritivo" th:text="${venda.prazofim}">Prazo fim</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Dados de entrega</h3>
+                            </div>
+
+                            <div class="panel-body">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="titulo">Endereco </td>
+                                            <td class="descritivo" th:text="${venda.endereco}">Endereco</td>
+                                            <td class="titulo">Número </td>
+                                            <td class="descritivo" th:text="${venda.numero}">Numero</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="titulo">Bairro </td>
+                                            <td class="descritivo" th:text="${venda.bairro}">Bairro</td>
+                                            <td class="titulo">Complemento </td>
+                                            <td class="descritivo" th:text="${venda.complemento}">Complemento</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="titulo">Cidade </td>
+                                            <td class="descritivo" th:text="${venda.cidade}">Cidade</td>
+                                            <td class="titulo">UF </td>
+                                            <td class="descritivo" th:text="${venda.uf}">UF</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="titulo">CEP </td>
+                                            <td class="descritivo" th:text="${venda.cep}">CEP</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="titulo">Transportadora </td>
+                                            <td class="descritivo" th:text="${venda.transportadora}">Transportadora</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Dados de pagamento</h3>
+                            </div>
+
+                            <div class="panel-body">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="titulo">Forma pagamento </td>
+                                            <td class="descritivo" th:text="${venda.formapag}">Forma de pagamento</td>
+                                            <td class="titulo">Nr. Parcelas </td>
+                                            <td class="descritivo" th:text="${venda.parcelas}">Numero de parcelas</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="titulo">Vl. Produtos </td>
+                                            <td class="descritivo" th:text="${#numbers.formatCurrency(venda.vlProdutos)}">Valor dos produtos</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="titulo">Vl. Frete </td>
+                                            <td class="descritivo" th:text="${#numbers.formatCurrency(venda.vlFrete)}">Valor do frete</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="titulo">Vl. Total </td>
+                                            <td class="descritivo" th:text="${#numbers.formatCurrency(venda.vlTotal)}">Valor total</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                    <th>Valor uni.</th>
+                                    <th>Valor total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="item : ${itensVenda}">
+                                    <td th:text="${item.id}">ID do produto</td>
+                                    <td th:text="${item.qtVenda}">Quantidade</td>
+                                    <td th:text="${#numbers.formatCurrency(item.vlPreuni)}">Valor uni</td>
+                                    <td th:text="${#numbers.formatCurrency(item.vlTotal)}">Valor tot</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

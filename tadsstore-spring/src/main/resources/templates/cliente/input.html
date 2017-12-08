@@ -12,7 +12,7 @@
                     <p th:text="${mensagemErro}">Mensagem erro</p>
                 </div>
 
-                <form th:action="@{/gerenciamento/cliente/incluir}" 
+                <form th:action="@{/cliente/incluir}" 
                       th:object="${cliente}" method="post">
                     <input type="hidden" name="id" th:field="*{id}" />
 

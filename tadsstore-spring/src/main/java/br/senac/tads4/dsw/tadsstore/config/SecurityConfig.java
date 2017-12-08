@@ -23,17 +23,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        /*
-            com estas configurações, as seguintes telas precisam de autenticação, mas não precisa ser FODAO para funcionar:
-            /compra/confirmar/{id}
-            /pedido
-        */
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/rest/**").permitAll()
                 .antMatchers("/teste-ajax-ws", "/css/**", "/js/**", "/img/**", "/font/**").permitAll()      // frameworks
-                .antMatchers("/gerenciamento/**").hasRole("BACKOFFICE")                                     // gerenciamento
+                .antMatchers("/gerenciamento/**").hasAuthority("BACKOFFICE")                                // gerenciamento
                 .antMatchers("/produto", "/produto/**").permitAll()                                         // produto
+                .antMatchers("/cliente", "/cliente/**").permitAll()                                         // cliente
                 .antMatchers("/compra", "/compra/adicionar/**", "/compra/carrinho").permitAll()             // carrinho
                 .antMatchers("/**").authenticated()                                                         // sempre que o usuário acessar algo sem permissão, solicita login
                 .and()

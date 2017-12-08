@@ -1,6 +1,5 @@
 package br.senac.tads4.dsw.tadsstore.controller;
 
-import br.senac.tads4.dsw.tadsstore.common.entity.Cliente;
 import br.senac.tads4.dsw.tadsstore.common.entity.Produto;
 import br.senac.tads4.dsw.tadsstore.common.entity.Venda;
 import br.senac.tads4.dsw.tadsstore.common.entity.ItemVenda;
@@ -8,6 +7,7 @@ import br.senac.tads4.dsw.tadsstore.common.service.ClienteService;
 import br.senac.tads4.dsw.tadsstore.common.service.ItemVendaService;
 import br.senac.tads4.dsw.tadsstore.common.service.ProdutoService;
 import br.senac.tads4.dsw.tadsstore.common.service.VendaService;
+import br.senac.tads4.dsw.tadsstore.model.UsuarioSistema;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -239,13 +239,10 @@ public class CompraController implements Serializable {
         }
         
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        
-        // limão
-        //int userId = authentication.getId();
+        UsuarioSistema usu = (UsuarioSistema) authentication.getPrincipal();
         
         v.setDtVenda(new Date());
-        v.setComprador(Long.MIN_VALUE);
-        //v.setComprador(userId);
+        v.setComprador(usu.getId());
         v.setFormapag(formaPag);
 
         serviceVenda.incluir(v);
