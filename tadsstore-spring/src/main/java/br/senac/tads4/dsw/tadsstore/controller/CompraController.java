@@ -1,8 +1,10 @@
 package br.senac.tads4.dsw.tadsstore.controller;
 
+import br.senac.tads4.dsw.tadsstore.common.entity.Cliente;
 import br.senac.tads4.dsw.tadsstore.common.entity.Produto;
 import br.senac.tads4.dsw.tadsstore.common.entity.Venda;
 import br.senac.tads4.dsw.tadsstore.common.entity.ItemVenda;
+import br.senac.tads4.dsw.tadsstore.common.service.ClienteService;
 import br.senac.tads4.dsw.tadsstore.common.service.ItemVendaService;
 import br.senac.tads4.dsw.tadsstore.common.service.ProdutoService;
 import br.senac.tads4.dsw.tadsstore.common.service.VendaService;
@@ -13,6 +15,8 @@ import java.util.List;
 import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -40,6 +44,9 @@ public class CompraController implements Serializable {
 
     @Autowired
     private ItemVendaService serviceItem;
+    
+    @Autowired
+    private ClienteService serviceCliente;
 
     private List<ItemVenda> carrinho = new ArrayList<>();
 
@@ -230,9 +237,15 @@ public class CompraController implements Serializable {
                 return new ModelAndView("redirect:/compra/carrinho");
             }
         }
-
+        
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        
+        // limão
+        //int userId = authentication.getId();
+        
         v.setDtVenda(new Date());
         v.setComprador(Long.MIN_VALUE);
+        //v.setComprador(userId);
         v.setFormapag(formaPag);
 
         serviceVenda.incluir(v);
@@ -244,7 +257,7 @@ public class CompraController implements Serializable {
 
             serviceItem.incluir(ite);
         }
-
+        
         carrinho.clear();
 
         itensVenda = serviceItem.obter(v.getId());
