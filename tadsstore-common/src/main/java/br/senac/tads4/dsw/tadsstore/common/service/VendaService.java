@@ -27,4 +27,6 @@ public interface VendaService extends Serializable {
     public void alterar(Venda v);
 
     public void remover(long idVenda);
+    
+    public List<Venda> obterPorUsuario(long idComprador);
 }

@@ -11,6 +11,8 @@ public interface ClienteService extends Serializable {
     public Cliente obter(long idCliente);
     
     public Cliente obterByUsername(String username);
+    
+    public Cliente obterByEmail(String username);
 
     public ArrayList<Cliente> obterTodos();
 
