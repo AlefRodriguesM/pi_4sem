@@ -37,6 +37,6 @@ public class PedidoController {
     public ModelAndView abrirFormularioCondicao(@RequestParam("dtDe") String dtDe, @RequestParam("dtAte") String dtAte) {
         listaped = vendaService.obterCondicao(dtDe, dtAte);
 
-        return new ModelAndView("produto/lista").addObject("listaped", listaped);
+        return new ModelAndView("pedido/pedido").addObject("listaped", listaped);
     }
 }

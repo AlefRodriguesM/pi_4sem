@@ -44,8 +44,7 @@ public class VendaServiceJPAImpl implements VendaService {
     public List<Venda> obterCondicao(String dtDe, String dtAte) {
         Query query = entityManager.createQuery(
                 "SELECT DISTINCT v FROM Venda v "
-                + "WHERE v.dtVenda = :dtDe")
-                .setParameter("dtDe", "'" + dtDe + "'");
+                + "WHERE date(v.dtVenda) BETWEEN date('" + dtDe + "') and date('" + dtAte + "')");
         return query.getResultList();
     }
     
