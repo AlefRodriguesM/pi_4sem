@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/rest/**").permitAll()
                 .antMatchers("/teste-ajax-ws", "/css/**", "/js/**", "/img/**", "/font/**").permitAll()      // frameworks
-                .antMatchers("/compra", "/compra/adicionar/**", "/compra/alterar/**", "/compra/carrinho").permitAll()     // carrinho
+                .antMatchers("/compra", "/compra/adicionar/**", "/compra/alterar/**", "/compra/remover/{id}", "/compra/carrinho").permitAll()     // carrinho
                 .antMatchers("/gerenciamento/**").hasAuthority("BACKOFFICE")                                // gerenciamento
                 .antMatchers("/produto", "/produto/**").permitAll()                                         // produto
                 .antMatchers("/cliente", "/cliente/**").permitAll()                                         // cliente
